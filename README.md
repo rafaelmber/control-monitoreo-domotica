@@ -8,9 +8,4 @@ Vamos a usar una aplicación PWA con React, el serividor va a ser gestionado con
 
 La conexión MQTT se va a implementar usando Python y las liberías correspondientes
 
-Hola mi genteeeeeeeeeeee
-Holaaaaa
-Holaaaaaa
-
-
 Lo que vamos a intentar es hacer una aplicación completa que notifique

@@ -7,6 +7,10 @@ Este proyecto consiste en el diseño de una plataforma de IoT para el control de
 Vamos a usar una aplicación PWA con React, el serividor va a ser gestionado con Firebase
 
 La conexión MQTT se va a implementar usando Python y las liberías correspondientes
+
 Hola mi genteeeeeeeeeeee
 Holaaaaa
 Holaaaaaa
+
+
+Lo que vamos a intentar es hacer una aplicación completa que notifique

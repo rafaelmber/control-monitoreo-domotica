@@ -1,3 +1,4 @@
 #Archivos a ignorar en la App del usuario
 node_modules/
 #Archivos a ignorar en la unidad de control centralizada
+assets/

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "webpack": "webpack --mode development --watch"
+    "webpack": "webpack serve --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.js",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "domotic",
@@ -21,13 +23,19 @@
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "babel-loader": "^8.2.2",
+    "dotenv-webpack": "^7.0.3",
     "jest": "^27.0.6",
+    "jest-styled-components": "^7.0.4",
+    "jsdom": "^16.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "svg-react-loader": "^0.4.6",
     "webpack": "^5.42.1",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
     "react-redux": "^7.2.4",

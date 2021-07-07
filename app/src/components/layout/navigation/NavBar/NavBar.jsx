@@ -11,18 +11,17 @@ import ProcessIcon from '@assets/process.svg';
 const NavBar = () => {
   return (
     <StyledNavBar>
-      <NavBarItem isActive={true}>
+      <NavBarItem isActive={true} route='/app/home'>
         <LampIcon className='icon' />
         <ChairIcon className='icon' />
-        <div className='container'></div>
       </NavBarItem>
-      <NavBarItem isActive={false}>
+      <NavBarItem isActive={false} route='/app/devices'>
         <BulbIcon className='icon' />
       </NavBarItem>
-      <NavBarItem isActive={false}>
+      <NavBarItem isActive={false} route='/app/enviroments'>
         <ProcessIcon className='icon' />
       </NavBarItem>
-      <NavBarItem isActive={false}>
+      <NavBarItem isActive={false} route='/app/sensors'>
         <SensorIcon className='icon' />
       </NavBarItem>
     </StyledNavBar>

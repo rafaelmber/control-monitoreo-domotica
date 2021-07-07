@@ -5,13 +5,18 @@ const StyledNavBarItem = styled.div`
     isActive ? 'var(--primary)' : 'var(--lightest-neutral)'};
   height: 100%;
   width: 100%;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+  .link {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &:hover {
     cursor: pointer;
   }

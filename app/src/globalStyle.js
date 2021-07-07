@@ -27,12 +27,15 @@ html {
     margin: 0;
     padding:0;
     box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
   }
   h1{
     font-size: 3rem;
+    font-family: 'Open Sans', sans-serif;
   }
   h2{
     font-size: 2.44rem;
+    font-family: 'Open Sans', sans-serif;
   }
   h3{
     font-size: 1.95rem;

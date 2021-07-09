@@ -13,6 +13,8 @@ const StyledMainApp = styled.div`
   }
   .content {
     grid-area: content-app;
+    height: 100%;
+    overflow: hidden;
   }
   .footer {
     grid-area: footer;

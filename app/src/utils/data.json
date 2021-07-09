@@ -1,0 +1,79 @@
+{
+  "devices": {
+    "1": {
+      "name": "Luz",
+      "type": "luminarias",
+      "room": "Habitación",
+      "status": 1
+    },
+    "2": {
+      "name": "Televisor",
+      "type": "tomacorrientes",
+      "room": "Habitación",
+      "status": 0
+    },
+    "3": {
+      "name": "Entrada",
+      "type": "luminarias",
+      "room": "Sala de estar",
+      "status": 1
+    },
+    "4": {
+      "name": "Ventana",
+      "type": "luminarias",
+      "room": "Sala de estar",
+      "status": 1
+    },
+    "5": {
+      "name": "Equipo de sonido",
+      "type": "tomacorrientes",
+      "room": "Sala de estar",
+      "status": 0
+    },
+    "6": {
+      "name": "Ventilador",
+      "type": "tomacorrientes",
+      "room": "Sala de estar",
+      "status": 1
+    }
+  },
+  "rooms": {
+    "1": {
+      "name": "Habitación",
+      "devices": {
+        "1": 1,
+        "2": 1
+      }
+    },
+    "2": {
+      "name": "Sala de estar",
+      "devices": {
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "6": 1
+      }
+    }
+  },
+  "enviroments": {
+    "1": {
+      "name": "Salir de casa",
+      "devices": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    "2": {
+      "name": "Ver televisión",
+      "devices": {
+        "1": 0,
+        "2": 1,
+        "5": 0
+      }
+    }
+  }
+}

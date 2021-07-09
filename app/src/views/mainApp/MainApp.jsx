@@ -16,7 +16,7 @@ const MainApp = ({ history }) => {
   return (
     <StyledMainApp>
       <Header className='header' />
-      <div className='content-app'>
+      <div className='content'>
         <Switch>
           <Route path={'/app/home'} component={RoomPage} />
         </Switch>

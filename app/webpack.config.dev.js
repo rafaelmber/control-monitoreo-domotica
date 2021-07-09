@@ -1,6 +1,5 @@
 const path = require('path');
 const DotEnv = require('dotenv-webpack');
-console.log(__dirname);
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -35,8 +34,8 @@ module.exports = {
   plugins: [new DotEnv()],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
+    historyApiFallback: true,
     compress: true,
     port: 3006,
-    historyApiFallback: true,
   },
 };

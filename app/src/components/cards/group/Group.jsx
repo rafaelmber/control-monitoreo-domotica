@@ -13,7 +13,7 @@ const Group = ({ type, devices }) => {
   }
   return (
     <StyledGroup>
-      <Item Icon={Icon} name={type} />
+      <Item Icon={Icon} name={type} isGroup />
       <div className='group__items'>
         {devices.map((device) => {
           return (

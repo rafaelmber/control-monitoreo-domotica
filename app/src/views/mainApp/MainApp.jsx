@@ -14,8 +14,6 @@ import NavBar from '@components/layout/navigation/NavBar/NavBar';
 
 const MainApp = ({ history }) => {
   let { path, url } = useRouteMatch();
-  console.log(path);
-  console.log(url);
   return (
     <StyledMainApp>
       <Header className='header' />

@@ -2,37 +2,37 @@
   "devices": {
     "1": {
       "name": "Luz",
-      "type": "luminarias",
+      "type": "Luminarias",
       "room": "Habitación",
       "status": 1
     },
     "2": {
       "name": "Televisor",
-      "type": "tomacorrientes",
+      "type": "Tomacorrientes",
       "room": "Habitación",
       "status": 0
     },
     "3": {
       "name": "Entrada",
-      "type": "luminarias",
+      "type": "Luminarias",
       "room": "Sala de estar",
       "status": 1
     },
     "4": {
       "name": "Ventana",
-      "type": "luminarias",
+      "type": "Luminarias",
       "room": "Sala de estar",
       "status": 1
     },
     "5": {
       "name": "Equipo de sonido",
-      "type": "tomacorrientes",
+      "type": "Tomacorrientes",
       "room": "Sala de estar",
       "status": 0
     },
     "6": {
       "name": "Ventilador",
-      "type": "tomacorrientes",
+      "type": "Tomacorrientes",
       "room": "Sala de estar",
       "status": 1
     }

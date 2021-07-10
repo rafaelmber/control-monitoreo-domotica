@@ -6,6 +6,7 @@ import data from '@/utils/data.json';
 import json2array from '@/utils/json2array';
 
 const Card = ({ name, devices }) => {
+  console.log('Devices', devices);
   const arr = [];
   for (const device of devices) {
     arr.push(device.type);

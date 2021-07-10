@@ -16,14 +16,13 @@ const MainApp = ({ history }) => {
   let { path, url } = useRouteMatch();
   return (
     <StyledMainApp>
-      <Header className='header' />
       <div className='content'>
         <Switch>
           <Route path={'/app/home'} component={RoomPage} />
           <Route path={'/app/devices'} component={DevicesPage} />
         </Switch>
       </div>
-      <NavBar className='footer' />
+      <NavBar className='nav' />
     </StyledMainApp>
   );
 };

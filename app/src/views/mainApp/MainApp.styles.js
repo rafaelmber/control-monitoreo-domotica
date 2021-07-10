@@ -5,18 +5,15 @@ const StyledMainApp = styled.div`
   height: 100vh;
   width: 100vw;
   grid-template-columns: 1fr;
-  grid-template-rows: 6rem 1fr 5rem;
-  grid-template-areas: 'header' 'content-app' 'footer';
+  grid-template-rows: 1fr 5rem;
+  grid-template-areas: 'content-app' 'footer';
 
-  .header {
-    grid-area: header;
-  }
   .content {
     grid-area: content-app;
     height: 100%;
     overflow: hidden;
   }
-  .footer {
+  .nav {
     grid-area: footer;
   }
 `;

@@ -6,23 +6,19 @@ import data from '@/utils/data.json';
 import json2array from '@/utils/json2array';
 
 const Card = ({ name, devices }) => {
-  console.log('Devices', devices);
   const arr = [];
   for (const device of devices) {
     arr.push(device.type);
   }
   const types = new Set(arr);
-  console.log(types);
 
   let typeArray = [];
   for (const type of types) {
-    console.log(type);
     const devicesByTypes = devices.filter((el) => {
       return el.type === type;
     });
     typeArray.push({ type: type, devices: devicesByTypes });
   }
-  console.log('Type array ', typeArray);
 
   return (
     <StyledCard>

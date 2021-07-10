@@ -1,10 +1,10 @@
 import React from 'react';
 import StyledHeader from './Header.styles';
 import MoreIcon from '@assets/more.svg';
-const Header = () => {
+const Header = ({ text }) => {
   return (
     <StyledHeader>
-      <h2>Home</h2>
+      <h2>{text}</h2>
       <MoreIcon className='more-icon' />
     </StyledHeader>
   );

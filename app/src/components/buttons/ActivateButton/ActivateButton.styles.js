@@ -4,7 +4,10 @@ const StyledActivateButton = styled.div`
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  border: 1px solid var(--dark-secundary);
+  border: 1px solid
+    ${(isActive) => {
+      return isActive ? 'var(--dark-green)' : 'var(--dark-secundary)';
+    }};
   box-shadow: 0 4px var(--darkest-secundary);
   background-color: ${({ isActive }) => {
     return isActive ? 'var(--green)' : 'var(--dark-red)';

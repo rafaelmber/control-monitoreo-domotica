@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import GlobalStyle from './globalStyle';
-import MainApp from './views/mainApp/MainApp';
+import MainApp from '@views/mainApp/MainApp';
 import reducer from './store/rootReducer';
 const store = createStore(reducer);
 const history = createBrowserHistory();

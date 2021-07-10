@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const StyledNavBarItem = styled.div`
+const StyledNavBarItem = styled.button`
+  border: none;
   background-color: ${({ isActive }) =>
     isActive ? 'var(--primary)' : 'var(--lightest-neutral)'};
   height: 100%;

@@ -11,6 +11,7 @@ import RoomPage from '@views/pages/RoomsPage/RoomPage';
 import DevicesPage from '@views/pages/DevicesPage/DevicesPage';
 import NavBar from '@components/layout/navigation/NavBar/NavBar';
 import EnviromentsPage from '../pages/EnviromentsPage/EnviromentsPage';
+import SensorPage from '../pages/SensorPage/SensorPage';
 
 const MainApp = ({ history }) => {
   let { path, url } = useRouteMatch();
@@ -21,6 +22,7 @@ const MainApp = ({ history }) => {
           <Route path={'/app/home'} component={RoomPage} />
           <Route path={'/app/devices'} component={DevicesPage} />
           <Route path={'/app/enviroments'} component={EnviromentsPage} />
+          <Route path={'/app/sensors'} component={SensorPage} />
         </Switch>
       </div>
       <NavBar className='nav' />

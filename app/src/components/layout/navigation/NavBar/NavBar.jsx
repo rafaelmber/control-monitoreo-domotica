@@ -47,7 +47,6 @@ const NavBar = () => {
       }
     });
     setButtons(newButtons);
-    console.log(buttons);
   };
   return (
     <StyledNavBar>

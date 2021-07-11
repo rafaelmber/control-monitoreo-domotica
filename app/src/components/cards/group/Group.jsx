@@ -20,6 +20,7 @@ const Group = ({ type, devices }) => {
             <Item
               key={device.id}
               Icon={ArrowIcon}
+              id={device.id}
               name={device.name}
               isActive={device.status}
             />

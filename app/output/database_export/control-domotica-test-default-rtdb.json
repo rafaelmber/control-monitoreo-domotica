@@ -1,0 +1,76 @@
+{
+  "devices": {
+    "device_1": {
+      "name": "Luz",
+      "room": "room_1",
+      "status": true,
+      "type": "type_1"
+    },
+    "device_2": {
+      "name": "Televisor",
+      "room": "room_1",
+      "status": false,
+      "type": "type_2"
+    },
+    "device_3": {
+      "name": "Entrada",
+      "room": "room_2",
+      "status": true,
+      "type": "type_1"
+    },
+    "device_4": {
+      "name": "Ventana",
+      "room": "room_2",
+      "status": true,
+      "type": "type_1"
+    },
+    "device_5": {
+      "name": "Equipo de sonido",
+      "room": "room_2",
+      "status": false,
+      "type": "type_2"
+    },
+    "device_6": {
+      "name": "Ventilador",
+      "room": "room_2",
+      "status": true,
+      "type": "type_2"
+    }
+  },
+  "enviroments": {
+    "env_1": {
+      "devices": {
+        "device_1": false,
+        "device_2": false,
+        "device_3": false,
+        "device_4": false,
+        "device_5": false,
+        "device_6": false
+      },
+      "name": "Salir de casa"
+    },
+    "env_2": {
+      "devices": { "device_1": false, "device_2": true, "device_5": false },
+      "name": "Ver televisión"
+    }
+  },
+  "rooms": {
+    "room_1": {
+      "devices": { "device_1": true, "device_2": true },
+      "name": "Habitación"
+    },
+    "room_2": {
+      "devices": {
+        "device_3": true,
+        "device_4": true,
+        "device_5": true,
+        "device_6": true
+      },
+      "name": "Sala de estar"
+    }
+  },
+  "types": {
+    "type_1": { "name": "Luminarias" },
+    "type_2": { "name": "Tomacorrientes" }
+  }
+}

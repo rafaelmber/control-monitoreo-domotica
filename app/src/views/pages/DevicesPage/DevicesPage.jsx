@@ -8,7 +8,7 @@ import json2array from '@/utils/json2array';
 
 const DevicesPage = () => {
   const devices = useSelector((state) => {
-    return json2array(state.devices);
+    return state.devices;
   });
   return (
     <StyledDevicesPage>

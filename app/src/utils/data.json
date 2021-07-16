@@ -1,78 +1,78 @@
 {
   "devices": {
-    "1": {
+    "device_1": {
       "name": "Luz",
       "type": "Luminarias",
-      "room": "Habitación",
-      "status": 1
+      "room": "room_1",
+      "status": true
     },
-    "2": {
+    "device_2": {
       "name": "Televisor",
       "type": "Tomacorrientes",
-      "room": "Habitación",
-      "status": 0
+      "room": "room_1",
+      "status": false
     },
-    "3": {
+    "device_3": {
       "name": "Entrada",
       "type": "Luminarias",
-      "room": "Sala de estar",
-      "status": 1
+      "room": "room_2",
+      "status": true
     },
-    "4": {
+    "device_4": {
       "name": "Ventana",
       "type": "Luminarias",
-      "room": "Sala de estar",
-      "status": 1
+      "room": "room_2",
+      "status": true
     },
-    "5": {
+    "device_5": {
       "name": "Equipo de sonido",
       "type": "Tomacorrientes",
-      "room": "Sala de estar",
-      "status": 0
+      "room": "room_2",
+      "status": false
     },
-    "6": {
+    "device_6": {
       "name": "Ventilador",
       "type": "Tomacorrientes",
-      "room": "Sala de estar",
-      "status": 1
+      "room": "room_2",
+      "status": true
     }
   },
   "rooms": {
-    "1": {
+    "room_1": {
       "name": "Habitación",
       "devices": {
-        "1": 1,
-        "2": 1
+        "device_1": true,
+        "device_2": true
       }
     },
-    "2": {
+    "room_2": {
       "name": "Sala de estar",
       "devices": {
-        "3": 1,
-        "4": 1,
-        "5": 1,
-        "6": 1
+        "device_3": true,
+        "device_4": true,
+        "device_5": true,
+        "device_6": true
       }
     }
   },
   "enviroments": {
-    "1": {
+    "env_1": {
       "name": "Salir de casa",
       "devices": {
-        "1": 0,
-        "2": 0,
-        "3": 0,
-        "4": 0,
-        "5": 0,
-        "6": 0
+        "device_1": false,
+        "device_2": false,
+        "device_3": false,
+        "device_4": false,
+        "device_5": false,
+        "device_6": false
       }
     },
-    "2": {
+    "env_2": {
       "name": "Ver televisión",
       "devices": {
-        "1": 0,
-        "2": 1,
-        "5": 0
+        "device_1": false,
+        "device_2": true,
+        "device_5": false
       }
     }
   }

@@ -9,7 +9,7 @@ const StyledCard = styled.div`
 
   .header {
     display: grid;
-    grid-template-columns: 1fr 24px;
+    grid-template-columns: 1fr auto;
     border-bottom: 1px solid rgba(75, 79, 79, 0.5);
     margin-bottom: 10px;
     & h3 {

@@ -12,7 +12,7 @@ const NavBar = () => {
     {
       id: 0,
       status: 1,
-      route: '/app/home',
+      route: '/',
       icons: [
         { id: 1, icon: LampIcon },
         { id: 2, icon: ChairIcon },
@@ -21,19 +21,20 @@ const NavBar = () => {
     {
       id: 1,
       status: 0,
-      route: '/app/devices',
+      route: '/devices',
       icons: [{ id: 1, icon: BulbIcon }],
     },
+
     {
       id: 2,
       status: 0,
-      route: '/app/enviroments',
+      route: '/enviroments',
       icons: [{ id: 1, icon: ProcessIcon }],
     },
     {
       id: 3,
       status: 0,
-      route: '/app/sensors',
+      route: '/sensors',
       icons: [{ id: 1, icon: SensorIcon }],
     },
   ]);

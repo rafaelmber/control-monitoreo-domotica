@@ -17,10 +17,7 @@ const App = () => {
       <BrowserRouter history={history}>
         <Switch>
           <Route path='/login' />
-          <Route path='/app' component={MainApp} />
-          <Route path='/'>
-            <Redirect to='/app/home' />
-          </Route>
+          <Route path='/' component={MainApp} />
         </Switch>
       </BrowserRouter>
     </Provider>

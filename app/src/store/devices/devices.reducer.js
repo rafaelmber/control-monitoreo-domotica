@@ -1,42 +1,35 @@
-const initialState = {
-  1: {
-    name: 'Luz',
-    type: 'luminarias',
-    status: 1,
-  },
-  2: {
-    name: 'Televisor',
-    type: 'tomacorrientes',
-    status: 0,
-  },
-  3: {
-    name: 'Entrada',
-    type: 'luminarias',
-    status: 1,
-  },
-  4: {
-    name: 'Ventana',
-    type: 'luminarias',
-    status: 1,
-  },
-  5: {
-    name: 'Equipo de sonido',
-    type: 'tomacorrientes',
-    status: 0,
-  },
-  6: {
-    name: 'Ventilador',
-    type: 'tomacorrientes',
-    status: 1,
-  },
-};
+import json2array from '@/utils/json2array';
+const initialState = [];
 
 const devices = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_DEVICES':
-      return state.devices;
+    case 'GET_DEVICES': {
+      let newState = { ...state, ...action.payload.devices };
+      newState = json2array(newState);
+      return newState;
+    }
+    case 'GET_DEVICE_STATUS': {
+      const newState = [];
+      for (let device of state) {
+        if (device.id === action.payload.id) {
+          device.status = action.payload.status;
+        }
+        newState.push(device);
+      }
+      return newState;
+    }
+    case 'SET_DEVICE_STATUS': {
+      const newState = [];
+      for (let device of state) {
+        if (device.id === action.payload) {
+          device.status = !device.status;
+        }
+        newState.push(device);
+      }
+      return newState;
+    }
     default:
-      return { ...state };
+      return state;
   }
 };
 export default devices;

@@ -1,34 +1,94 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import StyledCard from './Card.styles';
+import db from '@/services/firebase';
 import Group from './group/Group';
 import ActivateButton from '../buttons/ActivateButton/ActivateButton';
-import data from '@/utils/data.json';
-import json2array from '@/utils/json2array';
+import ActivateAllModal from '../layout/modal/ActiveAllModel/ActivateAllModal';
 
 const Card = ({ name, devices }) => {
-  const arr = [];
-  for (const device of devices) {
-    arr.push(device.type);
-  }
-  const types = new Set(arr);
-
-  let typeArray = [];
-  for (const type of types) {
-    const devicesByTypes = devices.filter((el) => {
-      return el.type === type;
+  const dispatch = useDispatch();
+  const [groupStatus, setGroupStatus] = useState(0);
+  const [groupButton, setGroupButton] = useState(false);
+  const groups = useSelector((state) => {
+    let groupsArray = [];
+    state.groups.forEach((group) => {
+      const devicesArray = devices.filter((device) => {
+        return device.type === group.id;
+      });
+      groupsArray.push({ ...group, devices: devicesArray });
     });
-    typeArray.push({ type: type, devices: devicesByTypes });
-  }
+    return groupsArray;
+  });
+
+  useEffect(() => {
+    handleGroupStatus();
+  }, [devices]);
+
+  const handleGroupStatus = () => {
+    if (
+      devices.every((device) => {
+        return device.status === false;
+      })
+    ) {
+      setGroupStatus(0);
+    } else if (
+      devices.every((device) => {
+        return device.status === true;
+      })
+    ) {
+      setGroupStatus(2);
+    } else {
+      setGroupStatus(1);
+    }
+  };
+  const handleGroupClick = () => {
+    setGroupButton(true);
+  };
+  const handleCloseModal = () => {
+    setGroupButton(false);
+  };
+
+  const handleSetAll = (devices, status) => {
+    devices.forEach(async (device) => {
+      const deviceReference = db.ref(`devices/${device.id}/`);
+      await deviceReference.update({ status: status });
+      dispatch({
+        type: 'SET_DEVICES_STATUS',
+        payload: device.id,
+      });
+      setGroupButton(false);
+    });
+  };
 
   return (
     <StyledCard>
       <div className='header'>
         <h3>{name}</h3>
-        <ActivateButton isActive />
+        <ActivateButton
+          isActive
+          groupStatus={groupStatus}
+          onClick={handleGroupClick}
+        />
       </div>
-      {typeArray.map((type) => {
-        return <Group key={type.type} {...type} />;
-      })}
+      <ActivateAllModal
+        isOpen={groupButton}
+        closeModal={handleCloseModal}
+        name={name}
+        handleSetAll={handleSetAll}
+        devices={devices}
+      />
+      {groups &&
+        groups.map((group) => {
+          return (
+            <Group
+              key={group.id}
+              {...group}
+              handleGroupClick={handleGroupClick}
+              handleSetAll={handleSetAll}
+            />
+          );
+        })}
     </StyledCard>
   );
 };

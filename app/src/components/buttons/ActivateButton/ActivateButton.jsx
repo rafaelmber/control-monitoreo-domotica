@@ -1,11 +1,12 @@
 import React from 'react';
 import StyledActivateButton from './ActivateButton.styles';
 
-const ActivateButton = ({ isActive, isGroup }) => {
+const ActivateButton = ({ isActive, onClick, groupStatus }) => {
   return (
     <StyledActivateButton
       isActive={isActive}
-      isGroup={isGroup}
+      groupStatus={groupStatus}
+      onClick={onClick}
     ></StyledActivateButton>
   );
 };

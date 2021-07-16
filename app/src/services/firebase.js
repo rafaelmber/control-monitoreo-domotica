@@ -1,5 +1,6 @@
 // Set the configuration for your app
 // TODO: Replace with your project's config object
+/*
 var config = {
   apiKey: 'apiKey',
   authDomain: 'projectId.firebaseapp.com',
@@ -9,7 +10,16 @@ var config = {
   databaseURL: 'http://localhost:9000/',
   storageBucket: 'bucket.appspot.com',
 };
-firebase.initializeApp(config);
+*/
 
-// Get a reference to the database service
-var database = firebase.database();
+import firebase from 'firebase/app';
+import 'firebase/database';
+
+firebase.initializeApp({
+  databaseURL: `http://localhost:9000/?ns=control-domotica-test-default-rtdb
+`,
+});
+const db = firebase.database();
+db.useEmulator('localhost', 9000);
+
+export default db;

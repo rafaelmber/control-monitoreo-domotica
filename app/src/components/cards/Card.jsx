@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import StyledCard from './Card.styles';
-import db from '@/services/firebase';
 import Group from './group/Group';
 import ActivateButton from '../buttons/ActivateButton/ActivateButton';
 import ActivateAllModal from '../layout/modal/ActiveAllModel/ActivateAllModal';
 
 const Card = ({ name, devices }) => {
-  const dispatch = useDispatch();
   const [groupStatus, setGroupStatus] = useState(0);
   const [groupButton, setGroupButton] = useState(false);
   const groups = useSelector((state) => {
@@ -49,18 +47,6 @@ const Card = ({ name, devices }) => {
     setGroupButton(false);
   };
 
-  const handleSetAll = (devices, status) => {
-    devices.forEach(async (device) => {
-      const deviceReference = db.ref(`devices/${device.id}/`);
-      await deviceReference.update({ status: status });
-      dispatch({
-        type: 'SET_DEVICES_STATUS',
-        payload: device.id,
-      });
-      setGroupButton(false);
-    });
-  };
-
   return (
     <StyledCard>
       <div className='header'>
@@ -75,8 +61,8 @@ const Card = ({ name, devices }) => {
         isOpen={groupButton}
         closeModal={handleCloseModal}
         name={name}
-        handleSetAll={handleSetAll}
         devices={devices}
+        setGroupButton={setGroupButton}
       />
       {groups &&
         groups.map((group) => {
@@ -85,7 +71,6 @@ const Card = ({ name, devices }) => {
               key={group.id}
               {...group}
               handleGroupClick={handleGroupClick}
-              handleSetAll={handleSetAll}
             />
           );
         })}

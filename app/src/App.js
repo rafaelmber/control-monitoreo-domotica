@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import GlobalStyle from './globalStyle';
@@ -14,12 +14,12 @@ const App = () => {
   return (
     <Provider store={store}>
       <GlobalStyle />
-      <BrowserRouter history={history}>
+      <Router history={history}>
         <Switch>
           <Route path='/login' />
           <Route path='/' component={MainApp} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     </Provider>
   );
 };

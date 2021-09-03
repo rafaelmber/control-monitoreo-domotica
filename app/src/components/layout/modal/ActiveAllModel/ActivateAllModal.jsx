@@ -1,15 +1,28 @@
 import React from 'react';
 import StyledActivateAllModal from './ActivateAllModal.styles';
-
+import { useDispatch } from 'react-redux';
+import db from '@/services/firebase';
 import Modal from '../Modal';
 
 const ActivateAllModal = ({
   isOpen,
   closeModal,
   name,
-  handleSetAll,
   devices,
+  setGroupButton,
 }) => {
+  const dispatch = useDispatch();
+  const handleSetAll = (devices, status) => {
+    devices.forEach(async (device) => {
+      const deviceReference = db.ref(`devices/${device.id}/`);
+      await deviceReference.update({ status: status });
+      dispatch({
+        type: 'SET_DEVICES_STATUS',
+        payload: device.id,
+      });
+      setGroupButton(false);
+    });
+  };
   return (
     <StyledActivateAllModal>
       <Modal isOpen={isOpen}>

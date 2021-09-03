@@ -5,6 +5,7 @@ import Item from '../Item/Item';
 import BulbIcon from '@assets/bulb.svg';
 import OutletIcon from '@assets/outlet.svg';
 import ArrowIcon from '@assets/arrow.svg';
+import ActivateAllModal from '@components/layout/modal/ActiveAllModel/ActivateAllModal';
 
 const Group = ({ name, devices }) => {
   const [groupStatus, setGroupStatus] = useState(0);

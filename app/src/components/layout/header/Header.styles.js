@@ -14,6 +14,9 @@ const StyledHeader = styled.div`
     height: 100%;
     fill: var(--lightest-neutral);
   }
+  @media screen and (min-width: 1366) {
+    grid-template-columns: 2rem 1fr;
+  }
 `;
 
 export default StyledHeader;

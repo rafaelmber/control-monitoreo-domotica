@@ -11,7 +11,7 @@ const StyledNavBarItem = styled.button`
     height: 100%;
     width: 100%;
     align-items: center;
-    justify-content: center;
+    justify-self: center;
 
     text-align: center;
     display: flex;
@@ -31,6 +31,11 @@ const StyledNavBarItem = styled.button`
     padding: 2px;
     fill: ${({ isActive }) =>
       isActive ? 'var(--lightest-neutral)' : 'var(--light-neutral)'};
+  }
+  @media screen and (min-width: 1366px) {
+    .link {
+      flex-direction: column;
+    }
   }
 `;
 

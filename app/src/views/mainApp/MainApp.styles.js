@@ -6,7 +6,7 @@ const StyledMainApp = styled.div`
   width: 100vw;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 5rem;
-  grid-template-areas: 'content-app' 'footer';
+  grid-template-areas: 'content-app' 'navbar';
 
   .content {
     grid-area: content-app;
@@ -14,7 +14,12 @@ const StyledMainApp = styled.div`
     overflow: hidden;
   }
   .nav {
-    grid-area: footer;
+    grid-area: navbar;
+  }
+  @media screen and (min-width: 1366px) {
+    grid-template-columns: 3rem 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'navbar content-app';
   }
 `;
 

@@ -52,6 +52,52 @@ html {
   small{
     font-size: 0.85rem;
   }
+  @media screen and (max-width: 330px){
+    h1{
+      font-size: 2.44rem;
+    }
+    h2{
+      font-size: 1.95rem;
+    }
+    h3{
+      font-size: 1.56rem;
+    }
+    h4{
+      font-size: 1.25rem;
+    }
+    h5{
+      font-size: 1rem;
+    }
+    p{
+      font-size: 0.85rem;
+    }
+    small{
+      font-size: 0.8rem;
+    }
+  }
+  @media screen and (min-width: 1365px){
+    h1{
+      font-size: 1.95rem;
+    }
+    h2{
+      font-size: 1.56rem;
+    }
+    h3{
+      font-size: 1.25rem;
+    }
+    h4{
+      font-size: 1rem;
+    }
+    h5{
+      font-size: 0.85rem;
+    }
+    p{
+      font-size: 0.8rem;
+    }
+    small{
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 export default GlobalStyle;

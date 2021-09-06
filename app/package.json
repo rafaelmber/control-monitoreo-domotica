@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "webpack serve --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack --config webpack.config.js --env production",
     "test:watch": "jest --watch"
   },
   "keywords": [

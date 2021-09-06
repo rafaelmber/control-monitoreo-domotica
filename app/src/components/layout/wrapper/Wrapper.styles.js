@@ -16,5 +16,8 @@ const StyledWrapper = styled.div`
     overflow: scroll;
     padding: 10px 15px;
   }
+  @media screen and (min-width: 1366) {
+    grid-template-columns: 2rem 1fr;
+  }
 `;
 export default StyledWrapper;

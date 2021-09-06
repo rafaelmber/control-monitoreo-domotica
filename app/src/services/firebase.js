@@ -27,6 +27,8 @@ firebase.initializeApp({
   measurementId: process.env.MEASUREMENTID,
 });
 const db = firebase.database();
-//db.useEmulator('localhost', 9000);
+if (process.env.NODE_ENV === 'development') {
+  db.useEmulator('localhost', 9000);
+}
 
 export default db;

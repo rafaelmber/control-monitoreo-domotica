@@ -45,6 +45,8 @@ const MainApp = () => {
             Enviroments es donde se van a encontrar botones para programar ambientes y ejecutarlos
             Sensors es la página donde se van a visualizar las mediciones de los sensores y la información correspondiente a ellos
             / o root es donde se encuntran los dispositivos clasificados por habitación
+
+            Cada ruta tiene su Componente asociado, estos componentes se encuentran dentro de la carpeta Pages
           */}
           <Route exact path={'/devices'} component={DevicesPage} />
           <Route exact path={'/enviroments'} component={EnviromentsPage} />

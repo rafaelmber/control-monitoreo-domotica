@@ -4,7 +4,7 @@ export const StyledNavBar = styled.div`
   display: flex;
   flex-direction: row;
   background-color: var(--lightest-neutral);
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
 
   @media screen and (min-width: 1366px) {

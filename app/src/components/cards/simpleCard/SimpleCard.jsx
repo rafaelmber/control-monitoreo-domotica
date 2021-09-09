@@ -1,9 +1,9 @@
 import React from 'react';
 import StyledSimpleCard from './SimpleCard.styles';
 
-const SimpleCard = ({ name }) => {
+const SimpleCard = ({ name, handleClick }) => {
   return (
-    <StyledSimpleCard>
+    <StyledSimpleCard onClick={handleClick}>
       <h4>{name}</h4>
     </StyledSimpleCard>
   );

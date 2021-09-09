@@ -2,7 +2,7 @@ import styled from 'styled-components';
 const StyledHeader = styled.div`
   background-color: var(--primary);
   color: var(--lightest-neutral);
-  padding: 15px;
+  padding: 5px 15px;
   display: grid;
   grid-template-columns: 1fr 60px;
   align-items: center;

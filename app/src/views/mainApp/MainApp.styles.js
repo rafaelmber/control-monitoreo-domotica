@@ -10,7 +10,7 @@ const StyledMainApp = styled.div`
   height: 100vh;
   width: 100vw;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 5rem;
+  grid-template-rows: 1fr 4rem;
   grid-template-areas: 'content-app' 'navbar';
 
   .content {

@@ -12,7 +12,12 @@ const EnviromentsPage = () => {
   const enviromentList = useSelector((state) => {
     return state.enviroments;
   });
-
+  const devicesList = () => {
+    const devicesList = useSelector((state) => {
+      return state.devices;
+    });
+  };
+  //Pendiente: Una forma de difetenciar cuando el ambiente se encuentre activo
   const handleClick = async (id, devices) => {
     for (let [key, value] of Object.entries(devices)) {
       const deviceStatus = db.ref(`devices/${key}/`);

@@ -33,6 +33,12 @@ const MainApp = () => {
         payload: snapshot.val(),
       });
     });
+    db.ref('enviroments/').once('value', (snapshot) => {
+      dispatch({
+        type: 'GET_ENVIROMENTS',
+        payload: snapshot.val(),
+      });
+    });
   }, [dispatch]);
   return (
     <StyledMainApp>

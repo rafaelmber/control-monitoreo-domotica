@@ -1,6 +1,6 @@
 //Dependencias
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 //Recursos
 import StyledEnviromentPage from './EnviromentsPage.styles';
 import Wrapper from '@components/layout/wrapper/Wrapper';
@@ -12,20 +12,12 @@ const EnviromentsPage = () => {
   const enviromentList = useSelector((state) => {
     return state.enviroments;
   });
-  console.log(enviromentList);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    db.ref('enviroments/').once('value', (snapshot) => {
-      dispatch({
-        type: 'GET_ENVIROMENTS',
-        payload: snapshot.val(),
-      });
-    });
-  }, [dispatch]);
   const handleClick = async (id, devices) => {
-    console.log(id);
-    console.log('Devices', devices);
+    for (let [key, value] of Object.entries(devices)) {
+      const deviceStatus = db.ref(`devices/${key}/`);
+      await deviceStatus.update({ status: value });
+    }
   };
   return (
     <StyledEnviromentPage>

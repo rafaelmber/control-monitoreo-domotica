@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyledNavBar } from './NavBar.styles';
 import NavBarItem from '../NavBarItem/NavBarItem';
-import SensorIcon from '@assets/sensors.svg';
 import BulbIcon from '@assets/bulb.svg';
 import LampIcon from '@assets/lamp.svg';
 import ChairIcon from '@assets/chair.svg';
@@ -26,11 +25,6 @@ const buttons = [
     id: 2,
     route: '/enviroments',
     icons: [{ id: 1, icon: ProcessIcon }],
-  },
-  {
-    id: 3,
-    route: '/sensors',
-    icons: [{ id: 1, icon: SensorIcon }],
   },
 ];
 

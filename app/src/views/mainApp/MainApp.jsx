@@ -10,7 +10,6 @@ import db from '@/services/firebase'; //Conexión con la base de datos de Fireba
 import RoomPage from '@views/pages/RoomsPage/RoomPage';
 import DevicesPage from '@views/pages/DevicesPage/DevicesPage';
 import EnviromentsPage from '../pages/EnviromentsPage/EnviromentsPage';
-import SensorPage from '../pages/SensorPage/SensorPage';
 
 //Barra de navegación
 import NavBar from '@components/layout/navigation/NavBar/NavBar';
@@ -50,7 +49,6 @@ const MainApp = () => {
           */}
           <Route exact path={'/devices'} component={DevicesPage} />
           <Route exact path={'/enviroments'} component={EnviromentsPage} />
-          <Route exact path={'/sensors'} component={SensorPage} />
           <Route path={'/'} component={RoomPage} />
         </Switch>
       </div>

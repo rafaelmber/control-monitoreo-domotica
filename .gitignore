@@ -1,5 +1,6 @@
 #Archivos a ignorar en la App del usuario
 node_modules/
+app/code.sh
 .env
 #Archivos a ignorar en la unidad de control centralizada
 assets/

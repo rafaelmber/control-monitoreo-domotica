@@ -16,7 +16,7 @@
     "html",
     "css"
   ],
-  "author": "Rafael Martínez Bermúdez",
+  "author": "Juan Sebastían Hernandez, Rafael Martínez Bermúdez, Santiago Padilla Trujillo",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.14.6",

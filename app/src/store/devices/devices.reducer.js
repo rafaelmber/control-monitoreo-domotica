@@ -4,8 +4,7 @@ const initialState = [];
 const devices = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_DEVICES': {
-      let newState = { ...state, ...action.payload.devices };
-      newState = json2array(newState);
+      let newState = json2array(action.payload.devices);
       return newState;
     }
     case 'GET_DEVICE_STATUS': {

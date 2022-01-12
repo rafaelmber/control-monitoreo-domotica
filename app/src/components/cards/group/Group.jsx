@@ -9,30 +9,6 @@ import ArrowIcon from '@assets/arrow.svg';
 import GroupButton from '@components/buttons/GroupButton/GroupButton';
 
 const Group = ({ name, devices }) => {
-  const [groupStatus, setGroupStatus] = useState(0);
-
-  useEffect(() => {
-    handleGroupStatus();
-  }, [devices]);
-
-  const handleGroupStatus = () => {
-    if (
-      devices.every((device) => {
-        return device.status === false;
-      })
-    ) {
-      setGroupStatus(0);
-    } else if (
-      devices.every((device) => {
-        return device.status === true;
-      })
-    ) {
-      setGroupStatus(2);
-    } else {
-      setGroupStatus(1);
-    }
-  };
-
   const handleItemClick = async (id, status) => {
     const deviceStatus = db.ref(`devices/${id}/`);
     await deviceStatus.update({ status: !status });

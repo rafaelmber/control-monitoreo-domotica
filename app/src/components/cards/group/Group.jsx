@@ -5,7 +5,8 @@ import Item from '../Item/Item';
 import BulbIcon from '@assets/bulb.svg';
 import OutletIcon from '@assets/outlet.svg';
 import ArrowIcon from '@assets/arrow.svg';
-import ActivateAllModal from '@components/layout/modal/ActiveAllModel/ActivateAllModal';
+
+import GroupButton from '@components/buttons/GroupButton/GroupButton';
 
 const Group = ({ name, devices }) => {
   const [groupStatus, setGroupStatus] = useState(0);
@@ -44,7 +45,11 @@ const Group = ({ name, devices }) => {
   }
   return (
     <StyledGroup>
-      <Item Icon={Icon} name={name} isGroup={true} groupStatus={groupStatus} />
+      <div className='group__title'>
+        <Icon />
+        {name}
+        <GroupButton devices={devices} />
+      </div>
       <div className='group__items'>
         {devices &&
           devices.map((device) => {

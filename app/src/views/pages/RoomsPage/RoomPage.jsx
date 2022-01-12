@@ -9,9 +9,11 @@ import Card from '@components/cards/Card';
 import Wrapper from '@components/layout/wrapper/Wrapper';
 import db from '@/services/firebase';
 import Loading from '@components/layout/loading/Loading';
+import MoreButtonModal from '@components/layout/modal/MoreButtonModal/MoreButtonModal';
 
 const RoomPage = () => {
   const [loading, setLoading] = useState(false);
+  const [isMoreModalActive, setIsMoreModalActive] = useState(false);
   //Se leen los dispositivos por habitación del Store central
   const dispatch = useDispatch();
   const rooms = useSelector((state) => {
@@ -36,10 +38,24 @@ const RoomPage = () => {
       setLoading(false);
     });
   }, [dispatch]);
+  const handleMoreButton = () => {
+    setIsMoreModalActive(true);
+  };
+  const handleCloseMoreModal = () => {
+    setIsMoreModalActive(false);
+  };
   return (
     <StyledRoomPage>
       <Wrapper>
-        <Header className='header' text='Home' />
+        <Header
+          className='header'
+          text='Home'
+          handleMoreButton={handleMoreButton}
+        />
+        <MoreButtonModal
+          isOpen={isMoreModalActive}
+          closeModal={handleCloseMoreModal}
+        />
         {loading && <Loading />}
         {!loading && (
           <div className='content'>

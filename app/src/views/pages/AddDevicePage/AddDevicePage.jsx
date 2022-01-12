@@ -6,7 +6,11 @@ import StyledAddDevicePage from './AddDevicePage.styles';
 const AddDevicePage = () => {
   return (
     <StyledAddDevicePage>
-      <Link to='/'>Back</Link>
+      <h2 className='header'>
+        <Link to='/' className='header__link'>
+          {'Back'}
+        </Link>
+      </h2>
     </StyledAddDevicePage>
   );
 };

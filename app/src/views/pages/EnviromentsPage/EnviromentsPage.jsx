@@ -8,6 +8,8 @@ import Header from '@components/layout/header/Header';
 import SimpleCard from '@components/cards/simpleCard/SimpleCard';
 import db from '@/services/firebase';
 
+const options = [{ id: 1, title: 'Add Enviroment', path: 'add_enviroment' }];
+
 const EnviromentsPage = () => {
   const enviromentList = useSelector((state) => {
     return state.enviroments;
@@ -27,7 +29,7 @@ const EnviromentsPage = () => {
   return (
     <StyledEnviromentPage>
       <Wrapper>
-        <Header className='header' text='Enviroments'></Header>
+        <Header className='header' text='Enviroments' options={options} />
         <div className='content'>
           {/*
           Cada una de las Simple Card representa un botón que realizará 

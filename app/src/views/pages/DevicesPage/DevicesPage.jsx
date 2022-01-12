@@ -7,6 +7,8 @@ import Card from '@components/cards/Card';
 import Wrapper from '@components/layout/wrapper/Wrapper';
 import Header from '@components/layout/header/Header';
 
+const options = [{ id: 1, title: 'Add Device', path: 'add_device' }];
+
 const DevicesPage = () => {
   const devices = useSelector((state) => {
     return state.devices;
@@ -14,7 +16,7 @@ const DevicesPage = () => {
   return (
     <StyledDevicesPage>
       <Wrapper>
-        <Header className='header' text='Devices' />
+        <Header className='header' text='Devices' options={options} />
         <div className='content'>
           {/*
           Se crea una sola tarjeta en la que se pueden controlar todos los

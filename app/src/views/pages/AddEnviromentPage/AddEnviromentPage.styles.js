@@ -1,13 +1,22 @@
 import styled from 'styled-components';
 
 const StyledAddEnviromentPage = styled.div`
-  h2 {
+  .header {
     background-color: var(--primary);
     color: var(--lightest-neutral);
     padding: 5px 15px;
     display: grid;
-    grid-template-columns: 1fr 60px;
+    grid-template-columns: 30px 1fr 60px;
     align-items: center;
+    margin: 0;
+  }
+  .header__link {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  h4 {
     margin: 0;
   }
   .icon {
@@ -20,6 +29,13 @@ const StyledAddEnviromentPage = styled.div`
   }
   .label {
     display: block;
+  }
+  .button {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
   }
   @media screen and (min-width: 1366) {
     grid-template-columns: 2rem 1fr;

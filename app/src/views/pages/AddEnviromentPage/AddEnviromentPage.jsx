@@ -12,12 +12,13 @@ const AddEnviromentPage = () => {
   return (
     <StyledAddEnviromentPage>
       <Wrapper>
-        <h2 className='header'>
+        <div className='header'>
           <Link to='/enviroments' className='header__link'>
-            {'⬅Back'}
+            {'⬅'}
           </Link>
-          <input type='button' value={'✅'} />
-        </h2>
+          <h4 className='header__title'>Add Enviroment</h4>
+          <input type='button' className='button' value={'✅'} />
+        </div>
         <div className='content'>
           <div>
             <label className='label' htmlFor='title'>

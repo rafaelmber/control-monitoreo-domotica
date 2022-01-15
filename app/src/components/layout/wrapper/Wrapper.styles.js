@@ -19,6 +19,8 @@ const StyledWrapper = styled.div`
     height: 100%;
     overflow: scroll;
     padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
   }
   @media screen and (min-width: 1366) {
     grid-template-columns: 2rem 1fr;

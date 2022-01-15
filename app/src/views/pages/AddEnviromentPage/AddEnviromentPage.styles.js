@@ -37,6 +37,9 @@ const StyledAddEnviromentPage = styled.div`
     border: none;
     background-color: transparent;
   }
+  .content {
+    color: var(--neutral);
+  }
   @media screen and (min-width: 1366) {
     grid-template-columns: 2rem 1fr;
   }

@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 const MoreButtonItem = ({ title, path, onClick }) => {
   return (
     <StyledMoreButtonItem onClick={onClick}>
-      <Link to={`./${path}`}>
-        + <p>{title}</p>
+      <Link to={`./${path}`} className='button_link'>
+        <p>{`+ ${title}`}</p>
       </Link>
     </StyledMoreButtonItem>
   );

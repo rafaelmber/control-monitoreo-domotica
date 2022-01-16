@@ -12,6 +12,16 @@ const StyledMoreButtonItem = styled.button`
     background-color: var(--lightest-secundary);
     transform: scale(0.9);
   }
+  .button_link {
+    p {
+      text-decoration: none;
+      color: var(--neutral);
+    }
+    &:link &:visited {
+      text-decoration: none;
+      color: var(--neutral);
+    }
+  }
 `;
 
 export default StyledMoreButtonItem;

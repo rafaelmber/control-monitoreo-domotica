@@ -7,7 +7,7 @@ import DevicesModal from '@components/layout/modal/DevicesModal/DevicesModal';
 import db from '@/services/firebase';
 import hashCreator from '@/utils/hashCreator';
 
-const AddEnviromentPage = () => {
+const AddEnviromentPage = ({ history }) => {
   const [title, setTitle] = useState('');
   const [isModalActive, setIsModalActive] = useState(false);
   const [devicesList, setDevicesList] = useState([]);
@@ -60,6 +60,8 @@ const AddEnviromentPage = () => {
       const hash = hashCreator(enviromentList);
       const envDB = db.ref('/enviroments/' + hash);
       await envDB.set({ name: title, devices: newDevicesJSON });
+      alert('Ambiente creado correctamente');
+      history.push('/enviroments');
     }
   };
 

@@ -4,3 +4,5 @@ app/code.sh
 .env
 #Archivos a ignorar en la unidad de control centralizada
 assets/
+venv/
+firek/

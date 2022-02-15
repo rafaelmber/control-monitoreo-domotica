@@ -19,6 +19,7 @@ httplib2==0.20.2
 idna==3.3
 msgpack==1.0.3
 packaging==21.3
+paho-mqtt==1.6.1
 proto-plus==1.19.8
 protobuf==3.19.3
 pyasn1==0.4.8

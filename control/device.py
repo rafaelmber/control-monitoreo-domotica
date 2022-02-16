@@ -11,7 +11,7 @@ class Device():
             bool_status = 1
         else:
             bool_status = 0
-        thr = Thread(target=self._send_message, args=(bool_status,))
+        thr = Thread(target=self._send_message, args=(bool_status))
         thr.start()
         self.status = new_status
 

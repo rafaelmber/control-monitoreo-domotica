@@ -24,7 +24,7 @@ const Card = ({ name, handleClick, devices, devicesList }) => {
   return (
     <StyledCard onClick={handleClick} isActive={isActive}>
       <h4>{name}</h4>
-      {isActive && <ActivateButton isActive={isActive} />}
+      <ActivateButton isActive={isActive} />
     </StyledCard>
   );
 };

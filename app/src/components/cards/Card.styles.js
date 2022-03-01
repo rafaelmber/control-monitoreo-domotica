@@ -6,9 +6,12 @@ const StyledCard = styled.div`
   grid-template-rows: 1fr;
   grid-template-areas: 'title indicator';
   padding: 15px;
+  margin-bottom: 15px;
   border-radius: 10px;
   box-shadow: 0 4px rgba(75, 79, 79, 0.5);
-  margin-bottom: 15px;
+  background-color: var(--lightest-neutral);
+
+  align-items: center;
 
   &:active {
     box-shadow: none;
@@ -18,13 +21,6 @@ const StyledCard = styled.div`
   h4 {
     margin: 0;
     grid-area: title;
-  }
-  .indicator {
-    grid-area: indicator;
-    border-radius: 50%;
-
-    background-color: var(--green);
-    border: 1px solid var(--light-neutral);
   }
 `;
 

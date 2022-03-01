@@ -13,6 +13,7 @@ const StyledHeader = styled.div`
     width: 100%;
     height: 100%;
     fill: var(--lightest-neutral);
+    cursor: pointer;
   }
   @media screen and (min-width: 1366) {
     grid-template-columns: 2rem 1fr;

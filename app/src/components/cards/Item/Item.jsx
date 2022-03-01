@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import StyledItem from './Item.styles';
 import db from '@/services/firebase';
@@ -29,7 +29,11 @@ const Item = ({
   return (
     <StyledItem isGroup={isGroup}>
       <Icon className='icon' />
-      <h4 className='name'>{name}</h4>
+      <h4 className='name'>
+        <Link to={`/info/device/${id}`} className='link'>
+          {name}
+        </Link>
+      </h4>
       {groupStatus !== undefined && (
         <ActivateButton
           isActive={isActive}

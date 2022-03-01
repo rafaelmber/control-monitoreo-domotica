@@ -43,8 +43,9 @@ const EnviromentsPage = () => {
           {enviromentList.map((enviroment) => {
             return (
               <Card
-                name={enviroment.name}
                 key={enviroment.id}
+                name={enviroment.name}
+                id={enviroment.id}
                 devices={enviroment.devices}
                 devicesList={devicesList}
                 handleClick={() => {

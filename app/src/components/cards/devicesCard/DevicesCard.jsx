@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import StyledCard from './DevicesCard.styles';
 import Group from '../group/Group';
 import ActivateButton from '../../buttons/ActivateButton/ActivateButton';
 import ActivateAllModal from '../../layout/modal/ActiveAllModel/ActivateAllModal';
 
-const DevicesCard = ({ name, devices }) => {
+const DevicesCard = ({ id, name, devices }) => {
   const [groupStatus, setGroupStatus] = useState(0);
   const [groupButton, setGroupButton] = useState(false);
   const groups = useSelector((state) => {
@@ -50,7 +51,11 @@ const DevicesCard = ({ name, devices }) => {
   return (
     <StyledCard>
       <div className='header'>
-        <h3>{name}</h3>
+        <h3>
+          <Link to={`/info/rooms/${id}`} className='link'>
+            {name}
+          </Link>
+        </h3>
         <ActivateButton
           isActive
           groupStatus={groupStatus}

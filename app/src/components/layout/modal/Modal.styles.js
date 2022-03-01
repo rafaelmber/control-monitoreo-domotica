@@ -27,6 +27,7 @@ const StyledModal = styled.div`
   .exit-button {
     text-align: right;
     color: var(--neutral);
+    cursor: pointer;
   }
   .buttons {
     display: flex;

@@ -22,6 +22,10 @@ const StyledCard = styled.div`
     margin: 0;
     grid-area: title;
   }
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 export default StyledCard;

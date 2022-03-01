@@ -12,6 +12,10 @@ const StyledItem = styled.div`
   .icon {
     width: 24px;
   }
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 export default StyledItem;

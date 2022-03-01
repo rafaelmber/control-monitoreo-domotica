@@ -15,6 +15,10 @@ const StyledDevicesCard = styled.div`
     & h3 {
       margin: 0;
     }
+    .link {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 `;
 

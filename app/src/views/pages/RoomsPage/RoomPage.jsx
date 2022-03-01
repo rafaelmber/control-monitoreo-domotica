@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //Recursos
 import StyledRoomPage from './RoomPage.styles';
 import Header from '@components/layout/header/Header';
-import Card from '@components/cards/Card';
+import DevicesCard from '@components/cards/devicesCard/DevicesCard';
 import Wrapper from '@components/layout/wrapper/Wrapper';
 import db from '@/services/firebase';
 import Loading from '@components/layout/loading/Loading';
@@ -51,7 +51,7 @@ const RoomPage = () => {
           */}
             {rooms.length > 0 &&
               rooms.map((room) => {
-                return <Card key={room.id} {...room} />;
+                return <DevicesCard key={room.id} {...room} />;
               })}
           </div>
         )}

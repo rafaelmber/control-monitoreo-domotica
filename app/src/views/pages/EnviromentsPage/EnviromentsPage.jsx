@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import StyledEnviromentPage from './EnviromentsPage.styles';
 import Wrapper from '@components/layout/wrapper/Wrapper';
 import Header from '@components/layout/header/Header';
-import SimpleCard from '@components/cards/simpleCard/SimpleCard';
+import Card from '@components/cards/Card';
 import db from '@/services/firebase';
 
 const options = [{ id: 1, title: 'Add Enviroment', path: 'add_enviroment' }];
@@ -42,7 +42,7 @@ const EnviromentsPage = () => {
           */}
           {enviromentList.map((enviroment) => {
             return (
-              <SimpleCard
+              <Card
                 name={enviroment.name}
                 key={enviroment.id}
                 devices={enviroment.devices}

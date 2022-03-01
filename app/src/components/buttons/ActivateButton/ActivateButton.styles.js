@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledActivateButton = styled.div`
+  cursor: pointer;
   position: relative;
   height: 24px;
   width: 24px;

@@ -32,19 +32,24 @@ html {
   h1{
     font-size: 3rem;
     font-family: 'Open Sans', sans-serif;
+    margin: 0;
   }
   h2{
     font-size: 2.44rem;
     font-family: 'Open Sans', sans-serif;
+    margin: 0;
   }
   h3{
     font-size: 1.95rem;
+    margin: 0;
   }
   h4{
     font-size:1.56rem;
+    margin: 0;
   }
   h5{
     font-size:1.25rem;
+    margin: 0;
   }
   p{
     font-size: 1rem;

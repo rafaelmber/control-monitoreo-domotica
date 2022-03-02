@@ -15,6 +15,9 @@ const StyledHeader = styled.div`
     fill: var(--lightest-neutral);
     cursor: pointer;
   }
+  .more-icon:hover {
+    transform: scale(1.1);
+  }
   @media screen and (min-width: 1366) {
     grid-template-columns: 2rem 1fr;
   }

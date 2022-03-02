@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import StyledAddEnviromentPage from './AddEnviromentPage.styles';
 import Wrapper from '@components/layout/wrapper/Wrapper';
 import DevicesModal from '@components/layout/modal/DevicesModal/DevicesModal';
 import db from '@/services/firebase';
 import hashCreator from '@/utils/hashCreator';
 
+import HeaderBackButton from '@components/layout/HeaderBackButton/HeaderBackButton';
+import ContextButton from '@components/buttons/ContextButton/ContextButton';
+import SaveIcon from '@assets/save.svg';
 const AddEnviromentPage = ({ history }) => {
   const [title, setTitle] = useState('');
   const [isModalActive, setIsModalActive] = useState(false);
@@ -64,22 +66,18 @@ const AddEnviromentPage = ({ history }) => {
       history.push('/enviroments');
     }
   };
+  const handleBack = () => {
+    history.goBack();
+  };
 
   return (
     <StyledAddEnviromentPage>
       <Wrapper>
-        <div className='header'>
-          <Link to='/enviroments' className='header__link'>
-            {'⬅'}
-          </Link>
-          <h4 className='header__title'>Add Enviroment</h4>
-          <input
-            type='button'
-            className='button'
-            value={'✅'}
-            onClick={handleSubmit}
-          />
-        </div>
+        <HeaderBackButton
+          text='Add Enviroment'
+          handleClick={handleBack}
+          options={[]}
+        />
         <div className='content'>
           <div className='insert__title'>
             <label className='label' htmlFor='title'>
@@ -121,6 +119,12 @@ const AddEnviromentPage = ({ history }) => {
                 })}
             </ul>
           </div>
+          <ContextButton
+            text='Guardar'
+            status
+            Icon={SaveIcon}
+            onClick={handleSubmit}
+          />
         </div>
       </Wrapper>
     </StyledAddEnviromentPage>

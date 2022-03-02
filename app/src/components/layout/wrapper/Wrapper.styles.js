@@ -10,14 +10,11 @@ const StyledWrapper = styled.div`
   .header {
     grid-area: header;
   }
-  .header__link {
-    text-decoration: none;
-    color: var(--lightest-neutral);
-  }
   .content {
     grid-area: content;
     height: 100%;
     overflow: scroll;
+    overflow-x: hidden;
     padding: 10px 15px;
     display: flex;
     flex-direction: column;

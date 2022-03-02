@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledDevicesCard = styled.div`
+  border: 1px solid red;
   .header {
     display: grid;
     grid-template-columns: 1fr auto;

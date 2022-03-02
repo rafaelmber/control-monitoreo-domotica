@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import StyledCard from './DevicesCard.styles';
+import StyledDevicesCard from './DevicesCard.styles';
 import Group from '../group/Group';
 import ActivateButton from '../../buttons/ActivateButton/ActivateButton';
 import ActivateAllModal from '../../layout/modal/ActiveAllModel/ActivateAllModal';
@@ -50,7 +50,7 @@ const DevicesCard = ({ id, name, devices }) => {
   };
 
   return (
-    <StyledCard>
+    <StyledDevicesCard>
       <ContentWrapper>
         <div className='header'>
           <h3>
@@ -82,7 +82,7 @@ const DevicesCard = ({ id, name, devices }) => {
             );
           })}
       </ContentWrapper>
-    </StyledCard>
+    </StyledDevicesCard>
   );
 };
 

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import StyledCard from './Card.styles';
 import ActivateButton from '../buttons/ActivateButton/ActivateButton';
+import ContentWrapper from '../layout/wrapper/ContentWrapper/ContentWrapper';
+
 const Card = ({ id, name, handleClick, devices, devicesList }) => {
   const [isActive, setIsActive] = useState(false);
 
@@ -23,14 +25,16 @@ const Card = ({ id, name, handleClick, devices, devicesList }) => {
   }, [devicesList]);
 
   return (
-    <StyledCard onClick={handleClick} isActive={isActive}>
-      <h4>
-        <Link to={`/info/enviroments/${id}`} className='link'>
-          {name}
-        </Link>
-      </h4>
-      <ActivateButton isActive={isActive} />
-    </StyledCard>
+    <ContentWrapper>
+      <StyledCard onClick={handleClick} isActive={isActive}>
+        <h4>
+          <Link to={`/info/enviroments/${id}`} className='link'>
+            {name}
+          </Link>
+        </h4>
+        <ActivateButton isActive={isActive} className='indicator' />
+      </StyledCard>
+    </ContentWrapper>
   );
 };
 

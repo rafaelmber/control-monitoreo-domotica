@@ -5,14 +5,7 @@ const StyledCard = styled.div`
   grid-template-columns: 1fr 30px;
   grid-template-rows: 1fr;
   grid-template-areas: 'title indicator';
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: 1px 4px rgba(75, 79, 79, 0.5);
-  background-color: var(--lightest-neutral);
-
   align-items: center;
-
   &:active {
     box-shadow: none;
     border: 1px solid var(--lightest-secundary);
@@ -25,6 +18,9 @@ const StyledCard = styled.div`
   .link {
     text-decoration: none;
     color: inherit;
+  }
+  .indicator {
+    grid-area: indicator;
   }
 `;
 

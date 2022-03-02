@@ -5,6 +5,7 @@ import StyledCard from './DevicesCard.styles';
 import Group from '../group/Group';
 import ActivateButton from '../../buttons/ActivateButton/ActivateButton';
 import ActivateAllModal from '../../layout/modal/ActiveAllModel/ActivateAllModal';
+import ContentWrapper from '../../layout/wrapper/ContentWrapper/ContentWrapper';
 
 const DevicesCard = ({ id, name, devices }) => {
   const [groupStatus, setGroupStatus] = useState(0);
@@ -50,35 +51,37 @@ const DevicesCard = ({ id, name, devices }) => {
 
   return (
     <StyledCard>
-      <div className='header'>
-        <h3>
-          <Link to={`/info/rooms/${id}`} className='link'>
-            {name}
-          </Link>
-        </h3>
-        <ActivateButton
-          isActive
-          groupStatus={groupStatus}
-          onClick={handleGroupClick}
+      <ContentWrapper>
+        <div className='header'>
+          <h3>
+            <Link to={`/info/rooms/${id}`} className='link'>
+              {name}
+            </Link>
+          </h3>
+          <ActivateButton
+            isActive
+            groupStatus={groupStatus}
+            onClick={handleGroupClick}
+          />
+        </div>
+        <ActivateAllModal
+          isOpen={groupButton}
+          closeModal={handleCloseModal}
+          name={name}
+          devices={devices}
+          setGroupButton={setGroupButton}
         />
-      </div>
-      <ActivateAllModal
-        isOpen={groupButton}
-        closeModal={handleCloseModal}
-        name={name}
-        devices={devices}
-        setGroupButton={setGroupButton}
-      />
-      {groups &&
-        groups.map((group) => {
-          return (
-            <Group
-              key={group.id}
-              {...group}
-              handleGroupClick={handleGroupClick}
-            />
-          );
-        })}
+        {groups &&
+          groups.map((group) => {
+            return (
+              <Group
+                key={group.id}
+                {...group}
+                handleGroupClick={handleGroupClick}
+              />
+            );
+          })}
+      </ContentWrapper>
     </StyledCard>
   );
 };

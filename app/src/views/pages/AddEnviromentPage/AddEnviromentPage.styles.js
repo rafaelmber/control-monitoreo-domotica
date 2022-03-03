@@ -65,6 +65,9 @@ const StyledAddEnviromentPage = styled.div`
     width: 100%;
     justify-content: center;
   }
+  .header h2 {
+    font-size: 10px;
+  }
 
   @media screen and (min-width: 1366) {
     grid-template-columns: 2rem 1fr;

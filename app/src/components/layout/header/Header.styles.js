@@ -6,6 +6,8 @@ const StyledHeader = styled.div`
   display: grid;
   grid-template-columns: 1fr 60px;
   align-items: center;
+  max-height: 100%;
+  overflow-y: hidden;
   h2 {
     margin: 0;
   }

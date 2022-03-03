@@ -79,7 +79,8 @@ const AddEnviromentPage = ({ history }) => {
     <StyledAddEnviromentPage>
       <Wrapper>
         <HeaderBackButton
-          text='Add Enviroment'
+          text='Add Env'
+          className='header'
           handleClick={handleBack}
           options={[]}
         />

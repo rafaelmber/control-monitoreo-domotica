@@ -5,10 +5,14 @@ import Wrapper from '@components/layout/wrapper/Wrapper';
 import DevicesModal from '@components/layout/modal/DevicesModal/DevicesModal';
 import db from '@/services/firebase';
 import hashCreator from '@/utils/hashCreator';
-
 import HeaderBackButton from '@components/layout/HeaderBackButton/HeaderBackButton';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import SaveIcon from '@assets/save.svg';
+import PlusIcon from '@assets/plus.svg';
+import ArrowIcon from '@assets/arrow.svg';
+
+import ContentWrapper from '@components/layout/wrapper/ContentWrapper/ContentWrapper';
+import Item from '@components/cards/Item/Item';
 const AddEnviromentPage = ({ history }) => {
   const [title, setTitle] = useState('');
   const [isModalActive, setIsModalActive] = useState(false);
@@ -40,15 +44,16 @@ const AddEnviromentPage = ({ history }) => {
       setIsModalActive(false);
     }
   };
-  const handleSetDeviceStatus = (e) => {
+  const handleDeviceStatus = (id, status) => {
     const newDevicesList = [...devicesList];
     newDevicesList.forEach((device) => {
-      if (device.id === e.target.name) {
-        device.status = e.target.checked;
+      if (device.id === id) {
+        device.status = !status;
       }
     });
     setDevicesList(newDevicesList);
   };
+
   const handleSubmit = async () => {
     if (title.length === 0) {
       alert('Debe tener un nombre');
@@ -79,52 +84,60 @@ const AddEnviromentPage = ({ history }) => {
           options={[]}
         />
         <div className='content'>
-          <div className='insert__title'>
-            <label className='label' htmlFor='title'>
-              Título
-            </label>
-            <input
-              className='input'
-              type='text'
-              name='title'
-              value={title}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <input
-              type='button'
-              value='+ Add a Device'
-              onClick={handleModalClick}
-            />
-            <DevicesModal
-              isOpen={isModalActive}
-              closeModal={handleCloseModal}
-              selectDevice={selectDevice}
-            />
-            <ul>
+          <ContentWrapper>
+            <div className='insert_name'>
+              <input
+                type='text'
+                name='title'
+                value={title}
+                onChange={handleChange}
+                placeholder='Nombre del Ambiente'
+                className='title'
+              />
+            </div>
+            <div className='devices-list'>
+              <div className='column-names'>
+                <h4>Devices</h4>
+                <h4>Status</h4>
+              </div>
               {devicesList &&
                 devicesList.map((device) => {
                   return (
-                    <li key={device.id}>
-                      {device.name}
-                      <input
-                        type='checkbox'
-                        name={device.id}
-                        checked={device.status}
-                        onChange={handleSetDeviceStatus}
-                      />
-                    </li>
+                    <Item
+                      key={device.id}
+                      name={device.name}
+                      id={device.id}
+                      isActive={device.status}
+                      isGroup={false}
+                      Icon={ArrowIcon}
+                      handleClick={() => {
+                        handleDeviceStatus(device.id, device.status);
+                      }}
+                      className='device-item'
+                    />
                   );
                 })}
-            </ul>
-          </div>
-          <ContextButton
-            text='Guardar'
-            status
-            Icon={SaveIcon}
-            onClick={handleSubmit}
-          />
+
+              <button onClick={handleModalClick} className='add-button'>
+                <p>Add a new Enviroment</p>
+                <PlusIcon className='plus-icon' />
+              </button>
+              <DevicesModal
+                isOpen={isModalActive}
+                closeModal={handleCloseModal}
+                selectDevice={selectDevice}
+              />
+            </div>
+            <div className='button-container'>
+              <ContextButton
+                text='Guardar'
+                status
+                Icon={SaveIcon}
+                onClick={handleSubmit}
+                className='save-button center'
+              />
+            </div>
+          </ContentWrapper>
         </div>
       </Wrapper>
     </StyledAddEnviromentPage>

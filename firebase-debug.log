@@ -44,3 +44,25 @@
     at processTicksAndRejections (internal/process/task_queues.js:95:5)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2022-03-03T16:38:27.133Z] ----------------------------------------------------------------------
+[debug] [2022-03-03T16:38:27.139Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\rafae\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only database --import=./output
+[debug] [2022-03-03T16:38:27.140Z] CLI Version:   10.2.0
+[debug] [2022-03-03T16:38:27.140Z] Platform:      win32
+[debug] [2022-03-03T16:38:27.140Z] Node Version:  v14.17.1
+[debug] [2022-03-03T16:38:27.143Z] Time:          Thu Mar 03 2022 11:38:27 GMT-0500 (Colombia Standard Time)
+[debug] [2022-03-03T16:38:27.143Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-03T16:38:27.170Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-03T16:38:27.171Z] > authorizing via signed-in user (rafaelmartinez2699@gmail.com)
+[warn] !  Could not find config (firebase.json) so using defaults. 
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[debug] [2022-03-03T16:38:27.830Z] Error: ENOENT: no such file or directory, lstat 'D:\University\proyecto-dómotica\control-monitoreo-domotica\output'
+    at Object.lstatSync (fs.js:1115:3)
+    at findExportMetadata (C:\Users\rafae\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:159:32)
+    at Object.startAll (C:\Users\rafae\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:234:31)
+    at Command.actionFn (C:\Users\rafae\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\emulators-start.js:26:26)
+    at C:\Users\rafae\AppData\Roaming\npm\node_modules\firebase-tools\lib\command.js:190:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[error] 
+[error] Error: An unexpected error has occurred.

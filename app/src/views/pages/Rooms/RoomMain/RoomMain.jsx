@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 //Recursos
-import StyledRoomPage from './RoomPage.styles';
+import StyledRoomMain from './RoomMain.styles';
 import Header from '@components/layout/header/Header';
 import DevicesCard from '@components/cards/devicesCard/DevicesCard';
 import Wrapper from '@components/layout/wrapper/Wrapper';
@@ -12,7 +12,7 @@ import Loading from '@components/layout/loading/Loading';
 
 const options = [{ id: 1, title: 'Add Device', path: 'add_device' }];
 
-const RoomPage = () => {
+const RoomMain = () => {
   const [loading, setLoading] = useState(false);
   //Se leen los dispositivos por habitación del Store central
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const RoomPage = () => {
     });
   }, [dispatch]);
   return (
-    <StyledRoomPage>
+    <StyledRoomMain>
       <Wrapper>
         <Header className='header' text='Home' options={options} />
         {loading && <Loading />}
@@ -56,8 +56,8 @@ const RoomPage = () => {
           </div>
         )}
       </Wrapper>
-    </StyledRoomPage>
+    </StyledRoomMain>
   );
 };
 
-export default RoomPage;
+export default RoomMain;

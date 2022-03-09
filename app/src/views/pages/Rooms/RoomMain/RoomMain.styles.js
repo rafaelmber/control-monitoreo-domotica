@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const StyledRoomPage = styled.div`
+const StyledRoomMain = styled.div`
   height: 100%;
   width: 100%;
 `;
 
-export default StyledRoomPage;
+export default StyledRoomMain;

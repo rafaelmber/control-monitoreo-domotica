@@ -7,7 +7,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import StyledMainApp from './MainApp.styles'; //Estilos de este componente
 import db from '@/services/firebase'; //Conexión con la base de datos de Firebase
 // Pagínas dentro de la ventana principal
-import RoomPage from '@views/pages/RoomsPage/RoomPage';
+import RoomMain from '@views/pages/Rooms/RoomMain/RoomMain';
 import DevicesPage from '@views/pages/DevicesPage/DevicesPage';
 import EnviromentsPage from '@views/pages/EnviromentsPage/EnviromentsPage';
 //Barra de navegación
@@ -54,7 +54,7 @@ const MainApp = () => {
           */}
           <Route exact path={'/devices'} component={DevicesPage} />
           <Route exact path={'/enviroments'} component={EnviromentsPage} />
-          <Route exact path={'/rooms'} component={RoomPage} />
+          <Route exact path={'/rooms'} component={RoomMain} />
           <Route path={'/'}>
             <Redirect to={'rooms'} />
           </Route>

@@ -16,8 +16,6 @@ import { createBrowserHistory } from 'history';
 // Se importan otros archivos dentro del proyecto para usarlos dentro de este
 import GlobalStyle from './globalStyle'; //Contiene los estilos globales de la aplicación
 import MainApp from '@views/mainApp/MainApp'; //Contiene la pantalla principal
-import AddDevicePage from './views/pages/AddDevicePage/AddDevicePage';
-import AddEnviromentPage from './views/pages/AddEnviromentPage/AddEnviromentPage';
 import reducer from './store/rootReducer'; //Es donde se define el store de Redux
 
 const store = createStore(reducer); // Se inicializa el store de Redux
@@ -30,8 +28,10 @@ const App = () => {
       <Router history={history}>
         <Switch>
           <Route exact path='/login' />
-          <Route exact path={'/add_device'} component={AddDevicePage} />
-          <Route exact path={'/add_enviroment'} component={AddEnviromentPage} />
+          {/*
+            <Route exact path={'/add_device'} component={AddDevicePage} />
+            <Route exact path={'/add_enviroment'} component={AddEnviromentPage} />
+            */}
           <Route path='/' component={MainApp} />
         </Switch>
       </Router>

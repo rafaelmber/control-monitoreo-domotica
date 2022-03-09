@@ -7,7 +7,9 @@ import NavBar from '@components/layout/navigation/NavBar/Navbar';
 const MainWrapper = ({ children }) => {
   return (
     <StyledMainWrapper>
-      <Wrapper className='content-app'>{children}</Wrapper>
+      <div className='content-app'>
+        <Wrapper>{children}</Wrapper>
+      </div>
       <NavBar className='nav' />
     </StyledMainWrapper>
   );

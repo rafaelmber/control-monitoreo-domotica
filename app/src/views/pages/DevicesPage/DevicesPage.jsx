@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 //Recursos
 import StyledDevicesPage from './DevicesPage.styles';
 import DevicesCard from '@components/cards/devicesCard/DevicesCard';
-import Wrapper from '@components/layout/wrapper/Wrapper';
+import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import Header from '@components/layout/header/Header';
 
 const options = [{ id: 1, title: 'Add Device', path: 'add_device' }];
@@ -15,7 +15,7 @@ const DevicesPage = () => {
   });
   return (
     <StyledDevicesPage>
-      <Wrapper>
+      <MainWrapper>
         <Header className='header' text='Devices' options={options} />
         <div className='content'>
           {/*
@@ -24,7 +24,7 @@ const DevicesPage = () => {
           */}
           <DevicesCard name='All devices' devices={devices} />
         </div>
-      </Wrapper>
+      </MainWrapper>
     </StyledDevicesPage>
   );
 };

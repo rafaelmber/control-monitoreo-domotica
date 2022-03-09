@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 //Recursos
 import StyledEnviromentPage from './EnviromentsPage.styles';
-import Wrapper from '@components/layout/wrapper/Wrapper';
+import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import Header from '@components/layout/header/Header';
 import Card from '@components/cards/Card';
 import db from '@/services/firebase';
@@ -32,7 +32,7 @@ const EnviromentsPage = () => {
 
   return (
     <StyledEnviromentPage>
-      <Wrapper>
+      <MainWrapper>
         <Header className='header' text='Enviroments' options={options} />
         <div className='content'>
           {/*
@@ -55,7 +55,7 @@ const EnviromentsPage = () => {
             );
           })}
         </div>
-      </Wrapper>
+      </MainWrapper>
     </StyledEnviromentPage>
   );
 };

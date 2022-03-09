@@ -10,8 +10,6 @@ import db from '@/services/firebase'; //Conexión con la base de datos de Fireba
 import RoomPage from '@views/pages/Rooms/RoomPage/RoomPage';
 import DevicesPage from '@views/pages/DevicesPage/DevicesPage';
 import EnviromentsPage from '@views/pages/EnviromentsPage/EnviromentsPage';
-//Barra de navegación
-import NavBar from '@components/layout/navigation/NavBar/NavBar';
 
 const MainApp = () => {
   const dispatch = useDispatch();
@@ -41,9 +39,8 @@ const MainApp = () => {
   }, [dispatch]);
   return (
     <StyledMainApp>
-      <div className='content'>
-        <Switch>
-          {/*  Se definen las rutas de las diferentes pestañas que tiene la página principal
+      <Switch>
+        {/*  Se definen las rutas de las diferentes pestañas que tiene la página principal
 
             Devices es donde se van a encontrar todos los dispositivos listados
             Enviroments es donde se van a encontrar botones para programar ambientes y ejecutarlos
@@ -52,15 +49,13 @@ const MainApp = () => {
 
             Cada ruta tiene su Componente asociado, estos componentes se encuentran dentro de la carpeta Pages
           */}
-          <Route path={'/devices'} component={DevicesPage} />
-          <Route path={'/enviroments'} component={EnviromentsPage} />
-          <Route path={'/rooms'} component={RoomPage} />
-          <Route path={'/'}>
-            <Redirect to={'/rooms'} />
-          </Route>
-        </Switch>
-      </div>
-      <NavBar className='nav' />
+        <Route path={'/devices'} component={DevicesPage} />
+        <Route path={'/enviroments'} component={EnviromentsPage} />
+        <Route path={'/rooms'} component={RoomPage} />
+        <Route path={'/'}>
+          <Redirect to={'/rooms'} />
+        </Route>
+      </Switch>
     </StyledMainApp>
   );
 };

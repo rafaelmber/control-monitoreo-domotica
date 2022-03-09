@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import StyledRoomMain from './RoomMain.styles';
 import Header from '@components/layout/header/Header';
 import DevicesCard from '@components/cards/devicesCard/DevicesCard';
-import Wrapper from '@components/layout/wrapper/Wrapper';
+import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import db from '@/services/firebase';
 import Loading from '@components/layout/loading/Loading';
 
@@ -40,7 +40,7 @@ const RoomMain = () => {
   }, [dispatch]);
   return (
     <StyledRoomMain>
-      <Wrapper>
+      <MainWrapper>
         <Header className='header' text='Home' options={options} />
         {loading && <Loading />}
         {!loading && (
@@ -55,7 +55,7 @@ const RoomMain = () => {
               })}
           </div>
         )}
-      </Wrapper>
+      </MainWrapper>
     </StyledRoomMain>
   );
 };

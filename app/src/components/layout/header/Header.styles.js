@@ -10,6 +10,7 @@ const StyledHeader = styled.div`
   overflow-y: hidden;
   h2 {
     margin: 0;
+    text-transform: capitalize;
   }
   .more-icon {
     width: 100%;

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 //Recursos
-import StyledEnviromentPage from './EnviromentsPage.styles';
+import StyledEnviromentMain from './EnviromentMain.styles';
 import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import Header from '@components/layout/header/Header';
 import Card from '@components/cards/Card';
@@ -31,7 +31,7 @@ const EnviromentsPage = () => {
   };
 
   return (
-    <StyledEnviromentPage>
+    <StyledEnviromentMain>
       <MainWrapper>
         <Header className='header' text='Enviroments' options={options} />
         <div className='content'>
@@ -56,7 +56,7 @@ const EnviromentsPage = () => {
           })}
         </div>
       </MainWrapper>
-    </StyledEnviromentPage>
+    </StyledEnviromentMain>
   );
 };
 export default EnviromentsPage;

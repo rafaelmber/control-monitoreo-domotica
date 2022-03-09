@@ -1,7 +1,7 @@
 //Dependencias
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 
 //Recursos dentro del proyecto que se necesitan
 import StyledMainApp from './MainApp.styles'; //Estilos de este componente
@@ -10,7 +10,6 @@ import db from '@/services/firebase'; //Conexión con la base de datos de Fireba
 import RoomPage from '@views/pages/RoomsPage/RoomPage';
 import DevicesPage from '@views/pages/DevicesPage/DevicesPage';
 import EnviromentsPage from '@views/pages/EnviromentsPage/EnviromentsPage';
-import InfoPage from '@views/pages/InfoPage/InfoPage';
 //Barra de navegación
 import NavBar from '@components/layout/navigation/NavBar/NavBar';
 
@@ -55,8 +54,10 @@ const MainApp = () => {
           */}
           <Route exact path={'/devices'} component={DevicesPage} />
           <Route exact path={'/enviroments'} component={EnviromentsPage} />
-          <Route exact path={'/info/:type/:id'} component={InfoPage} />
-          <Route path={'/'} component={RoomPage} />
+          <Route exact path={'/rooms'} component={RoomPage} />
+          <Route path={'/'}>
+            <Redirect to={'rooms'} />
+          </Route>
         </Switch>
       </div>
       <NavBar className='nav' />

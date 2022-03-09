@@ -9,7 +9,7 @@ import ProcessIcon from '@assets/process.svg';
 const buttons = [
   {
     id: 0,
-    route: '/',
+    route: '/rooms',
     icons: [
       { id: 1, icon: LampIcon },
       { id: 2, icon: ChairIcon },

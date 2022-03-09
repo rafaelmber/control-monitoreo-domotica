@@ -7,7 +7,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import StyledMainApp from './MainApp.styles'; //Estilos de este componente
 import db from '@/services/firebase'; //Conexión con la base de datos de Firebase
 // Pagínas dentro de la ventana principal
-import RoomMain from '@views/pages/Rooms/RoomMain/RoomMain';
+import RoomPage from '@views/pages/Rooms/RoomPage/RoomPage';
 import DevicesPage from '@views/pages/DevicesPage/DevicesPage';
 import EnviromentsPage from '@views/pages/EnviromentsPage/EnviromentsPage';
 //Barra de navegación
@@ -52,11 +52,11 @@ const MainApp = () => {
 
             Cada ruta tiene su Componente asociado, estos componentes se encuentran dentro de la carpeta Pages
           */}
-          <Route exact path={'/devices'} component={DevicesPage} />
-          <Route exact path={'/enviroments'} component={EnviromentsPage} />
-          <Route exact path={'/rooms'} component={RoomMain} />
+          <Route path={'/devices'} component={DevicesPage} />
+          <Route path={'/enviroments'} component={EnviromentsPage} />
+          <Route path={'/rooms'} component={RoomPage} />
           <Route path={'/'}>
-            <Redirect to={'rooms'} />
+            <Redirect to={'/rooms'} />
           </Route>
         </Switch>
       </div>

@@ -10,7 +10,7 @@ import Wrapper from '@components/layout/wrapper/Wrapper';
 import db from '@/services/firebase';
 import Loading from '@components/layout/loading/Loading';
 
-const options = [{ id: 1, title: 'Add Device', path: 'add_device' }];
+const options = [{ id: 1, title: 'Add Device', path: '/rooms/add' }];
 
 const RoomMain = () => {
   const [loading, setLoading] = useState(false);

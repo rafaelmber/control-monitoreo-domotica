@@ -8,7 +8,7 @@ import StyledMainApp from './MainApp.styles'; //Estilos de este componente
 import db from '@/services/firebase'; //Conexión con la base de datos de Firebase
 // Pagínas dentro de la ventana principal
 import RoomPage from '@views/pages/Rooms/RoomPage/RoomPage';
-import DevicesPage from '@views/pages/DevicesPage/DevicesPage';
+import DevicesPage from '../pages/Devices/DevicesPage/DevicesPage';
 import EnviromentPage from '@views/pages/Enviroments/EnviromentPage/EnviromentPage';
 
 const MainApp = () => {

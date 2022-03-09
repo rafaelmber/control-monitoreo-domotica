@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 //Recursos
-import StyledDevicesPage from './DevicesPage.styles';
+import StyledDevicesMain from './DevicesMain.styles';
 import DevicesCard from '@components/cards/devicesCard/DevicesCard';
 import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import Header from '@components/layout/header/Header';
@@ -14,7 +14,7 @@ const DevicesPage = () => {
     return state.devices;
   });
   return (
-    <StyledDevicesPage>
+    <StyledDevicesMain>
       <MainWrapper>
         <Header className='header' text='Devices' options={options} />
         <div className='content'>
@@ -25,7 +25,7 @@ const DevicesPage = () => {
           <DevicesCard name='All devices' devices={devices} />
         </div>
       </MainWrapper>
-    </StyledDevicesPage>
+    </StyledDevicesMain>
   );
 };
 

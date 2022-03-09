@@ -54,7 +54,7 @@ const DevicesCard = ({ id, name, devices }) => {
       <ContentWrapper>
         <div className='header'>
           <h3>
-            <Link to={`/info/rooms/${id}`} className='link'>
+            <Link to={`/rooms/info/${id}`} className='link'>
               {name}
             </Link>
           </h3>

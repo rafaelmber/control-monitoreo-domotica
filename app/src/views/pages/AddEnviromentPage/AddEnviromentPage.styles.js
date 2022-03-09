@@ -6,7 +6,6 @@ const StyledAddEnviromentPage = styled.div`
     color: var(--neutral);
   }
   .content-wrapper {
-    border: 1px solid red;
     display: flex;
   }
   .button {

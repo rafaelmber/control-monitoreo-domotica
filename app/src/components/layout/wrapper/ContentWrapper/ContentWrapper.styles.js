@@ -11,7 +11,6 @@ const StyledContentWrapper = styled.div`
 
   .center {
     justify-self: center;
-    border: 5px solid red;
   }
 `;
 

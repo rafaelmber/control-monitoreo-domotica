@@ -10,7 +10,7 @@ import db from '@/services/firebase';
 
 const options = [{ id: 1, title: 'Add Enviroment', path: 'add_enviroment' }];
 
-const EnviromentsPage = () => {
+const EnviromentPage = () => {
   const dispatch = useDispatch();
   const enviromentList = useSelector((state) => {
     return state.enviroments;
@@ -59,4 +59,4 @@ const EnviromentsPage = () => {
     </StyledEnviromentMain>
   );
 };
-export default EnviromentsPage;
+export default EnviromentPage;

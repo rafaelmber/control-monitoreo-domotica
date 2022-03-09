@@ -9,7 +9,7 @@ import db from '@/services/firebase'; //Conexión con la base de datos de Fireba
 // Pagínas dentro de la ventana principal
 import RoomPage from '@views/pages/Rooms/RoomPage/RoomPage';
 import DevicesPage from '@views/pages/DevicesPage/DevicesPage';
-import EnviromentsPage from '@views/pages/EnviromentsPage/EnviromentsPage';
+import EnviromentPage from '@views/pages/Enviroments/EnviromentPage/EnviromentPage';
 
 const MainApp = () => {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const MainApp = () => {
             Cada ruta tiene su Componente asociado, estos componentes se encuentran dentro de la carpeta Pages
           */}
         <Route path={'/devices'} component={DevicesPage} />
-        <Route path={'/enviroments'} component={EnviromentsPage} />
+        <Route path={'/enviroments'} component={EnviromentPage} />
         <Route path={'/rooms'} component={RoomPage} />
         <Route path={'/'}>
           <Redirect to={'/rooms'} />

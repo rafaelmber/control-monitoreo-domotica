@@ -26,7 +26,7 @@ const MainApp = () => {
     db.ref('types/').once('value', (snapshot) => {
       //Almacenar los tipos en el store
       dispatch({
-        type: 'GET_GROUPS',
+        type: 'GET_TYPES',
         payload: snapshot.val(),
       });
     });

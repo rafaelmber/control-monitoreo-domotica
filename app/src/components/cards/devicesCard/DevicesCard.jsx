@@ -12,7 +12,7 @@ const DevicesCard = ({ id, name, devices }) => {
   const [groupButton, setGroupButton] = useState(false);
   const groups = useSelector((state) => {
     let groupsArray = [];
-    state.groups.forEach((group) => {
+    state.types.forEach((group) => {
       const devicesArray = devices.filter((device) => {
         return device.type === group.id;
       });

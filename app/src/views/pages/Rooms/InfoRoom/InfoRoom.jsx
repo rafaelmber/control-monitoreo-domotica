@@ -4,9 +4,7 @@ import { useSelector } from 'react-redux';
 
 import StyledInfoRoom from './InfoRoom.styles';
 
-import ContentWrapper from '@components/layout/wrapper/ContentWrapper/ContentWrapper';
-import Wrapper from '@components/layout/wrapper/Wrapper';
-import HeaderBackButton from '@components/layout/HeaderBackButton/HeaderBackButton';
+import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import ListDevices from '@components/layout/listItems/ListDevices/ListDevices';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import DeleteIcon from '@assets/delete.svg';
@@ -32,10 +30,6 @@ const InfoRoom = ({ history }) => {
     const newRoomSelected = { ...roomSelected, devices: devicesList };
     return newRoomSelected;
   });
-
-  const handleBack = () => {
-    history.goBack();
-  };
   const handleClick = (deviceId) => {
     history.push(`/devices/info/${deviceId}`);
   };
@@ -47,47 +41,37 @@ const InfoRoom = ({ history }) => {
   };
   return (
     <StyledInfoRoom>
-      <Wrapper>
-        <HeaderBackButton
-          text='Rooms'
-          className='header'
-          handleClick={handleBack}
-          options={[]}
-        />
-        <div className='content'>
-          <ContentWrapper>
-            <h3>{room.name}</h3>
-            <h5>Devices</h5>
-            <ul className='list'>
-              {room.devices.map((device) => {
-                return (
-                  <ListDevices
-                    key={device.id}
-                    name={device.name}
-                    type={device.type}
-                    handleClick={() => handleClick(device.id)}
-                  />
-                );
-              })}
-            </ul>
-            <div className='buttons-list'>
-              <ContextButton
-                text='Edit'
-                status
-                Icon={EditIcon}
-                onClick={handleEdit}
-                className='button'
+      <PageWrapper name='Rooms' history={history}>
+        <h3>{room.name}</h3>
+        <h5>Devices</h5>
+        <ul className='list'>
+          {room.devices.map((device) => {
+            return (
+              <ListDevices
+                key={device.id}
+                name={device.name}
+                type={device.type}
+                handleClick={() => handleClick(device.id)}
               />
-              <ContextButton
-                text='Delete'
-                Icon={DeleteIcon}
-                onClick={handleDelete}
-                className='button'
-              />
-            </div>
-          </ContentWrapper>
+            );
+          })}
+        </ul>
+        <div className='buttons-list'>
+          <ContextButton
+            text='Edit'
+            status
+            Icon={EditIcon}
+            onClick={handleEdit}
+            className='button'
+          />
+          <ContextButton
+            text='Delete'
+            Icon={DeleteIcon}
+            onClick={handleDelete}
+            className='button'
+          />
         </div>
-      </Wrapper>
+      </PageWrapper>
     </StyledInfoRoom>
   );
 };

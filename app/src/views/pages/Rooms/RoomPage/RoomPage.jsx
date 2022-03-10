@@ -15,7 +15,7 @@ const RoomPage = () => {
         </Route>
         <Route exact path={`${path}/info/:id`} component={InfoRoom} />
         <Route exact path={`${path}/edit/:id`} />
-        <Route exact path={`/rooms/`} component={RoomMain} />
+        <Route path={`/rooms`} component={RoomMain} />
       </Switch>
     </StyledRoomPage>
   );

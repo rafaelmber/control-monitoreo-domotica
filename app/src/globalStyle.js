@@ -22,6 +22,8 @@ html {
   --dark-green: #006638;
   --red: #FC1F00 ;
   --dark-red: #C02C3C;
+
+  user-select: none;
 }
   body {
     margin: 0;

@@ -54,9 +54,12 @@ const DevicesCard = ({ id, name, devices }) => {
       <ContentWrapper>
         <div className='header'>
           <h3>
-            <Link to={`/rooms/info/${id}`} className='link'>
-              {name}
-            </Link>
+            {id === undefined && name}
+            {id !== undefined && (
+              <Link to={`/rooms/info/${id}`} className='link'>
+                {name}
+              </Link>
+            )}
           </h3>
           <ActivateButton
             isActive

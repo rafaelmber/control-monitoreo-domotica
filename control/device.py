@@ -11,10 +11,10 @@ class Device():
             bool_status = 1
         else:
             bool_status = 0
-        thr = Thread(target=self._send_message, args=(bool_status))
+        thr = Thread(target=self._send_message, args=(bool_status,))
         thr.start()
         self.status = new_status
 
     def _send_message(self, status: int):
-        publish.single(f'devices/{str(self.id)}',str(status),client_id=f'CPU-{str(self.id)}')
-        print(f'ID: {str(self.id)}, Status: {str(self.status)}')
+        publish.single(f'devices/{self.id}',str(status),client_id=f'CPU-{self.id}')
+        print(f'ID: {self.id}, Status: {self.status}')

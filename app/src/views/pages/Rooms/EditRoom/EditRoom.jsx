@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import StyledEditRoom from './EditRoom.styles';
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import TextField from '@components/forms/TextField/TextField';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
@@ -41,26 +40,24 @@ const EditRoom = ({ history }) => {
     setName(e.target.value);
   };
   return (
-    <StyledEditRoom>
-      <PageWrapper name='Rooms' history={history}>
-        <form>
-          <TextField
-            value={name}
-            onChange={handleInput}
-            name='name'
-            placeholder='Enter Room name'
+    <PageWrapper name='Rooms' history={history}>
+      <form>
+        <TextField
+          value={name}
+          onChange={handleInput}
+          name='name'
+          placeholder='Enter Room name'
+        />
+        <div className='one-button'>
+          <ContextButton
+            onClick={handleSave}
+            status
+            text='Save'
+            Icon={SaveIcon}
           />
-          <div className='save-button'>
-            <ContextButton
-              onClick={handleSave}
-              status
-              text='Save'
-              Icon={SaveIcon}
-            />
-          </div>
-        </form>
-      </PageWrapper>
-    </StyledEditRoom>
+        </div>
+      </form>
+    </PageWrapper>
   );
 };
 

@@ -6,3 +6,4 @@ app/code.sh
 assets/
 venv/
 firek/
+*.py[c]

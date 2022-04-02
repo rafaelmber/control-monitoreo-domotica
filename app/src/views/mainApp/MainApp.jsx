@@ -7,7 +7,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import StyledMainApp from './MainApp.styles'; //Estilos de este componente
 import { get_once } from '@/services/firebase'; //Conexión con la base de datos de Firebase
 // Pagínas dentro de la ventana principal
-import RoomPage from '@views/pages/Rooms/RoomPage/RoomPage';
+import RoomPage from '@views/pages/Rooms';
 import DevicesPage from '../pages/Devices/DevicesPage/DevicesPage';
 import EnviromentPage from '@views/pages/Enviroments/EnviromentPage/EnviromentPage';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import RoomMain from '../RoomMain/RoomMain';
-import InfoRoom from '../InfoRoom/InfoRoom';
-import EditRoom from '../EditRoom/EditRoom';
+import RoomMain from './RoomMain/RoomMain';
+import InfoRoom from './InfoRoom/InfoRoom';
+import EditRoom from './EditRoom/EditRoom';
 
 const RoomPage = () => {
   let { path } = useRouteMatch();

@@ -22,6 +22,12 @@ const StyledContextButton = styled.button`
       return textColor;
     }};
   }
+  &:hover {
+    transform: scale(0.98);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
 `;
 
 export default StyledContextButton;

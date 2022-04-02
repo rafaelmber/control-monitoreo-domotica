@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
+import { removeRoom } from '@/services/firebase';
 
 import StyledInfoRoom from './InfoRoom.styles';
 
@@ -10,9 +12,13 @@ import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import DeleteIcon from '@assets/delete.svg';
 import EditIcon from '@assets/edit.svg';
 import PlusIcon from '@assets/plus.svg';
+import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 
 const InfoRoom = ({ history }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { id } = useParams();
+
   const room = useSelector((state) => {
     const roomSelected = state.rooms.find((room) => {
       return room.id === id;
@@ -40,8 +46,16 @@ const InfoRoom = ({ history }) => {
   const handleAddButton = () => {
     history.push('/devices/add');
   };
-  const handleDelete = () => {
-    alert('Eliminando Habitación y todos sus dispositivos');
+  const handleDelete = async () => {
+    //Loading
+    await removeRoom(id);
+    history.push('/rooms');
+  };
+  const handleModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
   return (
     <StyledInfoRoom>
@@ -85,10 +99,17 @@ const InfoRoom = ({ history }) => {
             bgColor='var(--red)'
             textColor='var(--lightest-neutral)'
             Icon={DeleteIcon}
-            onClick={handleDelete}
+            onClick={handleModal}
             className='button'
           />
         </div>
+        <DeleteModal
+          isOpen={isModalOpen}
+          closeModal={closeModal}
+          handleDelete={handleDelete}
+          message={`Al eliminar esta Habitación se eliminarán todos los dispositivos que
+          pertenecen a esta. ¿Desea continuar?`}
+        />
       </PageWrapper>
     </StyledInfoRoom>
   );

@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router';
 
 //Recursos dentro del proyecto que se necesitan
 import StyledMainApp from './MainApp.styles'; //Estilos de este componente
-import { get_once } from '@/services/firebase'; //Conexión con la base de datos de Firebase
+import { getOnce } from '@/services/firebase'; //Conexión con la base de datos de Firebase
 // Pagínas dentro de la ventana principal
 import RoomPage from '@views/pages/Rooms';
 import DevicesPage from '../pages/Devices/DevicesPage/DevicesPage';
@@ -17,7 +17,7 @@ const MainApp = () => {
     //Tomar datos desde Firebase al iniciar el componente y almacenarlo en el Store
     const elements = ['devices', 'rooms', 'types', 'enviroments'];
     for (const category of elements) {
-      get_once(category, dispatch);
+      getOnce(category, dispatch);
     }
   }, [dispatch]);
   return (

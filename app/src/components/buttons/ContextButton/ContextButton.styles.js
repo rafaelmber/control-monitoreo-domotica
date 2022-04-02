@@ -10,11 +10,18 @@ const StyledContextButton = styled.button`
   border: none;
   border-radius: 15px;
   box-shadow: 1px 4px rgba(75, 79, 79, 0.5);
-  background-color: ${({ status }) => {
-    return status ? 'var(--green)' : 'var(--red)';
+  background-color: ${({ bgColor }) => {
+    return bgColor;
   }};
   font-weight: bold;
-  color: var(--neutral);
+  color: ${({ textColor }) => {
+    return textColor;
+  }};
+  .icon {
+    fill: ${({ textColor }) => {
+      return textColor;
+    }};
+  }
 `;
 
 export default StyledContextButton;

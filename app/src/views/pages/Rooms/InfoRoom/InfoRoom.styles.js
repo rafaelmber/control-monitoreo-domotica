@@ -9,6 +9,7 @@ const StyledInfoRoom = styled.div`
     gap: 30px;
     align-items: center;
     justify-content: space-around;
+    margin-top: 10px;
   }
   .button {
     width: 100%;

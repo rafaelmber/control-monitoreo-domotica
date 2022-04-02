@@ -7,7 +7,6 @@ import StyledRoomMain from './RoomMain.styles';
 import Header from '@components/layout/header/Header';
 import DevicesCard from '@components/cards/devicesCard/DevicesCard';
 import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
-import db from '@/services/firebase';
 import Loading from '@components/layout/loading/Loading';
 
 const options = [{ id: 1, title: 'Add Device', path: '/rooms/add' }];
@@ -29,14 +28,7 @@ const RoomMain = () => {
   });
   //Se cargan las habitaciones desde Firebase y se almacenan en el Store central
   useEffect(() => {
-    setLoading(true);
-    db.ref('rooms/').once('value', (snapshot) => {
-      dispatch({
-        type: 'GET_ROOMS',
-        payload: snapshot.val(),
-      });
-      setLoading(false);
-    });
+    setLoading(false);
   }, [dispatch]);
   return (
     <StyledRoomMain>

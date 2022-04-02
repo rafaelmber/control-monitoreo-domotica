@@ -31,4 +31,14 @@ if (process.env.NODE_ENV === 'development') {
   db.useEmulator('localhost', 9000);
 }
 
+export const get_once = (name, dispatch) => {
+  //Se almacenan los dispositivos dentro del Store central de Redux
+  db.ref(`${name}/`).once('value', (snapshot) => {
+    dispatch({
+      type: `GET_${name.toUpperCase()}`,
+      payload: snapshot.val(),
+    });
+  });
+};
+
 export default db;

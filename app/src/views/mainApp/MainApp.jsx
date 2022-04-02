@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router';
 
 //Recursos dentro del proyecto que se necesitan
 import StyledMainApp from './MainApp.styles'; //Estilos de este componente
-import db from '@/services/firebase'; //Conexión con la base de datos de Firebase
+import { get_once } from '@/services/firebase'; //Conexión con la base de datos de Firebase
 // Pagínas dentro de la ventana principal
 import RoomPage from '@views/pages/Rooms/RoomPage/RoomPage';
 import DevicesPage from '../pages/Devices/DevicesPage/DevicesPage';
@@ -14,28 +14,15 @@ import EnviromentPage from '@views/pages/Enviroments/EnviromentPage/EnviromentPa
 const MainApp = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    //Tomar datos desde Firebase al iniciar el componente
-    db.ref('/').once('value', (snapshot) => {
-      //Se almacenan los dispositivos dentro del Store central de Redux
-      dispatch({
-        type: 'GET_DEVICES',
-        payload: snapshot.val(),
-      });
-    });
+    //Tomar datos desde Firebase al iniciar el componente y almacenarlo en el Store
+    get_once('devices', dispatch);
+
+    get_once('rooms', dispatch);
+
     // Tomar los tipos de Firebase una sola vez
-    db.ref('types/').once('value', (snapshot) => {
-      //Almacenar los tipos en el store
-      dispatch({
-        type: 'GET_TYPES',
-        payload: snapshot.val(),
-      });
-    });
-    db.ref('enviroments/').once('value', (snapshot) => {
-      dispatch({
-        type: 'GET_ENVIROMENTS',
-        payload: snapshot.val(),
-      });
-    });
+    get_once('types', dispatch);
+    //
+    get_once('enviroments', dispatch);
   }, [dispatch]);
   return (
     <StyledMainApp>

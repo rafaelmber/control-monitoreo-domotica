@@ -15,14 +15,10 @@ const MainApp = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     //Tomar datos desde Firebase al iniciar el componente y almacenarlo en el Store
-    get_once('devices', dispatch);
-
-    get_once('rooms', dispatch);
-
-    // Tomar los tipos de Firebase una sola vez
-    get_once('types', dispatch);
-    //
-    get_once('enviroments', dispatch);
+    const elements = ['devices', 'rooms', 'types', 'enviroments'];
+    for (const category of elements) {
+      get_once(category, dispatch);
+    }
   }, [dispatch]);
   return (
     <StyledMainApp>

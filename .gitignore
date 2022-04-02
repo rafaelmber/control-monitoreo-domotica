@@ -2,6 +2,7 @@
 node_modules/
 app/code.sh
 .env
+*.ico
 #Archivos a ignorar en la unidad de control centralizada
 assets/
 venv/

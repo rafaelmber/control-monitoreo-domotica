@@ -11,6 +11,21 @@ const rooms = (state = [], action) => {
       const roomsArray = json2array(roomsJSON);
       return roomsArray;
     }
+    case 'EDIT_ROOM': {
+      const edited_room = action.payload;
+      //let newRooms = state.filter((room) => {
+      //  return room.id !== edited_room.id;
+      //});
+      //newRooms.push(edited_room);
+      //return newRooms;
+      const newState = state;
+      const room_index = newState.findIndex((room) => {
+        return room.id === edited_room.id;
+      });
+      newState[room_index] = edited_room;
+      return newState;
+    }
+
     default: {
       return state;
     }

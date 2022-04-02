@@ -59,6 +59,9 @@ html {
   small{
     font-size: 0.85rem;
   }
+  label{
+    font-size:1.56rem;
+  }
   @media screen and (max-width: 330px){
     h1{
       font-size: 2.44rem;

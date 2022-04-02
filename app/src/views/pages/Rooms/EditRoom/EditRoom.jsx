@@ -44,7 +44,12 @@ const EditRoom = ({ history }) => {
     <StyledEditRoom>
       <PageWrapper name='Rooms' history={history}>
         <form>
-          <TextField value={name} onChange={handleInput} name='name' />
+          <TextField
+            value={name}
+            onChange={handleInput}
+            name='name'
+            placeholder='Enter Room name'
+          />
           <div className='save-button'>
             <ContextButton
               onClick={handleSave}

@@ -1,11 +1,11 @@
 import React from 'react';
 import StyledTextField from './TextField.styles';
 
-const TextField = ({ value, onChange, name, placeholder }) => {
+const TextField = ({ value, onChange, name, placeholder, label }) => {
   return (
     <StyledTextField>
       <label htmlFor={name} className='field-label'>
-        Name
+        {label}
       </label>
       <input
         type='text'

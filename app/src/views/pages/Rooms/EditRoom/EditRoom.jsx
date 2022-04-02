@@ -21,18 +21,22 @@ const EditRoom = ({ history }) => {
 
   const handleSave = async (e) => {
     e.preventDefault();
-    try {
-      const ref = db.ref('rooms/' + id);
-      await ref.update({ name: name });
-      const newRoom = { ...room, name: name };
-      dispatch({
-        type: 'EDIT_ROOM',
-        payload: newRoom,
-      });
-      console.log('Saved');
-      history.push('/');
-    } catch (error) {
-      console.log(error);
+    if (name === '') {
+      alert('El nombre no puede estar vacio');
+    } else {
+      try {
+        const ref = db.ref('rooms/' + id);
+        await ref.update({ name: name });
+        const newRoom = { ...room, name: name };
+        dispatch({
+          type: 'EDIT_ROOM',
+          payload: newRoom,
+        });
+        console.log('Saved');
+        history.push('/');
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -47,6 +51,7 @@ const EditRoom = ({ history }) => {
           onChange={handleInput}
           name='name'
           placeholder='Enter Room name'
+          label='Name'
         />
         <div className='one-button'>
           <ContextButton

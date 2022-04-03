@@ -23,11 +23,11 @@ const rooms = (state = [], action) => {
     }
     case 'EDIT_ROOM': {
       const editedRoom = action.payload;
-      const newState = state;
-      const room_index = newState.findIndex((room) => {
+      const newState = [...state];
+      const roomIndex = newState.findIndex((room) => {
         return room.id === editedRoom.id;
       });
-      newState[room_index] = editedRoom;
+      newState[roomIndex] = editedRoom;
       return newState;
     }
 

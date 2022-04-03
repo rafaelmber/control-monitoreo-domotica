@@ -1,12 +1,3 @@
-import { combineReducers } from 'redux';
-import devices from './devices/devices.reducer';
-import rooms from './rooms/rooms.reducer';
-import types from './types/types.reducer';
-import enviroments from './enviroments/enviroments.reducer';
+const rootReducer = (state = [], actions) => {};
 
-export default combineReducers({
-  devices,
-  rooms,
-  types,
-  enviroments,
-});
+export default rootReducer;

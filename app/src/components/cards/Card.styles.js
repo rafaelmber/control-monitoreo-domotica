@@ -6,11 +6,14 @@ const StyledCard = styled.div`
   grid-template-rows: 1fr;
   grid-template-areas: 'title indicator';
   align-items: center;
+  /*
+  
   &:active {
     box-shadow: none;
     border: 1px solid var(--lightest-secundary);
     transform: scale(0.98) translate(0, 10%);
   }
+  */
   h4 {
     margin: 0;
     grid-area: title;

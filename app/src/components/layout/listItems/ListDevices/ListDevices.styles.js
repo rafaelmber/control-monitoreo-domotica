@@ -11,12 +11,16 @@ const StyledListDevices = styled.li`
     fill: var(--light-neutral);
   }
   .container {
+    flex-grow: 3;
   }
   .name-device {
     margin: 0;
   }
   .type-device {
     color: var(--light-neutral);
+  }
+  .status {
+    flex-grow: 1;
   }
   &:hover {
     transform: scale(0.95);

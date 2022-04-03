@@ -38,7 +38,7 @@ const InfoRoom = ({ history }) => {
     const newRoomSelected = { ...roomSelected, devices: devicesList };
     return newRoomSelected;
   });
-  const handleClick = (deviceId) => {
+  const handleDeviceClick = (deviceId) => {
     history.push(`/devices/info/${deviceId}`);
   };
   const handleEdit = () => {
@@ -85,7 +85,7 @@ const InfoRoom = ({ history }) => {
                   key={device.id}
                   name={device.name}
                   type={device.type}
-                  handleClick={() => handleClick(device.id)}
+                  handleClick={() => handleDeviceClick(device.id)}
                 />
               );
             })}

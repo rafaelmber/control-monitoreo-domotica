@@ -9,15 +9,15 @@ const Card = ({ id, name, handleClick, devices, devicesList }) => {
 
   useEffect(() => {
     const matchDevices = [];
-    for (const device of Object.entries(devices)) {
+    for (const device of devices) {
       const actualDevice = devicesList.find((devList) => {
-        return devList.id === device[0] && devList.status === device[1];
+        return devList.id === device.id && devList.status === device.status;
       });
       if (actualDevice !== undefined) {
         matchDevices.push(actualDevice);
       }
     }
-    if (Object.entries(devices).length === matchDevices.length) {
+    if (devices.length === matchDevices.length) {
       setIsActive(true);
     } else {
       setIsActive(false);
@@ -26,13 +26,17 @@ const Card = ({ id, name, handleClick, devices, devicesList }) => {
 
   return (
     <ContentWrapper>
-      <StyledCard onClick={handleClick} isActive={isActive}>
+      <StyledCard isActive={isActive}>
         <h4>
-          <Link to={`/info/enviroments/${id}`} className='link'>
+          <Link to={`/environments/info/${id}`} className='link'>
             {name}
           </Link>
         </h4>
-        <ActivateButton isActive={isActive} className='indicator' />
+        <ActivateButton
+          isActive={isActive}
+          onClick={handleClick}
+          className='indicator'
+        />
       </StyledCard>
     </ContentWrapper>
   );

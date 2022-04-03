@@ -5,7 +5,16 @@ const environments = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_ENVIROMENTS': {
       if (state !== json2array(action.payload)) {
-        let newState = action.payload;
+        let newState = { ...action.payload };
+
+        for (const env in newState) {
+          let envDevices = newState[env].devices;
+          let newDevices = [];
+          for (const device in envDevices) {
+            newDevices.push({ id: device, status: envDevices[device] });
+          }
+          newState[env].devices = newDevices;
+        }
         newState = json2array(newState);
         return newState;
       } else {

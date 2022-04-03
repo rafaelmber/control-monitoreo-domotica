@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { removeRoom } from '@/services/firebase';
 
@@ -19,6 +19,7 @@ const InfoRoom = ({ history }) => {
 
   const { id } = useParams();
 
+  const dispatch = useDispatch();
   const room = useSelector((state) => {
     const roomSelected = state.rooms.find((room) => {
       return room.id === id;
@@ -48,7 +49,21 @@ const InfoRoom = ({ history }) => {
   };
   const handleDelete = async () => {
     //Loading
-    await removeRoom(id);
+    //await removeRoom(id);
+    for (const device in room.devices) {
+      dispatch({
+        type: 'DELETE_DEVICE_IN_ENVIRONMENTS',
+        payload: device,
+      });
+    }
+    dispatch({
+      type: 'DELETE_ROOM_DEVICES',
+      payload: room,
+    });
+    dispatch({
+      type: 'DELETE_ROOM',
+      payload: id,
+    });
     history.push('/rooms');
   };
   const handleModal = () => {

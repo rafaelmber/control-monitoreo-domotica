@@ -9,7 +9,7 @@ import DevicesCard from '@components/cards/devicesCard/DevicesCard';
 import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import Loading from '@components/layout/loading/Loading';
 
-const options = [{ id: 1, title: 'Add Device', path: '/rooms/add' }];
+const options = [{ id: 1, title: 'Add Room', path: '/rooms/add' }];
 
 const RoomMain = () => {
   const [loading, setLoading] = useState(false);

@@ -16,7 +16,7 @@ import { createBrowserHistory } from 'history';
 // Se importan otros archivos dentro del proyecto para usarlos dentro de este
 import GlobalStyle from './globalStyle'; //Contiene los estilos globales de la aplicación
 import MainApp from '@views/mainApp/MainApp'; //Contiene la pantalla principal
-import reducer from './store/rootReducer'; //Es donde se define el store de Redux
+import reducer from './store/'; //Es donde se define el store de Redux
 
 const store = createStore(reducer); // Se inicializa el store de Redux
 const history = createBrowserHistory(); //Se usa el objeto que monitorea el historial dentro dela app

@@ -9,7 +9,7 @@ import { getOnce } from '@/services/firebase'; //Conexión con la base de datos 
 // Pagínas dentro de la ventana principal
 import RoomPage from '@views/pages/Rooms';
 import DevicesPage from '../pages/Devices/DevicesPage/DevicesPage';
-import EnvironmentPage from '@views/pages/Environments';
+import EnvironmentPage from '../pages/Environments';
 
 const MainApp = () => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const MainApp = () => {
             Cada ruta tiene su Componente asociado, estos componentes se encuentran dentro de la carpeta Pages
           */}
         <Route path={'/devices'} component={DevicesPage} />
-        <Route path={'/enviroments'} component={EnvironmentPage} />
+        <Route path={'/environments'} component={EnvironmentPage} />
         <Route path={'/rooms'} component={RoomPage} />
         <Route path={'/'}>
           <Redirect to={'/rooms'} />

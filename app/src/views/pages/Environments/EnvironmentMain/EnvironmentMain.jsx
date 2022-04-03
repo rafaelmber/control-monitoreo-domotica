@@ -13,7 +13,7 @@ const options = [{ id: 1, title: 'Add Enviroment', path: 'add_enviroment' }];
 const EnvironmentPage = () => {
   const dispatch = useDispatch();
   const enviromentList = useSelector((state) => {
-    return state.enviroments;
+    return state.environments;
   });
   const devicesList = useSelector((state) => {
     return state.devices;
@@ -33,7 +33,7 @@ const EnvironmentPage = () => {
   return (
     <StyledEnvironmentMain>
       <MainWrapper>
-        <Header className='header' text='Enviroments' options={options} />
+        <Header className='header' text='Environments' options={options} />
         <div className='content'>
           {/*
           Cada una de las Simple Card representa un botón que realizará 

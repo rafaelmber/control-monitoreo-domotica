@@ -6,11 +6,13 @@ import StyledEnvironmentMain from './EnvironmentMain.styles';
 import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import Header from '@components/layout/header/Header';
 import Card from '@components/cards/Card';
+import ContextButton from '@components/buttons/ContextButton/ContextButton';
+import PlusIcon from '@assets/plus.svg';
 import db from '@/services/firebase';
 
 const options = [{ id: 1, title: 'Add Enviroment', path: 'add_enviroment' }];
 
-const EnvironmentPage = () => {
+const EnvironmentPage = ({ history }) => {
   const dispatch = useDispatch();
   const enviromentList = useSelector((state) => {
     return state.environments;
@@ -29,6 +31,9 @@ const EnvironmentPage = () => {
       });
     }
   };
+  const handleAddButton = () => {
+    history.push('/environments/add');
+  };
 
   return (
     <StyledEnvironmentMain>
@@ -40,7 +45,19 @@ const EnvironmentPage = () => {
           acciones programadas por el usuario, encenderá y apagará dispositivos 
           dependiendo de las preferencias del usuario
           */}
-          {enviromentList.length === 0 && <p>You don't have any Environment</p>}
+          {enviromentList.length === 0 && (
+            <div className='message'>
+              <h5 className='message-text'>You don't have any Enviroment</h5>
+              <ContextButton
+                text='Add a new Environement'
+                textColor='var(--lightest-neutral)'
+                bgColor='var(--dark-primary)'
+                Icon={PlusIcon}
+                onClick={handleAddButton}
+                className='message-button'
+              />
+            </div>
+          )}
           {enviromentList.length !== 0 &&
             enviromentList.map((enviroment) => {
               return (

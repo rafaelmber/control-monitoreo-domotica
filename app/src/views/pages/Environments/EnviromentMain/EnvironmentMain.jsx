@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 //Recursos
-import StyledEnviromentMain from './EnviromentMain.styles';
+import StyledEnvironmentMain from './EnvironmentMain.styles';
 import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import Header from '@components/layout/header/Header';
 import Card from '@components/cards/Card';
@@ -10,7 +10,7 @@ import db from '@/services/firebase';
 
 const options = [{ id: 1, title: 'Add Enviroment', path: 'add_enviroment' }];
 
-const EnviromentPage = () => {
+const EnvironmentPage = () => {
   const dispatch = useDispatch();
   const enviromentList = useSelector((state) => {
     return state.enviroments;
@@ -31,7 +31,7 @@ const EnviromentPage = () => {
   };
 
   return (
-    <StyledEnviromentMain>
+    <StyledEnvironmentMain>
       <MainWrapper>
         <Header className='header' text='Enviroments' options={options} />
         <div className='content'>
@@ -56,7 +56,7 @@ const EnviromentPage = () => {
           })}
         </div>
       </MainWrapper>
-    </StyledEnviromentMain>
+    </StyledEnvironmentMain>
   );
 };
-export default EnviromentPage;
+export default EnvironmentPage;

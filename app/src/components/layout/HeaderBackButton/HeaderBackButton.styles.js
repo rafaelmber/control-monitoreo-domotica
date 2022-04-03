@@ -3,6 +3,8 @@ import styled from 'styled-components';
 const StyledHeaderBackButton = styled.div`
   display: grid;
   grid-template-columns: 50px 1fr;
+  margin: 0;
+  padding: 0;
   .back-button {
     cursor: pointer;
     background-color: var(--primary);

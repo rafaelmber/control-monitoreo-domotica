@@ -42,11 +42,8 @@ export const getOnce = (name, dispatch) => {
 };
 
 export const removeEnviroment = async (id) => {
-  await db.ref('enviroments/' + id).remove();
-  dispatch({
-    type: 'REMOVE_ENVIRONMENT',
-    payload: id,
-  });
+  const environmentRef = db.ref('enviroments/' + id);
+  await environmentRef.remove();
 };
 
 export const removeDevice = async (id) => {

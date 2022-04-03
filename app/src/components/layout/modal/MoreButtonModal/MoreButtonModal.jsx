@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledMoreButtonModal from './ModeButtonModal.styles';
+import StyledMoreButtonModal from './MoreButtonModal.styles';
 import Modal from '../Modal';
 import MoreButtonItem from '@components/layout/listItems/MoreButtonItem/MoreButtonItem';
 

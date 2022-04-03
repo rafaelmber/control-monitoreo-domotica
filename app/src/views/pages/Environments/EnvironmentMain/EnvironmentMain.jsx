@@ -40,20 +40,22 @@ const EnvironmentPage = () => {
           acciones programadas por el usuario, encenderá y apagará dispositivos 
           dependiendo de las preferencias del usuario
           */}
-          {enviromentList.map((enviroment) => {
-            return (
-              <Card
-                key={enviroment.id}
-                name={enviroment.name}
-                id={enviroment.id}
-                devices={enviroment.devices}
-                devicesList={devicesList}
-                handleClick={() => {
-                  handleClick(enviroment.id, enviroment.devices);
-                }}
-              />
-            );
-          })}
+          {enviromentList.length === 0 && <p>You don't have any Environment</p>}
+          {enviromentList.length !== 0 &&
+            enviromentList.map((enviroment) => {
+              return (
+                <Card
+                  key={enviroment.id}
+                  name={enviroment.name}
+                  id={enviroment.id}
+                  devices={enviroment.devices}
+                  devicesList={devicesList}
+                  handleClick={() => {
+                    handleClick(enviroment.id, enviroment.devices);
+                  }}
+                />
+              );
+            })}
         </div>
       </MainWrapper>
     </StyledEnvironmentMain>

@@ -7,11 +7,11 @@ const StyledListDevices = styled.li`
   align-items: center;
   border-bottom: 1px solid var(--lightest-secundary);
   cursor: pointer;
-  .icon {
+  .arrow-icon {
     fill: var(--light-neutral);
   }
   .container {
-    flex-grow: 3;
+    flex-grow: 4;
   }
   .name-device {
     margin: 0;
@@ -20,10 +20,20 @@ const StyledListDevices = styled.li`
     color: var(--light-neutral);
   }
   .status {
+    flex-grow: 2;
+  }
+  .children {
     flex-grow: 1;
+    flex-basis: 0;
+
+    margin-left: 10px;
+
+    & button {
+      width: auto;
+    }
   }
   &:hover {
-    transform: scale(0.95);
+    transform: scale(0.98);
   }
 `;
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
+  box-sizing: border-box;
   display: grid;
   grid-template-rows: 4rem 1fr;
   grid-template-columns: 1fr;
@@ -11,6 +12,7 @@ const StyledWrapper = styled.div`
     grid-area: header;
   }
   .content {
+    box-sizing: border-box;
     grid-area: content;
     height: 100%;
     overflow: scroll;

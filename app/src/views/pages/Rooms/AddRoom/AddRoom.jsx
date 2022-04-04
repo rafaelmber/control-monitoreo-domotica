@@ -25,7 +25,7 @@ const AddRoom = ({ history }) => {
       alert('El nombre no puede estar vacio');
     } else {
       try {
-        const id = hasCreator(rooms);
+        const id = hasCreator('room', rooms);
         const newRoom = {
           id: id,
           name: name,

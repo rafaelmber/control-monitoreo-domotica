@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import hashCreator from '@/utils/hashCreator';
-import array2json from '@/utils/array2json';
 import db from '@/services/firebase';
 
 import StyledAddEnvironment from './AddEnvironment.styles';
@@ -35,6 +34,7 @@ const AddEnvironment = ({ history }) => {
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (name === '') {
@@ -42,7 +42,7 @@ const AddEnvironment = ({ history }) => {
     } else if (envDevices.length === 0) {
       console.log('The Environment must have at least one device');
     } else {
-      const envId = hashCreator(environmentList);
+      const envId = hashCreator('env', environmentList);
       const newEnviroment = {
         id: envId,
         name: name,
@@ -62,7 +62,6 @@ const AddEnvironment = ({ history }) => {
         payload: newEnviroment,
       });
       history.push('/environments/info/' + envId);
-      console.log('New Environment added!', name);
     }
   };
 
@@ -72,8 +71,6 @@ const AddEnvironment = ({ history }) => {
   };
 
   const handleStatusClick = (deviceId) => {
-    console.log('Changing status', deviceId, '...');
-
     const newEnvDevices = [];
     for (const device of envDevices) {
       if (device.id === deviceId) {
@@ -83,7 +80,6 @@ const AddEnvironment = ({ history }) => {
         newEnvDevices.push(device);
       }
     }
-    console.log(newEnvDevices);
     setEnvDevices(newEnvDevices);
   };
 

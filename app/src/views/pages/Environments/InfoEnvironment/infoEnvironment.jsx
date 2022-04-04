@@ -20,17 +20,20 @@ const InfoEnvironment = ({ history }) => {
     let envSelected = state.environments.find((environment) => {
       return environment.id === id;
     });
-
-    const devices = [];
-    envSelected.devices.forEach((envDevice) => {
-      let device = state.devices.find((deviceState) => {
-        return deviceState.id === envDevice.id;
+    if (envSelected !== undefined) {
+      const devices = [];
+      envSelected.devices.forEach((envDevice) => {
+        const device = state.devices.find((deviceState) => {
+          return deviceState.id === envDevice.id;
+        });
+        const newDevice = { ...device, status: envDevice.status };
+        devices.push(newDevice);
       });
-      device = { ...device, status: envDevice.status };
-      devices.push(device);
-    });
-    const newEnvSelected = { ...envSelected, devices: devices };
-    return newEnvSelected;
+      const newEnvSelected = { ...envSelected, devices: devices };
+      return newEnvSelected;
+    } else {
+      return envSelected;
+    }
   });
 
   const handleDeviceClick = (id) => {
@@ -59,24 +62,25 @@ const InfoEnvironment = ({ history }) => {
   return (
     <StyledInfoEnvironment>
       <PageWrapper name='Environments' history={history}>
-        <h3>{environment.name}</h3>
+        {environment !== undefined && <h3>{environment.name}</h3>}
         <div className='columns'>
           <span>Device</span>
           <span>Status</span>
         </div>
-        {environment.devices.map((device) => {
-          return (
-            <ListDevices
-              key={device.id}
-              name={device.name}
-              type={device.type}
-              status={device.status}
-              handleClick={() => {
-                handleDeviceClick(device.id);
-              }}
-            />
-          );
-        })}
+        {environment !== undefined &&
+          environment.devices.map((device) => {
+            return (
+              <ListDevices
+                key={device.id}
+                name={device.name}
+                type={device.type}
+                status={device.status}
+                handleClick={() => {
+                  handleDeviceClick(device.id);
+                }}
+              />
+            );
+          })}
         <div className='buttons'>
           <ContextButton
             text='Edit'

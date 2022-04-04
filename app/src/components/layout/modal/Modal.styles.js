@@ -30,6 +30,7 @@ const StyledModal = styled.div`
     cursor: pointer;
     & .icon {
       fill: var(--red);
+      transform: scale(1.2);
     }
   }
   .buttons {

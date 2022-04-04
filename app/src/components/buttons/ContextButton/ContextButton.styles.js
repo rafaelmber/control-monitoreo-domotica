@@ -25,9 +25,6 @@ const StyledContextButton = styled.button`
   &:hover {
     transform: scale(0.98);
   }
-  &:active {
-    transform: scale(0.98);
-  }
 `;
 
 export default StyledContextButton;

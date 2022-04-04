@@ -16,6 +16,7 @@ const StyledTextField = styled.div`
     border-bottom: 1px solid var(--light-neutral);
     border-radius: 1px;
     padding: 5px;
+    background-color: transparent;
   }
 `;
 

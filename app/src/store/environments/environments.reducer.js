@@ -22,7 +22,10 @@ const environments = (state = initialState, action) => {
       }
     }
     case 'ADD_ENVIRONMENT': {
-      const newEnvironment = action.payload;
+      let newEnvironment = action.payload;
+      newEnvironment.devices.forEach((device) => {
+        device = { id: device.id, status: device.status };
+      });
       const newState = [...state, newEnvironment];
       return newState;
     }

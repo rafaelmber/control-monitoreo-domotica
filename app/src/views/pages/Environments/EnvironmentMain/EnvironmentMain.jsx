@@ -10,7 +10,7 @@ import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import PlusIcon from '@assets/plus.svg';
 import db from '@/services/firebase';
 
-const options = [{ id: 1, title: 'Add Enviroment', path: 'add_enviroment' }];
+const options = [{ id: 1, title: 'Add Enviroment', path: '/environments/add' }];
 
 const EnvironmentPage = ({ history }) => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const EnvironmentPage = ({ history }) => {
             <div className='message'>
               <h5 className='message-text'>You don't have any Enviroment</h5>
               <ContextButton
-                text='Add a new Environement'
+                text='Add a new Environment'
                 textColor='var(--lightest-neutral)'
                 bgColor='var(--dark-primary)'
                 Icon={PlusIcon}

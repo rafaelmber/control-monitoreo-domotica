@@ -15,6 +15,7 @@ const StyledModal = styled.div`
   align-items: center;
 
   .content {
+    max-height: 90vh;
     background-color: var(--lightest-neutral);
     margin: 15px;
     border: 1px solid var(--light-neutral);
@@ -22,7 +23,12 @@ const StyledModal = styled.div`
     padding: 15px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 3fr 2fr;
+    grid-template-rows: 1fr minmax(3fr, 50vh) 2fr;
+    overflow: hidden;
+  }
+  .content-list {
+    max-height: 60vh;
+    overflow-y: scroll;
   }
   .exit-button {
     text-align: right;

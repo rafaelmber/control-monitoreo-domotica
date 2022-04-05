@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import hashCreator from '@/utils/hashCreator';
-import db from '@/services/firebase';
 
 import StyledAddEnvironment from './AddEnvironment.styles';
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
-import TextField from '@components/forms/TextField/TextField';
-import ListDevices from '@components/layout/listItems/ListDevices/ListDevices';
-import ContextButton from '@components/buttons/ContextButton/ContextButton';
-import AddDeviceToEnv from '@components/layout/modal/AddDeviceToEnv/AddDeviceToEnv';
-
-import SaveIcon from '@assets/save.svg';
-import PlusIcon from '@assets/plus.svg';
-import DeleteIcon from '@assets/delete.svg';
+import EnvironmentForm from '@components/forms/EnvironmentForm/EnvironmentForm';
 
 const AddEnvironment = ({ history }) => {
-  const dispatch = useDispatch();
   const devicesList = useSelector((state) => {
     const devices = [...state.devices];
     devices.forEach((device) => {
@@ -26,62 +17,9 @@ const AddEnvironment = ({ history }) => {
   const environmentList = useSelector((state) => {
     return state.environments;
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [name, setName] = useState('');
+  const [id, setId] = useState(hashCreator('env', environmentList));
   const [envDevices, setEnvDevices] = useState([]);
-  const [availableDevices, setAvailableDevies] = useState([...devicesList]);
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (name === '') {
-      console.log('The Environment must have a name');
-    } else if (envDevices.length === 0) {
-      console.log('The Environment must have at least one device');
-    } else {
-      const envId = hashCreator('env', environmentList);
-      const newEnviroment = {
-        id: envId,
-        name: name,
-        devices: envDevices,
-      };
-      const devicesObject = {};
-      envDevices.forEach((device) => {
-        devicesObject[device.id] = device.status;
-      });
-      const envRef = db.ref('enviroments/' + envId);
-      await envRef.set({
-        name: name,
-        devices: devicesObject,
-      });
-      dispatch({
-        type: 'ADD_ENVIRONMENT',
-        payload: newEnviroment,
-      });
-      history.push('/environments/info/' + envId);
-    }
-  };
-
-  const handleAddDevice = (event) => {
-    event.preventDefault();
-    setIsModalOpen(true);
-  };
-
-  const handleStatusClick = (deviceId) => {
-    const newEnvDevices = [];
-    for (const device of envDevices) {
-      if (device.id === deviceId) {
-        const newDevice = { ...device, status: !device.status };
-        newEnvDevices.push(newDevice);
-      } else {
-        newEnvDevices.push(device);
-      }
-    }
-    setEnvDevices(newEnvDevices);
-  };
+  const [availableDevices, setAvailableDevices] = useState([...devicesList]);
 
   const handleRemoveDevice = (deviceId) => {
     const newAvailableDevice = envDevices.find((device) => {
@@ -94,95 +32,23 @@ const AddEnvironment = ({ history }) => {
 
     let newAvailableDevicesList = [...availableDevices, newAvailableDevice];
 
-    setAvailableDevies(newAvailableDevicesList);
+    setAvailableDevices(newAvailableDevicesList);
     setEnvDevices(newEnvDevices);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleSelectedDevice = (deviceId) => {
-    const newEnvDevice = availableDevices.find((avDev) => {
-      return avDev.id === deviceId;
-    });
-    let newEnvDevicesList = [...envDevices, newEnvDevice];
-    const newAvailableDevices = availableDevices.filter((avDev) => {
-      return avDev.id !== deviceId;
-    });
-    setAvailableDevies(newAvailableDevices);
-    setEnvDevices(newEnvDevicesList);
-    setIsModalOpen(false);
   };
 
   return (
     <StyledAddEnvironment>
       <PageWrapper name='Environments' history={history}>
-        <form>
-          <TextField
-            value={name}
-            onChange={handleNameChange}
-            name='name'
-            label='Name'
-            placeholder='Enter Environment name'
-          />
-          <div>
-            {envDevices.length === 0 && (
-              <p className='message'>
-                You have not added Devices in this Environment
-              </p>
-            )}
-            {envDevices.length !== 0 && <h5>Devices</h5>}
-            {envDevices.length !== 0 &&
-              envDevices.map((envDev) => {
-                return (
-                  <ListDevices
-                    key={envDev.id}
-                    name={envDev.name}
-                    type={envDev.type}
-                    status={envDev.status}
-                    handleStatusClick={() => {
-                      handleStatusClick(envDev.id);
-                    }}
-                  >
-                    <ContextButton
-                      textColor='var(--lightest-neutral)'
-                      bgColor='var(--red)'
-                      Icon={DeleteIcon}
-                      onClick={() => {
-                        handleRemoveDevice(envDev.id);
-                      }}
-                    />
-                  </ListDevices>
-                );
-              })}
-            {devicesList.length !== envDevices.length && (
-              <div className='devices-buttons'>
-                <ContextButton
-                  text='Add a Device to the Environment'
-                  textColor='var(--lightest-neutral)'
-                  bgColor='var(--dark-primary)'
-                  Icon={PlusIcon}
-                  onClick={handleAddDevice}
-                />
-              </div>
-            )}
-          </div>
-          <div className='save-button'>
-            <ContextButton
-              text='Save'
-              textColor='var(--lightest-neutral)'
-              bgColor='var(--green)'
-              Icon={SaveIcon}
-              onClick={handleSubmit}
-            />
-          </div>
-        </form>
-        <AddDeviceToEnv
-          isOpen={isModalOpen}
-          closeModal={handleCloseModal}
-          devices={availableDevices}
-          handleClickDevice={handleSelectedDevice}
+        <EnvironmentForm
+          initialName=''
+          envId={id}
+          envDevices={envDevices}
+          setEnvDevices={setEnvDevices}
+          availableDevices={availableDevices}
+          setAvailableDevices={setAvailableDevices}
+          handleRemoveDevice={handleRemoveDevice}
+          totalDevices={devicesList.length}
+          history={history}
         />
       </PageWrapper>
     </StyledAddEnvironment>

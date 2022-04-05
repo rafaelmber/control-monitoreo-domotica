@@ -17,6 +17,7 @@ const StyledTextField = styled.div`
     border-radius: 1px;
     padding: 5px;
     background-color: transparent;
+    max-width: 100%;
   }
 `;
 

@@ -7,7 +7,7 @@ import DevicesCard from '@components/cards/devicesCard/DevicesCard';
 import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import Header from '@components/layout/header/Header';
 
-const options = [{ id: 1, title: 'Add Device', path: 'add_device' }];
+const options = [{ id: 1, title: 'Add Device', path: '/devices/add' }];
 
 const DevicesPage = () => {
   const devices = useSelector((state) => {

@@ -29,24 +29,15 @@ const InfoDevice = ({ history }) => {
     });
   });
 
-  useEffect(async () => {
-    const deviceStatus = db.ref(`devices/${id}/status`);
-    await deviceStatus.on('value', (snapshot) => {
-      if (snapshot.exists()) {
-        dispatch({
-          type: 'GET_DEVICE_STATUS',
-          payload: { id, status: snapshot.val() },
-        });
-      }
-    });
-  }, [dispatch]);
-
+  const [, setButtonStatus] = useState(device.status);
   const handleStatusClick = async () => {
-    console.log('Current status', device.status);
-    const newStatus = !device.status;
     const deviceRef = db.ref('devices/' + id);
-    await deviceRef.update({ status: newStatus });
-    console.log('New Status', device.status);
+    await deviceRef.update({ status: !device.status });
+    dispatch({
+      type: 'SET_DEVICE_STATUS',
+      payload: id,
+    });
+    setButtonStatus(!device.status);
   };
 
   return (

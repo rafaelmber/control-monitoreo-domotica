@@ -61,6 +61,7 @@ const DevicesCard = ({ id, name, devices }) => {
               </Link>
             )}
           </h3>
+
           <ActivateButton
             isActive
             groupStatus={groupStatus}

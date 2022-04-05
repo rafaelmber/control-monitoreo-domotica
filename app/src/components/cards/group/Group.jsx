@@ -21,11 +21,13 @@ const Group = ({ name, devices }) => {
   }
   return (
     <StyledGroup>
-      <div className='group__title'>
-        <Icon />
-        {name}
-        <GroupButton devices={devices} name={name} />
-      </div>
+      {devices.length !== 0 && (
+        <div className='group__title'>
+          <Icon />
+          {name}
+          <GroupButton devices={devices} name={name} />
+        </div>
+      )}
       <div className='group__items'>
         {devices &&
           devices.map((device) => {

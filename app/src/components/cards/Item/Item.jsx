@@ -30,7 +30,7 @@ const Item = ({
     <StyledItem isGroup={isGroup}>
       <Icon className='icon' />
       <h4 className='name'>
-        <Link to={`/info/device/${id}`} className='link'>
+        <Link to={`/devices/info/${id}`} className='link'>
           {name}
         </Link>
       </h4>

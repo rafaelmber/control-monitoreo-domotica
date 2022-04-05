@@ -18,15 +18,6 @@ const devices = (state = initialState, action) => {
       return newState;
     }
     case 'SET_DEVICE_STATUS': {
-      // const newState = [];
-      // for (let device of state) {
-      //   if (device.id === action.payload) {
-      //     device.status = !device.status;
-      //   }
-      //   newState.push(device);
-      // }
-      // return newState;
-
       const newState = [...state];
       newState.forEach((device) => {
         if (device.id === action.payload) {
@@ -36,6 +27,11 @@ const devices = (state = initialState, action) => {
         }
         return device;
       });
+      return newState;
+    }
+    case 'ADD_DEVICE': {
+      const newDevice = action.payload;
+      const newState = [...state, newDevice];
       return newState;
     }
     default:

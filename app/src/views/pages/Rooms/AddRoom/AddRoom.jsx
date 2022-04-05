@@ -62,7 +62,8 @@ const AddRoom = ({ history }) => {
         <div className='one-button'>
           <ContextButton
             text='Save'
-            status
+            textColor='var(--lightest-neutral)'
+            bgColor='var(--green)'
             Icon={SaveIcon}
             onClick={handleSubmit}
           />

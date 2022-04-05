@@ -82,6 +82,8 @@ const InfoEnvironment = ({ history }) => {
             );
           })}
         <div className='buttons'>
+          {/**
+          
           <ContextButton
             text='Edit'
             textColor='var(--lightest-neutral)'
@@ -89,6 +91,7 @@ const InfoEnvironment = ({ history }) => {
             Icon={EditIcon}
             onClick={handleEditButton}
           />
+           */}
           <ContextButton
             text='Delete'
             textColor='var(--lightest-neutral)'

@@ -34,6 +34,12 @@ const devices = (state = initialState, action) => {
       const newState = [...state, newDevice];
       return newState;
     }
+    case 'DELETE_DEVICE': {
+      const newDevices = state.filter((device) => {
+        return device.id !== action.payload;
+      });
+      return newDevices;
+    }
     default:
       return state;
   }

@@ -17,6 +17,9 @@ const StyledInfoDevice = styled.div`
     display: flex;
     justify-content: center;
   }
+  .buttons {
+    margin-top: 20px;
+  }
 `;
 
 export default StyledInfoDevice;

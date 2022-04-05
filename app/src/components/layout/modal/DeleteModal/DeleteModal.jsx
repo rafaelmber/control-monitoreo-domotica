@@ -4,6 +4,7 @@ import Modal from '../Modal';
 import CloseIcon from '@assets/close.svg';
 import DeleteIcon from '@assets/delete.svg';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
+
 const DeleteModal = ({ isOpen, closeModal, handleDelete, message }) => {
   return (
     <StyledDeleteModal>

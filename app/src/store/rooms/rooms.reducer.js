@@ -30,6 +30,21 @@ const rooms = (state = [], action) => {
       newState[roomIndex] = editedRoom;
       return newState;
     }
+    case 'ADD_DEVICE_IN_ROOM': {
+      const roomId = action.payload.roomId;
+      const newDevice = action.payload.device;
+
+      const newState = [...state];
+
+      for (const room of newState) {
+        if (room.id === roomId) {
+          room.devices.push({
+            id: newDevice,
+          });
+        }
+      }
+      return newState;
+    }
 
     default: {
       return state;

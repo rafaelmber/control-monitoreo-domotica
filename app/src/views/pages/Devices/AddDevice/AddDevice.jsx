@@ -44,6 +44,14 @@ const AddDevice = ({ history }) => {
         room: room,
         status: false,
       });
+      const deviceRefAtRoom = db.ref('rooms/' + room + '/devices/');
+      await deviceRefAtRoom.update({
+        [deviceId]: true,
+      });
+      dispatch({
+        type: 'ADD_DEVICE_IN_ROOM',
+        payload: { roomId: room, device: deviceId },
+      });
       dispatch({
         type: 'ADD_DEVICE',
         payload: {

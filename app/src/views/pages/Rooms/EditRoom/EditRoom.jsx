@@ -57,8 +57,8 @@ const EditRoom = ({ history }) => {
           <ContextButton
             onClick={handleSave}
             bgColor='var(--green)'
-            status
             text='Save'
+            textColor='var(--lightest-neutral)'
             Icon={SaveIcon}
           />
         </div>

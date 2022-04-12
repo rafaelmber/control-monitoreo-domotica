@@ -1,7 +1,7 @@
 //Dependencias
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Route, Redirect, useHistory } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 
 //Recursos dentro del proyecto que se necesitan
 import StyledMainApp from './MainApp.styles'; //Estilos de este componente
@@ -13,9 +13,9 @@ import EnvironmentPage from '../pages/Environments';
 
 const MainApp = ({ history }) => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => {
-    return state?.users?.token;
-  });
+  // const token = useSelector((state) => {
+  //   return state?.users?.token;
+  // });
 
   useEffect(() => {
     //Tomar datos desde Firebase al iniciar el componente y almacenarlo en el Store
@@ -32,7 +32,6 @@ const MainApp = ({ history }) => {
 
             Devices es donde se van a encontrar todos los dispositivos listados
             Enviroments es donde se van a encontrar botones para programar ambientes y ejecutarlos
-            Sensors es la página donde se van a visualizar las mediciones de los sensores y la información correspondiente a ellos
             / o root es donde se encuntran los dispositivos clasificados por habitación
 
             Cada ruta tiene su Componente asociado, estos componentes se encuentran dentro de la carpeta Pages

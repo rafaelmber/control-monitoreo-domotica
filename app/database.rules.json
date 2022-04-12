@@ -14,7 +14,8 @@
         "$type_id": {
           "name": { ".validate": "newData.isString()" },
           "$other": { ".validate": false }
-        }
+        },
+        ".write": false
       },
       "rooms": {
         "$room_id": {

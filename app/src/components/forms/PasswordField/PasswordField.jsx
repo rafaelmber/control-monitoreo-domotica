@@ -1,22 +1,17 @@
 import React from 'react';
 
-import StyledPasswordField from './PasswordField.styles';
+import TextField from '../TextField/TextField';
 
 const PasswordField = ({ name, label, value, onChange, placeholder }) => {
   return (
-    <StyledPasswordField>
-      <label className='field-label' htmlFor={name}>
-        {label}
-      </label>
-      <input
-        type='password'
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        className='field-input'
-      />
-    </StyledPasswordField>
+    <TextField
+      type='password'
+      name={name}
+      label={label}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+    />
   );
 };
 

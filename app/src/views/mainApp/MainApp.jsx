@@ -1,7 +1,7 @@
 //Dependencias
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { Switch, Route, Redirect, useHistory } from 'react-router';
 
 //Recursos dentro del proyecto que se necesitan
 import StyledMainApp from './MainApp.styles'; //Estilos de este componente
@@ -11,11 +11,16 @@ import RoomPage from '@views/pages/Rooms';
 import DevicesPage from '../pages/Devices/';
 import EnvironmentPage from '../pages/Environments';
 
-const MainApp = () => {
+const MainApp = ({ history }) => {
   const dispatch = useDispatch();
+  const token = useSelector((state) => {
+    return state?.users?.token;
+  });
+
   useEffect(() => {
     //Tomar datos desde Firebase al iniciar el componente y almacenarlo en el Store
-    const elements = ['devices', 'rooms', 'types', 'enviroments'];
+
+    const elements = ['devices', 'rooms', 'types', 'environments'];
     for (const category of elements) {
       getOnce(category, dispatch);
     }

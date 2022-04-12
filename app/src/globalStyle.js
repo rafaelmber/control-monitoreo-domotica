@@ -25,6 +25,9 @@ html {
 
   user-select: none;
 }
+div.firebase-emulator-warning{
+      display:none;
+    }
   body {
     margin: 0;
     padding:0;

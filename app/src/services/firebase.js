@@ -78,8 +78,11 @@ export const removeDevice = async (deviceId) => {
   await removeDeviceFromEnvs(deviceId);
   await removeDeviceFromRooms(deviceId);
   const deviceRef = db.ref('systems/system_1/devices/' + deviceId);
-  await deviceRef.remove();
-  console.log(`${deviceId} Removed`);
+  try {
+    await deviceRef.remove();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const removeDeviceFromEnvs = async (deviceId) => {
@@ -90,8 +93,8 @@ const removeDeviceFromEnvs = async (deviceId) => {
     if (envChild.exists()) {
       const device = envChild.child('devices').child(deviceId);
       if (device.exists()) {
-        device.ref.remove(() => {
-          console.log(`${deviceId} was Deleted from ${envChild.key}`);
+        device.ref.remove().catch((error) => {
+          console.log(error);
         });
       }
     }
@@ -106,8 +109,8 @@ const removeDeviceFromRooms = async (deviceId) => {
     if (roomChild.exists()) {
       const device = roomChild.child('devices').child(deviceId);
       if (device.exists()) {
-        device.ref.remove(() => {
-          console.log(`${deviceId} Removed from ${roomChild.key}`);
+        device.ref.remove().catch((error) => {
+          console.log(error);
         });
       }
     }
@@ -121,8 +124,11 @@ export const removeRoom = async (id) => {
     await removeDevice(device);
   }
   const roomRef = db.ref('systems/system_1/rooms/' + id);
-  await roomRef.remove();
-  console.log(id, 'room was removed');
+  try {
+    await roomRef.remove();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default db;

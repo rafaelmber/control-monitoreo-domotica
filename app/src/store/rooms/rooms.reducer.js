@@ -45,6 +45,21 @@ const rooms = (state = [], action) => {
       }
       return newState;
     }
+    case 'DELETE_DEVICE_IN_ROOMS': {
+      const roomId = action.payload.roomId;
+      const deviceId = action.payload.deviceId;
+      const newState = [...state];
+
+      for (const room of newState) {
+        if (room.id === roomId) {
+          const newDevices = room.devices.filter((device) => {
+            return device.id !== deviceId;
+          });
+          room.devices = newDevices;
+        }
+      }
+      return newState;
+    }
 
     default: {
       return state;

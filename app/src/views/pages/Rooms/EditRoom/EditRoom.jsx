@@ -25,7 +25,7 @@ const EditRoom = ({ history }) => {
       alert('El nombre no puede estar vacio');
     } else {
       try {
-        const ref = db.ref('rooms/' + id);
+        const ref = db.ref('systems/system_1/rooms/' + id);
         await ref.update({ name: name });
         const newRoom = { ...room, name: name };
         dispatch({

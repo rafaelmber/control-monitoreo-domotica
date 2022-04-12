@@ -21,6 +21,7 @@ const StyledContextButton = styled.button`
     fill: ${({ textColor }) => {
       return textColor;
     }};
+    max-height: 50px;
   }
   &:hover {
     transform: scale(0.98);

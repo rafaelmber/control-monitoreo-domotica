@@ -31,7 +31,7 @@ const AddRoom = ({ history }) => {
           name: name,
           devices: [],
         };
-        const ref = db.ref('rooms/' + newRoom.id);
+        const ref = db.ref('/systems/system_1/rooms/' + newRoom.id);
         await ref.set({
           name: newRoom.name,
           devices: newRoom.devices,

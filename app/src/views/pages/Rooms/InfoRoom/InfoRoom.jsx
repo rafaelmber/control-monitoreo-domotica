@@ -25,7 +25,7 @@ const InfoRoom = ({ history }) => {
       return room.id === id;
     });
     const devicesList = [];
-    roomSelected.devices.forEach((device) => {
+    roomSelected?.devices.forEach((device) => {
       let selectedDevice = state.devices.find((deviceState) => {
         return device.id === deviceState.id;
       });
@@ -38,6 +38,7 @@ const InfoRoom = ({ history }) => {
     const newRoomSelected = { ...roomSelected, devices: devicesList };
     return newRoomSelected;
   });
+
   const handleDeviceClick = (deviceId) => {
     history.push(`/devices/info/${deviceId}`);
   };
@@ -49,17 +50,20 @@ const InfoRoom = ({ history }) => {
   };
   const handleDelete = async () => {
     //Loading
-    //await removeRoom(id);
+    await removeRoom(id);
     for (const device in room.devices) {
       dispatch({
         type: 'DELETE_DEVICE_IN_ENVIRONMENTS',
         payload: device,
       });
+      dispatch({
+        type: 'DELETE_DEVICE_IN_ROOMS',
+        payload: {
+          roomId: id,
+          deviceId: device,
+        },
+      });
     }
-    dispatch({
-      type: 'DELETE_ROOM_DEVICES',
-      payload: room,
-    });
     dispatch({
       type: 'DELETE_ROOM',
       payload: id,
@@ -75,7 +79,7 @@ const InfoRoom = ({ history }) => {
   return (
     <StyledInfoRoom>
       {room !== undefined && (
-        <PageWrapper name='Rooms' history={history}>
+        <PageWrapper name='Rooms'>
           <h3>{room.name}</h3>
           <h5>Devices</h5>
           {room.devices.length !== 0 && (

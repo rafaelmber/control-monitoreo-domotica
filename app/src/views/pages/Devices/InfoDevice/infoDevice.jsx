@@ -60,6 +60,10 @@ const InfoDevice = ({ history }) => {
       type: 'DELETE_DEVICE_IN_ENVIRONMENTS',
       payload: id,
     });
+    dispatch({
+      type: 'DELETE_DEVICE_IN_ROOMS',
+      payload: { deviceId: id, roomId: room.id },
+    });
     // Eliminar Referencias a dispositivo en las habitaciones
     dispatch({
       type: 'DELETE_DEVICE',

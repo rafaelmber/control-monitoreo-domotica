@@ -37,14 +37,11 @@ if (process.env.NODE_ENV === 'development') {
   auth.useEmulator('http://localhost:9099');
 }
 
-export const getOnce = (name, dispatch) => {
+export const getOnce = async (name) => {
   //Se almacenan los dispositivos dentro del Store central de Redux
-  db.ref(`systems/system_1/${name}/`).once('value', (snapshot) => {
-    dispatch({
-      type: `GET_${name.toUpperCase()}`,
-      payload: snapshot.val(),
-    });
-  });
+  const databaseRef = db.ref(`systems/system_1/${name}/`);
+  const snapshot = await databaseRef.once('value');
+  return snapshot.val();
 };
 
 export const removeEnviroment = async (envId) => {

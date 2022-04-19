@@ -11,7 +11,6 @@ import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 
 // Se importan otros archivos dentro del proyecto para usarlos dentro de este
 
@@ -26,8 +25,8 @@ import reducer from './store/';
 
 //import SignUp from '@views/Signup/SignUp';
 
-const store = createStore(reducer); // Se inicializa el store de Redux
-const history = createBrowserHistory(); //Se usa el objeto que monitorea el historial dentro dela app
+// Se inicializa el store de Redux
+const store = createStore(reducer);
 
 const App = () => {
   return (

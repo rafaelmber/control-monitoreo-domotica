@@ -1,11 +1,13 @@
 //Dependencias
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route, Navigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 //Recursos dentro del proyecto que se necesitan
-import StyledMainApp from './MainApp.styles'; //Estilos de este componente
-import { getOnce } from '@/services/firebase'; //Conexión con la base de datos de Firebase
+//Estilos de este componente
+import StyledMainApp from './MainApp.styles';
+//Conexión con la base de datos de Firebase
+import { getOnce } from '@/services/firebase';
 
 // Pagínas dentro de la ventana principal
 import RoomPage from '@views/pages/Rooms';
@@ -14,16 +16,16 @@ import EnvironmentPage from '../pages/Environments';
 
 const MainApp = () => {
   const dispatch = useDispatch();
-  // const token = useSelector((state) => {
-  //   return state?.users?.token;
-  // });
 
-  useEffect(() => {
+  useEffect(async () => {
     //Tomar datos desde Firebase al iniciar el componente y almacenarlo en el Store
-
     const elements = ['devices', 'rooms', 'types', 'environments'];
     for (const category of elements) {
-      getOnce(category, dispatch);
+      const data = await getOnce(category);
+      dispatch({
+        type: `GET_${category.toUpperCase()}`,
+        payload: data,
+      });
     }
   }, [dispatch]);
   return (

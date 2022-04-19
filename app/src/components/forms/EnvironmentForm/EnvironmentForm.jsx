@@ -84,7 +84,7 @@ const EnvironmentForm = ({
       envDevices.forEach((device) => {
         devicesObject[device.id] = device.status;
       });
-      const envRef = db.ref('environments/' + envId);
+      const envRef = db.ref('systems/system_1/environments/' + envId);
       await envRef.set({
         name: name,
         devices: devicesObject,

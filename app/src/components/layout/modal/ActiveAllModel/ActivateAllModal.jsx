@@ -14,7 +14,7 @@ const ActivateAllModal = ({
   const dispatch = useDispatch();
   const handleSetAll = (devices, status) => {
     devices.forEach(async (device) => {
-      const deviceReference = db.ref(`devices/${device.id}/`);
+      const deviceReference = db.ref(`/systems/system_1/devices/${device.id}/`);
       await deviceReference.update({ status: status });
       dispatch({
         type: 'SET_DEVICES_STATUS',

@@ -37,14 +37,16 @@ const AddDevice = ({ history }) => {
       console.log('You must select a Type');
     } else {
       const deviceId = hashCreator('device', devices);
-      const deviceRef = db.ref('devices/' + deviceId);
+      const deviceRef = db.ref('systems/system_1/devices/' + deviceId);
       await deviceRef.set({
         name: name,
         type: type,
         room: room,
         status: false,
       });
-      const deviceRefAtRoom = db.ref('rooms/' + room + '/devices/');
+      const deviceRefAtRoom = db.ref(
+        'systems/system_1/rooms/' + room + '/devices/'
+      );
       await deviceRefAtRoom.update({
         [deviceId]: true,
       });

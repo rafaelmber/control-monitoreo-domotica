@@ -10,7 +10,7 @@ import GroupButton from '@components/buttons/GroupButton/GroupButton';
 
 const Group = ({ name, devices }) => {
   const handleItemClick = async (id, status) => {
-    const deviceStatus = db.ref(`devices/${id}/`);
+    const deviceStatus = db.ref(`/systems/system_1/devices/${id}/`);
     await deviceStatus.update({ status: !status });
   };
   let Icon;

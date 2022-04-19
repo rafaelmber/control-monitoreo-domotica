@@ -16,7 +16,7 @@ const Item = ({
 }) => {
   const dispatch = useDispatch();
   useEffect(async () => {
-    const deviceStatus = db.ref(`devices/${id}/status`);
+    const deviceStatus = db.ref(`/systems/system_1/devices/${id}/status`);
     await deviceStatus.on('value', (snapshot) => {
       if (snapshot.exists()) {
         dispatch({

@@ -23,7 +23,7 @@ const EnvironmentPage = ({ history }) => {
   //Pendiente: Una forma de difetenciar cuando el ambiente se encuentre activo
   const handleClick = async (id, devices) => {
     for (const device of devices) {
-      const deviceStatus = db.ref(`devices/${device.id}/`);
+      const deviceStatus = db.ref(`/systems/system_1/devices/${device.id}/`);
       await deviceStatus.update({ status: device.status });
       dispatch({
         type: 'GET_DEVICE_STATUS',

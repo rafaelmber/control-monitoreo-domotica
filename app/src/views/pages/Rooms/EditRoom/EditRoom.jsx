@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import TextField from '@components/forms/TextField/TextField';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import SaveIcon from '@assets/save.svg';
 import db from '@/services/firebase';
 
-const EditRoom = ({ history }) => {
+const EditRoom = () => {
+  const history = useHistory();
   const { id } = useParams();
   const dispatch = useDispatch();
 

@@ -12,7 +12,7 @@ import RoomPage from '@views/pages/Rooms';
 import DevicesPage from '../pages/Devices/';
 import EnvironmentPage from '../pages/Environments';
 
-const MainApp = ({ history }) => {
+const MainApp = () => {
   const dispatch = useDispatch();
   // const token = useSelector((state) => {
   //   return state?.users?.token;

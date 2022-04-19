@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import db, { removeDevice } from '@/services/firebase';
 
 import StyledInfoDevice from './InfoDevice.styles';
@@ -11,7 +11,8 @@ import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 
 import DeleteIcon from '@assets/delete.svg';
 
-const InfoDevice = ({ history }) => {
+const InfoDevice = () => {
+  const history = useHistory();
   const { id } = useParams();
   const dispatch = useDispatch();
 

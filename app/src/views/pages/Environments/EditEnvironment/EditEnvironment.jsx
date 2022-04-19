@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import EnvironmentForm from '@components/forms/EnvironmentForm/EnvironmentForm';
 
-const EditEnvironment = ({ history }) => {
+const EditEnvironment = () => {
+  const history = useHistory();
   const [envDevice, setEnvDevice] = useState({});
 
   const { id } = useParams();

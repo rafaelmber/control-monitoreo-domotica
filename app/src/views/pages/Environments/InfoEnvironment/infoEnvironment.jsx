@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { removeEnviroment } from '../../../../services/firebase';
 import StyledInfoEnvironment from './infoEnvironments.styles';
 
@@ -11,7 +11,8 @@ import EditIcon from '@assets/edit.svg';
 import DeleteIcon from '@assets/delete.svg';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 
-const InfoEnvironment = ({ history }) => {
+const InfoEnvironment = () => {
+  const history = useHistory();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { id } = useParams();

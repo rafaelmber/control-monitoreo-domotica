@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { auth } from '@/services/firebase';
 
 import StyledSignUp from './SignUp.styles';
@@ -11,7 +11,8 @@ import ContextButton from '@components/buttons/ContextButton/ContextButton';
 
 import CheckIcon from '@assets/check.svg';
 
-const SignUp = ({ history }) => {
+const SignUp = () => {
+  const history = useHistory();
   const [userData, setUserData] = useState({
     email: '',
     password: '',

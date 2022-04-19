@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { removeRoom } from '@/services/firebase';
@@ -14,7 +14,8 @@ import EditIcon from '@assets/edit.svg';
 import PlusIcon from '@assets/plus.svg';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 
-const InfoRoom = ({ history }) => {
+const InfoRoom = () => {
+  const history = useHistory();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { id } = useParams();

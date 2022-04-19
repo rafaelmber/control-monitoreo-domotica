@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import hashCreator from '@/utils/hashCreator';
 
 import StyledAddEnvironment from './AddEnvironment.styles';
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import EnvironmentForm from '@components/forms/EnvironmentForm/EnvironmentForm';
 
-const AddEnvironment = ({ history }) => {
+const AddEnvironment = () => {
+  const history = useHistory();
   const devicesList = useSelector((state) => {
     const devices = [...state.devices];
     devices.forEach((device) => {

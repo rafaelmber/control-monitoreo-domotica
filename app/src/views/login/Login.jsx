@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { auth } from '@/services/firebase';
 
 import StyledLogin from './Login.styles';
@@ -12,7 +12,8 @@ import NameHeader from '@components/layout/NameHeader/NameHeader';
 import EmailIcon from '@assets/email.svg';
 import GoogleIcon from '@assets/google.svg';
 
-const Login = ({ history }) => {
+const Login = () => {
+  const history = useHistory();
   const [userData, setUserdata] = useState({
     email: '',
     password: '',

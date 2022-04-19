@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import db from '@/services/firebase';
 
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
@@ -8,7 +9,8 @@ import SaveIcon from '@assets/save.svg';
 import TextField from '@components/forms/TextField/TextField';
 import hasCreator from '@/utils/hashCreator';
 
-const AddRoom = ({ history }) => {
+const AddRoom = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const rooms = useSelector((state) => {
     return state.rooms;

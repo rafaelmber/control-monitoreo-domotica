@@ -10,7 +10,7 @@ Se inicializa el store con Redux y se iniciaiza el ruteo usando React router
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 // Se importan otros archivos dentro del proyecto para usarlos dentro de este
@@ -33,22 +33,18 @@ const App = () => {
   return (
     <Provider store={store}>
       <GlobalStyle />
-      <Router history={history}>
+      <BrowserRouter>
         {/**
       <Route exact path='/signup' component={SignUp} />
        */}
         {
           // Carga el componente MainApp cuando se encuentre en la ruta /
         }
-        <Switch>
-          <Route exact path='/login'>
-            <Login />
-          </Route>
-          <Route path='/'>
-            <MainApp />
-          </Route>
-        </Switch>
-      </Router>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/*' element={<MainApp />} />
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 };

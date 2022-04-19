@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import db from '@/services/firebase';
 
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
@@ -10,7 +10,7 @@ import TextField from '@components/forms/TextField/TextField';
 import hasCreator from '@/utils/hashCreator';
 
 const AddRoom = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const rooms = useSelector((state) => {
     return state.rooms;
@@ -43,7 +43,7 @@ const AddRoom = () => {
           type: 'ADD_ROOM',
           payload: newRoom,
         });
-        history.push(`/rooms/info/${newRoom.id}`);
+        navigate(`/rooms/info/${newRoom.id}`);
         console.log('Done');
       } catch (error) {
         console.log(error);
@@ -52,7 +52,7 @@ const AddRoom = () => {
     console.log('Saved');
   };
   return (
-    <PageWrapper name='Rooms' history={history}>
+    <PageWrapper name='Rooms'>
       <form>
         <TextField
           value={name}

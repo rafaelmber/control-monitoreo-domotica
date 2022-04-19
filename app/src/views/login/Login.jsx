@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '@/services/firebase';
 
 import StyledLogin from './Login.styles';
@@ -13,7 +13,7 @@ import EmailIcon from '@assets/email.svg';
 import GoogleIcon from '@assets/google.svg';
 
 const Login = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [userData, setUserdata] = useState({
     email: '',
     password: '',
@@ -44,7 +44,7 @@ const Login = () => {
               type: 'SET_TOKEN',
               payload: token,
             });
-            history.push('/');
+            navigate('/');
           });
         })
         .catch((error) => {
@@ -58,7 +58,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      history.push('/');
+      navigate('/');
     }
   }, [dispatch]);
 

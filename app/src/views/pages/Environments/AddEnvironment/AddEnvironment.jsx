@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import hashCreator from '@/utils/hashCreator';
 
 import StyledAddEnvironment from './AddEnvironment.styles';
@@ -8,7 +7,6 @@ import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import EnvironmentForm from '@components/forms/EnvironmentForm/EnvironmentForm';
 
 const AddEnvironment = () => {
-  const history = useHistory();
   const devicesList = useSelector((state) => {
     const devices = [...state.devices];
     devices.forEach((device) => {
@@ -40,7 +38,7 @@ const AddEnvironment = () => {
 
   return (
     <StyledAddEnvironment>
-      <PageWrapper name='Environments' history={history}>
+      <PageWrapper name='Environments'>
         <EnvironmentForm
           initialName=''
           envId={id}
@@ -50,7 +48,6 @@ const AddEnvironment = () => {
           setAvailableDevices={setAvailableDevices}
           handleRemoveDevice={handleRemoveDevice}
           totalDevices={devicesList.length}
-          history={history}
         />
       </PageWrapper>
     </StyledAddEnvironment>

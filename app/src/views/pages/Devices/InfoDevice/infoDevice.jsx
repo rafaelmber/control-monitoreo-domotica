@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import db, { removeDevice } from '@/services/firebase';
 
 import StyledInfoDevice from './InfoDevice.styles';
@@ -12,7 +12,7 @@ import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 import DeleteIcon from '@assets/delete.svg';
 
 const InfoDevice = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -71,7 +71,7 @@ const InfoDevice = () => {
       payload: id,
     });
     setIsModalOpen(false);
-    history.push('/devices');
+    navigate('/devices');
     console.log('Device Deleted');
   };
 

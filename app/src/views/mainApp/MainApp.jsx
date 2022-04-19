@@ -1,7 +1,7 @@
 //Dependencias
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router';
 
 //Recursos dentro del proyecto que se necesitan
 import StyledMainApp from './MainApp.styles'; //Estilos de este componente
@@ -28,7 +28,7 @@ const MainApp = () => {
   }, [dispatch]);
   return (
     <StyledMainApp>
-      <Switch>
+      <Routes>
         {/*  Se definen las rutas de las diferentes pestañas que tiene la página principal
 
             Devices es donde se van a encontrar todos los dispositivos listados
@@ -42,19 +42,11 @@ const MainApp = () => {
 
             Cada ruta tiene su Componente asociado, estos componentes se encuentran dentro de la carpeta Pages
           */}
-        <Route path={'/devices'}>
-          <DevicesPage />
-        </Route>
-        <Route path={'/environments'}>
-          <EnvironmentPage />
-        </Route>
-        <Route path={'/rooms'}>
-          <RoomPage />
-        </Route>
-        <Route path={'/'}>
-          <Redirect to={'/rooms'} />
-        </Route>
-      </Switch>
+        <Route path={'devices/*'} element={<DevicesPage />} />
+        <Route path={'environments/*'} element={<EnvironmentPage />} />
+        <Route path={'rooms/*'} element={<RoomPage />} />
+        <Route path={'*'} element={<Navigate to={'rooms'} />} />
+      </Routes>
     </StyledMainApp>
   );
 };

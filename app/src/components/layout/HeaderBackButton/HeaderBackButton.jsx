@@ -2,6 +2,7 @@ import React from 'react';
 import StyledHeaderBackButton from './HeaderBackButton.styles';
 import Header from '../header/Header';
 import ArrowIcon from '@assets/arrow_back.svg';
+
 const HeaderBackButton = ({ text, options, handleClick }) => {
   return (
     <StyledHeaderBackButton>

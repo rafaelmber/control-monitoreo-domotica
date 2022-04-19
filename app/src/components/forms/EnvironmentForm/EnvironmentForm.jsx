@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import db from '@/services/firebase';
 
@@ -24,7 +24,7 @@ const EnvironmentForm = ({
   setAvailableDevices,
   setEnvDevices,
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [name, setName] = useState(initialName);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -94,7 +94,7 @@ const EnvironmentForm = ({
         type: 'ADD_ENVIRONMENT',
         payload: newEnviroment,
       });
-      history.push('/environments/info/' + envId);
+      navigate('/environments/info/' + envId);
     }
   };
 

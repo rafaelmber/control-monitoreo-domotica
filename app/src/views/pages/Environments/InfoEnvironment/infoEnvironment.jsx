@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { removeEnviroment } from '../../../../services/firebase';
 import StyledInfoEnvironment from './infoEnvironments.styles';
 
@@ -12,7 +12,7 @@ import DeleteIcon from '@assets/delete.svg';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 
 const InfoEnvironment = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -38,10 +38,10 @@ const InfoEnvironment = () => {
   });
 
   const handleDeviceClick = (id) => {
-    history.push(`/devices/info/${id}`);
+    navigate(`/devices/info/${id}`);
   };
   const handleEditButton = () => {
-    history.push(`/environments/edit/${id}`);
+    navigate(`/environments/edit/${id}`);
   };
   const handleDeleteModal = () => {
     setIsModalOpen(true);
@@ -57,12 +57,12 @@ const InfoEnvironment = () => {
     });
     console.log('Environment Deleted');
     setIsModalOpen(false);
-    history.push('/environments');
+    navigate('/environments');
   };
 
   return (
     <StyledInfoEnvironment>
-      <PageWrapper name='Environments' history={history}>
+      <PageWrapper name='Environments'>
         {environment !== undefined && <h3>{environment.name}</h3>}
         <div className='columns'>
           <span>Device</span>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import DevicesMain from './DevicesMain/DevicesMain';
 import InfoDevice from './InfoDevice/infoDevice';
@@ -8,20 +8,12 @@ import EditDevice from './EditDevice/EditDevice';
 
 const DevicesPage = () => {
   return (
-    <Switch>
-      <Route exact path={'/devices/add'}>
-        <AddDevice />
-      </Route>
-      <Route exact path={'/devices/info/:id'}>
-        <InfoDevice />
-      </Route>
-      <Route exact path={'/devices/edit/:id'}>
-        <EditDevice />
-      </Route>
-      <Route path={'/devices'}>
-        <DevicesMain />
-      </Route>
-    </Switch>
+    <Routes>
+      <Route path={'add'} element={<AddDevice />} />
+      <Route path={'info/:id'} element={<InfoDevice />} />
+      <Route path={'edit/:id'} element={<EditDevice />} />
+      <Route path={'/'} element={<DevicesMain />} />
+    </Routes>
   );
 };
 

@@ -1,7 +1,7 @@
 //Dependencias
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 //Recursos
 import StyledEnvironmentMain from './EnvironmentMain.styles';
 import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
@@ -14,7 +14,7 @@ import db from '@/services/firebase';
 const options = [{ id: 1, title: 'Add Enviroment', path: '/environments/add' }];
 
 const EnvironmentPage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const enviromentList = useSelector((state) => {
     return state.environments;
@@ -34,7 +34,7 @@ const EnvironmentPage = () => {
     }
   };
   const handleAddButton = () => {
-    history.push('/environments/add');
+    navigate('/environments/add');
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import hashCreator from '@/utils/hashCreator';
 import db from '@/services/firebase';
 
@@ -8,7 +8,7 @@ import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import DeviceForm from '@components/forms/DeviceForm/DeviceForm';
 
 const AddDevice = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [type, setType] = useState('');
@@ -67,7 +67,7 @@ const AddDevice = () => {
         },
       });
       console.log('New Device saved');
-      history.push(`/devices`);
+      navigate('/devices');
     }
   };
 

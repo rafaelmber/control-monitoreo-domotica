@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import TextField from '@components/forms/TextField/TextField';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
@@ -8,7 +8,7 @@ import SaveIcon from '@assets/save.svg';
 import db from '@/services/firebase';
 
 const EditRoom = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ const EditRoom = () => {
           payload: newRoom,
         });
         console.log('Saved');
-        history.push('/');
+        navigate('/');
       } catch (error) {
         console.log(error);
       }
@@ -45,7 +45,7 @@ const EditRoom = () => {
     setName(e.target.value);
   };
   return (
-    <PageWrapper name='Rooms' history={history}>
+    <PageWrapper name='Rooms'>
       <form>
         <TextField
           value={name}

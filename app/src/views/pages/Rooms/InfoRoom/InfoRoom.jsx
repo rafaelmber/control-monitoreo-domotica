@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { removeRoom } from '@/services/firebase';
@@ -15,7 +15,7 @@ import PlusIcon from '@assets/plus.svg';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 
 const InfoRoom = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { id } = useParams();
@@ -41,13 +41,13 @@ const InfoRoom = () => {
   });
 
   const handleDeviceClick = (deviceId) => {
-    history.push(`/devices/info/${deviceId}`);
+    navigate(`/devices/info/${deviceId}`);
   };
   const handleEdit = () => {
-    history.push(`/rooms/edit/${id}`);
+    navigate(`/rooms/edit/${id}`);
   };
   const handleAddButton = () => {
-    history.push('/devices/add');
+    navigate('/devices/add');
   };
   const handleDelete = async () => {
     //Loading
@@ -69,7 +69,7 @@ const InfoRoom = () => {
       type: 'DELETE_ROOM',
       payload: id,
     });
-    history.push('/rooms');
+    navigate('/rooms');
   };
   const handleModal = () => {
     setIsModalOpen(true);

@@ -72,10 +72,9 @@
         }
       },
       "types": {
-        "type_1": { "name": "Luminarias" },
-        "type_2": { "name": "Tomacorrientes" }
+        "type_1": { "name": "Tomacorrientes" },
+        "type_2": { "name": "Luminarias" }
       }
     }
-  },
-  "users": {}
+  }
 }

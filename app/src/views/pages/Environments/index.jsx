@@ -10,18 +10,18 @@ const EnvironmentPage = () => {
   const { path } = useRouteMatch();
   return (
     <Switch>
-      <Route exact path={'/environments/add'} component={AddEnvironment} />
-      <Route
-        exact
-        path={'/environments/edit/:id'}
-        component={EditEnvironment}
-      />
-      <Route
-        exact
-        path={'/environments/info/:id'}
-        component={InfoEnvironment}
-      />
-      <Route path={'/environments'} component={EnvironmentMain} />
+      <Route exact path={'/environments/add'}>
+        <AddEnvironment />
+      </Route>
+      <Route exact path={'/environments/edit/:id'}>
+        <EditEnvironment />
+      </Route>
+      <Route exact path={'/environments/info/:id'}>
+        <InfoEnvironment />
+      </Route>
+      <Route path={'/environments'}>
+        <EnvironmentMain />
+      </Route>
     </Switch>
   );
 };

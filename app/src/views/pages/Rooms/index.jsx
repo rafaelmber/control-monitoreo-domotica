@@ -9,10 +9,18 @@ const RoomPage = () => {
   let { path } = useRouteMatch();
   return (
     <Switch>
-      <Route exact path={`/rooms/add`} component={AddRoom} />
-      <Route exact path={`${path}/info/:id`} component={InfoRoom} />
-      <Route exact path={`${path}/edit/:id`} component={EditRoom} />
-      <Route path={`/rooms`} component={RoomMain} />
+      <Route exact path={`/rooms/add`}>
+        <AddRoom />
+      </Route>
+      <Route exact path={`${path}/info/:id`}>
+        <InfoRoom />
+      </Route>
+      <Route exact path={`${path}/edit/:id`}>
+        <EditRoom />
+      </Route>
+      <Route path={`/rooms`}>
+        <RoomMain />
+      </Route>
     </Switch>
   );
 };

@@ -14,11 +14,17 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 // Se importan otros archivos dentro del proyecto para usarlos dentro de este
-import GlobalStyle from './globalStyle'; //Contiene los estilos globales de la aplicación
-import MainApp from '@views/mainApp/MainApp'; //Contiene la pantalla principal
+
+//Contiene los estilos globales de la aplicación
+import GlobalStyle from './globalStyle';
+//Contiene la pantalla principal
+import MainApp from '@views/mainApp/MainApp';
+//Contiene la pantalla de Login
 import Login from '@views/login/Login';
-import SignUp from '@views/Signup/SignUp';
-import reducer from './store/'; //Es donde se define el store de Redux
+//Es donde se define el store de Redux
+import reducer from './store/';
+
+//import SignUp from '@views/Signup/SignUp';
 
 const store = createStore(reducer); // Se inicializa el store de Redux
 const history = createBrowserHistory(); //Se usa el objeto que monitorea el historial dentro dela app
@@ -28,15 +34,19 @@ const App = () => {
     <Provider store={store}>
       <GlobalStyle />
       <Router history={history}>
+        {/**
+      <Route exact path='/signup' component={SignUp} />
+       */}
+        {
+          // Carga el componente MainApp cuando se encuentre en la ruta /
+        }
         <Switch>
-          {/**
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/signup' component={SignUp} />
-           */}
-          {
-            // Carga el componente MainApp cuando se encuentre en la ruta /
-          }
-          <Route path='/' component={MainApp} />
+          <Route exact path='/login'>
+            <Login />
+          </Route>
+          <Route path='/'>
+            <MainApp />
+          </Route>
         </Switch>
       </Router>
     </Provider>

@@ -7,11 +7,12 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 //Estilos de este componente
 import StyledMainApp from './MainApp.styles';
 //Conexión con la base de datos de Firebase
-import { getAllDataOnce, getOnce } from '@/services/firebase';
+import { getAllDataOnce } from '@/services/firebase';
 
 import { setDevices } from '@/store/devices/devices.actions';
 import { setRooms } from '@/store/rooms/rooms.actions';
-
+import { setTypes } from '@/store/types/types.actions';
+import { setEnvironments } from '@/store/environments/environments.actions';
 // Pagínas dentro de la ventana principal
 import RoomPage from '@views/pages/Rooms';
 import DevicesPage from '../pages/Devices/';
@@ -26,17 +27,9 @@ const MainApp = () => {
     const systemData = await getAllDataOnce('system_1');
 
     dispatch(setDevices(systemData.devices));
-
     dispatch(setRooms(systemData.rooms));
-
-    const elements = ['types', 'environments'];
-    for (const category of elements) {
-      const data = await getOnce(category);
-      dispatch({
-        type: `GET_${category.toUpperCase()}`,
-        payload: data,
-      });
-    }
+    dispatch(setTypes(systemData.types));
+    dispatch(setEnvironments(systemData.enviroments));
   }, [dispatch]);
   return (
     <StyledMainApp>

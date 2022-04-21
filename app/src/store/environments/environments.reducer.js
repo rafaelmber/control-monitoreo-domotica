@@ -3,7 +3,7 @@ const initialState = [];
 
 const environments = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_ENVIRONMENTS': {
+    case 'SET_ENVIRONMENTS': {
       if (state !== json2array(action.payload)) {
         let newState = { ...action.payload };
 

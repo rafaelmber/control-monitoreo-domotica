@@ -6,6 +6,8 @@ import db from '@/services/firebase';
 
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import DeviceForm from '@components/forms/DeviceForm/DeviceForm';
+import { addDeviceInRoom } from '@/store/rooms/rooms.actions';
+import { addDevice } from '@/store/devices/devices.actions';
 
 const AddDevice = () => {
   const navigate = useNavigate();
@@ -52,20 +54,16 @@ const AddDevice = () => {
       await deviceRefAtRoom.update({
         [deviceId]: true,
       });
-      dispatch({
-        type: 'ADD_DEVICE_IN_ROOM',
-        payload: { roomId: room, device: deviceId },
-      });
-      dispatch({
-        type: 'ADD_DEVICE',
-        payload: {
+      dispatch(addDeviceInRoom(room, deviceId));
+      dispatch(
+        addDevice({
           id: deviceId,
           name: name,
           type: type,
           room: room,
           status: false,
-        },
-      });
+        })
+      );
       console.log('New Device saved');
       navigate('/devices');
     }

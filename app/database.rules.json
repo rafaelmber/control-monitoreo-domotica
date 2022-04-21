@@ -44,7 +44,8 @@
           ".write": true
         },
         "$other": { ".validate": false }
-      }
+      },
+      ".read": true
     },
     "$other": { ".validate": false }
   }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { addRoom } from '@/store/rooms/rooms.actions';
 import db from '@/services/firebase';
 
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
@@ -39,10 +40,7 @@ const AddRoom = () => {
           devices: newRoom.devices,
         });
 
-        dispatch({
-          type: 'ADD_ROOM',
-          payload: newRoom,
-        });
+        dispatch(addRoom(newRoom));
         navigate(`/rooms/info/${newRoom.id}`);
         console.log('Done');
       } catch (error) {

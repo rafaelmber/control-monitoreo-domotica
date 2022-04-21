@@ -1,3 +1,3 @@
-const rootReducer = (state = [], actions) => {};
+const rootReducer = (state = [], action) => {};
 
 export default rootReducer;

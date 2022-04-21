@@ -7,7 +7,10 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 //Estilos de este componente
 import StyledMainApp from './MainApp.styles';
 //Conexión con la base de datos de Firebase
-import { getOnce } from '@/services/firebase';
+import { getAllDataOnce, getOnce } from '@/services/firebase';
+
+import { setDevices } from '@/store/devices/devices.actions';
+import { setRooms } from '@/store/rooms/rooms.actions';
 
 // Pagínas dentro de la ventana principal
 import RoomPage from '@views/pages/Rooms';
@@ -19,7 +22,14 @@ const MainApp = () => {
 
   useEffect(async () => {
     //Tomar datos desde Firebase al iniciar el componente y almacenarlo en el Store
-    const elements = ['devices', 'rooms', 'types', 'environments'];
+
+    const systemData = await getAllDataOnce('system_1');
+
+    dispatch(setDevices(systemData.devices));
+
+    dispatch(setRooms(systemData.rooms));
+
+    const elements = ['types', 'environments'];
     for (const category of elements) {
       const data = await getOnce(category);
       dispatch({

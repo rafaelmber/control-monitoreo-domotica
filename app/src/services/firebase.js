@@ -44,6 +44,12 @@ export const getOnce = async (name) => {
   return snapshot.val();
 };
 
+export const getAllDataOnce = async (system) => {
+  const systemRef = db.ref(`systems/${system}`);
+  const snapshot = await systemRef.once('value');
+  return snapshot.val();
+};
+
 export const removeEnviroment = async (envId) => {
   const environmentRef = db.ref('systems/system_1/environments/' + envId);
   await environmentRef.remove();

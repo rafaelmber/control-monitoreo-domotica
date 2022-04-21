@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import StyledItem from './Item.styles';
 import db from '@/services/firebase';
+import { setDeviceStatus } from '@/store/devices/devices.actions';
 import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
 
 const Item = ({
@@ -19,10 +20,7 @@ const Item = ({
     const deviceStatus = db.ref(`/systems/system_1/devices/${id}/status`);
     await deviceStatus.on('value', (snapshot) => {
       if (snapshot.exists()) {
-        dispatch({
-          type: 'GET_DEVICE_STATUS',
-          payload: { id, status: snapshot.val() },
-        });
+        dispatch(setDeviceStatus(id, snapshot.val()));
       }
     });
   }, [dispatch]);

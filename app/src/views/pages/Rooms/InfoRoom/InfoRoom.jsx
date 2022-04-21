@@ -13,6 +13,7 @@ import DeleteIcon from '@assets/delete.svg';
 import EditIcon from '@assets/edit.svg';
 import PlusIcon from '@assets/plus.svg';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
+import { deleteDeviceInRoom } from '../../../../store/rooms/rooms.actions';
 
 const InfoRoom = () => {
   const navigate = useNavigate();
@@ -57,18 +58,9 @@ const InfoRoom = () => {
         type: 'DELETE_DEVICE_IN_ENVIRONMENTS',
         payload: device,
       });
-      dispatch({
-        type: 'DELETE_DEVICE_IN_ROOMS',
-        payload: {
-          roomId: id,
-          deviceId: device,
-        },
-      });
+      dispatch(deleteDeviceInRoom(id, device));
     }
-    dispatch({
-      type: 'DELETE_ROOM',
-      payload: id,
-    });
+    dispatch(deleteRoom(id));
     navigate('/rooms');
   };
   const handleModal = () => {

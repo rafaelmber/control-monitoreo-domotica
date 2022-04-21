@@ -6,6 +6,7 @@ import TextField from '@components/forms/TextField/TextField';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import SaveIcon from '@assets/save.svg';
 import db from '@/services/firebase';
+import { editRoom } from '@/store/rooms/rooms.actions';
 
 const EditRoom = () => {
   const navigate = useNavigate();
@@ -29,10 +30,7 @@ const EditRoom = () => {
         const ref = db.ref('systems/system_1/rooms/' + id);
         await ref.update({ name: name });
         const newRoom = { ...room, name: name };
-        dispatch({
-          type: 'EDIT_ROOM',
-          payload: newRoom,
-        });
+        dispatch(editRoom(newRoom));
         console.log('Saved');
         navigate('/');
       } catch (error) {

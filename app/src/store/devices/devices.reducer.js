@@ -1,13 +1,14 @@
 import json2array from '@/utils/json2array';
+
 const initialState = [];
 
 const devices = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_DEVICES': {
+    case 'SET_DEVICES': {
       let newState = json2array(action.payload);
       return newState;
     }
-    case 'GET_DEVICE_STATUS': {
+    case 'SET_DEVICE_STATUS': {
       const newState = [];
       for (let device of state) {
         if (device.id === action.payload.id) {
@@ -17,31 +18,32 @@ const devices = (state = initialState, action) => {
       }
       return newState;
     }
-    case 'SET_DEVICE_STATUS': {
-      const newState = [...state];
-      newState.forEach((device) => {
-        if (device.id === action.payload) {
-          console.log('is this working?');
-          const newDevice = { ...device, status: !device.status };
-          return newDevice;
-        }
-        return device;
-      });
-      return newState;
-    }
-    case 'ADD_DEVICE': {
-      const newDevice = action.payload;
-      const newState = [...state, newDevice];
-      return newState;
-    }
-    case 'DELETE_DEVICE': {
-      const newDevices = state.filter((device) => {
-        return device.id !== action.payload;
-      });
-      return newDevices;
-    }
     default:
       return state;
   }
 };
 export default devices;
+
+// case 'TOGGLE_DEVICE_STATUS': {
+//   const newState = [...state];
+//   newState.forEach((device) => {
+//     if (device.id === action.payload) {
+//       console.log('is this working?');
+//       const newDevice = { ...device, status: !device.status };
+//       return newDevice;
+//     }
+//     return device;
+//   });
+//   return newState;
+// }
+// case 'ADD_DEVICE': {
+//   const newDevice = action.payload;
+//   const newState = [...state, newDevice];
+//   return newState;
+// }
+// case 'DELETE_DEVICE': {
+//   const newDevices = state.filter((device) => {
+//     return device.id !== action.payload;
+//   });
+//   return newDevices;
+// }

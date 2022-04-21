@@ -10,6 +10,7 @@ import Card from '@components/cards/Card';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import PlusIcon from '@assets/plus.svg';
 import db from '@/services/firebase';
+import { setDeviceStatus } from '../../../../store/devices/devices.actions';
 
 const options = [{ id: 1, title: 'Add Enviroment', path: '/environments/add' }];
 
@@ -27,10 +28,7 @@ const EnvironmentPage = () => {
     for (const device of devices) {
       const deviceStatus = db.ref(`/systems/system_1/devices/${device.id}/`);
       await deviceStatus.update({ status: device.status });
-      dispatch({
-        type: 'GET_DEVICE_STATUS',
-        payload: { id: device.id, status: device.status },
-      });
+      dispatch(setDeviceStatus(device.id, device.status));
     }
   };
   const handleAddButton = () => {

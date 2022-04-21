@@ -10,6 +10,7 @@ import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 
 import DeleteIcon from '@assets/delete.svg';
+import { deleteDeviceInRoom } from '@/store/rooms/rooms.actions';
 
 const InfoDevice = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const InfoDevice = () => {
     const deviceRef = db.ref('devices/' + id);
     await deviceRef.update({ status: !device.status });
     dispatch({
-      type: 'SET_DEVICE_STATUS',
+      type: 'TO_DEVICE_STATUS',
       payload: id,
     });
     setButtonStatus(!device.status);
@@ -61,10 +62,7 @@ const InfoDevice = () => {
       type: 'DELETE_DEVICE_IN_ENVIRONMENTS',
       payload: id,
     });
-    dispatch({
-      type: 'DELETE_DEVICE_IN_ROOMS',
-      payload: { deviceId: id, roomId: room.id },
-    });
+    dispatch(deleteDeviceInRoom(room.id, id));
     // Eliminar Referencias a dispositivo en las habitaciones
     dispatch({
       type: 'DELETE_DEVICE',

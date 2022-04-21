@@ -2,7 +2,7 @@ import json2array from '@/utils/json2array';
 
 const rooms = (state = [], action) => {
   switch (action.type) {
-    case 'GET_ROOMS': {
+    case 'SET_ROOMS': {
       const roomsJSON = action.payload;
       for (const room in roomsJSON) {
         const devices = json2array(roomsJSON[room].devices);
@@ -45,7 +45,7 @@ const rooms = (state = [], action) => {
       }
       return newState;
     }
-    case 'DELETE_DEVICE_IN_ROOMS': {
+    case 'DELETE_DEVICE_IN_ROOM': {
       const roomId = action.payload.roomId;
       const deviceId = action.payload.deviceId;
       const newState = [...state];

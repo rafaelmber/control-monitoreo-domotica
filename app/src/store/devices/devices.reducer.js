@@ -18,32 +18,38 @@ const devices = (state = initialState, action) => {
       }
       return newState;
     }
+    case 'TOGGLE_DEVICE_STATUS': {
+      const newState = state.map((device) => {
+        if (device.id === action.payload) {
+          device.status = !device.status;
+        }
+        return device;
+      });
+      return newState;
+    }
+    case 'ADD_DEVICE': {
+      const newDevice = action.payload;
+      const newState = [...state, newDevice];
+      return newState;
+    }
+    case 'EDIT_DEVICE': {
+      const editedDevice = action.payload;
+      const newState = state.map((device) => {
+        if (device.id === editedDevice) {
+          device = editedDevice;
+        }
+        return device;
+      });
+      return newState;
+    }
+    case 'DELETE_DEVICE': {
+      const newDevices = state.filter((device) => {
+        return device.id !== action.payload;
+      });
+      return newDevices;
+    }
     default:
       return state;
   }
 };
 export default devices;
-
-// case 'TOGGLE_DEVICE_STATUS': {
-//   const newState = [...state];
-//   newState.forEach((device) => {
-//     if (device.id === action.payload) {
-//       console.log('is this working?');
-//       const newDevice = { ...device, status: !device.status };
-//       return newDevice;
-//     }
-//     return device;
-//   });
-//   return newState;
-// }
-// case 'ADD_DEVICE': {
-//   const newDevice = action.payload;
-//   const newState = [...state, newDevice];
-//   return newState;
-// }
-// case 'DELETE_DEVICE': {
-//   const newDevices = state.filter((device) => {
-//     return device.id !== action.payload;
-//   });
-//   return newDevices;
-// }

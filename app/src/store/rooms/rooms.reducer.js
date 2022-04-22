@@ -15,21 +15,23 @@ const rooms = (state = [], action) => {
       const newRoom = action.payload;
       return [...state, newRoom];
     }
+    case 'EDIT_ROOM': {
+      const editedRoom = action.payload;
+      const newState = state.map((room) => {
+        if (room.id === editedRoom.id) {
+          room = editedRoom;
+        }
+        return room;
+      });
+      return newState;
+    }
     case 'DELETE_ROOM': {
       const newState = state.filter((room) => {
         return room.id !== action.payload;
       });
       return newState;
     }
-    case 'EDIT_ROOM': {
-      const editedRoom = action.payload;
-      const newState = [...state];
-      const roomIndex = newState.findIndex((room) => {
-        return room.id === editedRoom.id;
-      });
-      newState[roomIndex] = editedRoom;
-      return newState;
-    }
+
     case 'ADD_DEVICE_IN_ROOM': {
       const roomId = action.payload.roomId;
       const newDevice = action.payload.device;

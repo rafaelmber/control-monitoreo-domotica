@@ -26,16 +26,16 @@ export const addDevice = (device) => {
   };
 };
 
-export const deleteDevice = (deviceId) => {
-  return {
-    type: 'DELET_DEVICE',
-    payload: deviceId,
-  };
-};
-
 export const editDevice = (device) => {
   return {
     type: 'EDIT_DEVICE',
     payload: device,
+  };
+};
+
+export const deleteDevice = (deviceId) => {
+  return {
+    type: 'DELET_DEVICE',
+    payload: deviceId,
   };
 };

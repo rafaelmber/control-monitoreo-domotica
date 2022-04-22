@@ -4,3 +4,24 @@ export const setEnvironments = (environment) => {
     payload: environment,
   };
 };
+
+export const addEnvironment = (environment) => {
+  return {
+    type: 'ADD_ENVIRONMENT',
+    payload: environment,
+  };
+};
+
+export const editEnvironment = (editedEnvironment) => {
+  return {
+    type: 'EDIT_ENVIRONMENT',
+    payload: editedEnvironment,
+  };
+};
+
+export const deleteEnvironment = (environmentId) => {
+  return {
+    type: 'DELETE_ENVIRONMENT',
+    payload: environmentId,
+  };
+};

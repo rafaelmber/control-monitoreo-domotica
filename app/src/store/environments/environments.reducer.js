@@ -31,11 +31,12 @@ const environments = (state = initialState, action) => {
     }
     case 'EDIT_ENVIRONMENT': {
       const editedEnvironment = action.payload;
-      let newState = [...state];
-      const environmentIndex = newState.findIndex((env) => {
-        return env.id === editedEnvironment.id;
+      let newState = state.map((environment) => {
+        if (environment.id === editedEnvironment.id) {
+          environment = editedEnvironment;
+        }
+        return environment;
       });
-      newState[environmentIndex] = editedEnvironment;
       return newState;
     }
     case 'DELETE_ENVIRONMENT': {
@@ -44,6 +45,7 @@ const environments = (state = initialState, action) => {
       });
       return newState;
     }
+
     case 'DELETE_DEVICE_IN_ENVIRONMENTS': {
       const newState = [...state];
       newState.forEach((environment) => {

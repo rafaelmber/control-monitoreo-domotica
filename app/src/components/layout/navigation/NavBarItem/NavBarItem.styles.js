@@ -7,6 +7,9 @@ const StyledNavBarItem = styled.button`
   height: 100%;
   width: 100%;
   padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
   .link {
     height: 100%;
     width: 100%;
@@ -17,9 +20,6 @@ const StyledNavBarItem = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  &:hover {
-    cursor: pointer;
   }
   .container {
     background-color: transparent;

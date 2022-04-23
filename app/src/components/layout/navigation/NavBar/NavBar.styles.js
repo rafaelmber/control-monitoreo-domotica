@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledNavBar = styled.div`
+const StyledNavBar = styled.nav`
   display: flex;
   flex-direction: row;
   background-color: var(--lightest-neutral);
@@ -12,3 +12,5 @@ export const StyledNavBar = styled.div`
     box-shadow: rgba(0, 0, 0, 0.2) 2px 2px;
   }
 `;
+
+export default StyledNavBar;

@@ -30,7 +30,6 @@ const Card = ({ id, name, handleClick, devicesList, devices }) => {
       setIsActive(false);
     }
   };
-  const handleCardClick = () => {};
 
   return (
     <ContentWrapper>

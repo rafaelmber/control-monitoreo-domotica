@@ -1,6 +1,6 @@
 export const setEnvironments = (environment) => {
   return {
-    type: 'SET_ENVIRONMENT',
+    type: 'SET_ENVIRONMENTS',
     payload: environment,
   };
 };

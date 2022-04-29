@@ -37,45 +37,25 @@ if (process.env.NODE_ENV === 'development') {
   auth.useEmulator('http://localhost:9099');
 }
 
-export const getOnce = async (name) => {
-  //Se almacenan los dispositivos dentro del Store central de Redux
-  const databaseRef = db.ref(`systems/system_1/${name}/`);
-  const snapshot = await databaseRef.once('value');
-  return snapshot.val();
-};
-
 export const getAllDataOnce = async (system) => {
   const systemRef = db.ref(`systems/${system}`);
   const snapshot = await systemRef.once('value');
   return snapshot.val();
 };
 
+//No está funcionando
+export const onStatusListener = (deviceId) => {
+  const statusRef = db.ref(`/systems/system_1/devices/${deviceId}/status`);
+  const result = statusRef.on('value', (snapshot) => {
+    return snapshot;
+  });
+  return result;
+};
+
 export const removeEnviroment = async (envId) => {
   const environmentRef = db.ref('systems/system_1/environments/' + envId);
   await environmentRef.remove();
 };
-
-// export const removeDevice = async (id) => {
-//   return db
-//     .ref('system/system_1/environments/')
-//     .once('value', (snapshot) => {
-//       snapshot.forEach((envChild) => {
-//         envChild
-//           .child('devices')
-//           .child(id)
-//           .ref.remove(() => {
-//             console.log(`${id} was Deleted from ${envChild.key}`);
-//           });
-//       });
-//     }).then(()=>{
-//       db.ref('systems/system_1/rooms').once
-//     })
-//     .then(() => {
-//       db.ref('system/system_1/devices/' + id).remove(() => {
-//         console.log(id, 'was removed');
-//       });
-//     });
-// };
 
 export const removeDevice = async (deviceId) => {
   await removeDeviceFromEnvs(deviceId);

@@ -15,9 +15,9 @@ import { setTypes } from '@/store/types/types.actions';
 import { setEnvironments } from '@/store/environments/environments.actions';
 
 // Pagínas dentro de la ventana principal
-import RoomPage from '@views/pages/Rooms';
-import DevicesPage from '../pages/Devices/';
-import EnvironmentPage from '../pages/Environments';
+import RoomPage from '@views/Rooms';
+import DevicesPage from '@views/Devices/';
+import EnvironmentPage from '@views/Environments';
 
 const MainApp = () => {
   const dispatch = useDispatch();
@@ -25,11 +25,11 @@ const MainApp = () => {
   useEffect(async () => {
     //Tomar datos desde Firebase al iniciar el componente y almacenarlo en el Store
     const systemData = await getAllDataOnce('system_1');
-
+    //Solucionar cuando retorne null
     dispatch(setDevices(systemData.devices));
     dispatch(setRooms(systemData.rooms));
     dispatch(setTypes(systemData.types));
-    dispatch(setEnvironments(systemData.enviroments));
+    dispatch(setEnvironments(systemData.environments));
   }, [dispatch]);
   return (
     <StyledMainApp>

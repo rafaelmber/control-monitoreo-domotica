@@ -13,7 +13,7 @@ import DeleteIcon from '@assets/delete.svg';
 import EditIcon from '@assets/edit.svg';
 import PlusIcon from '@assets/plus.svg';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
-import { deleteDeviceInRoom } from '../../../../store/rooms/rooms.actions';
+import { deleteDeviceInRoom } from '@/store/rooms/rooms.actions';
 
 const InfoRoom = () => {
   const navigate = useNavigate();

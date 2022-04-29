@@ -10,7 +10,7 @@ import Card from '@components/cards/Card';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import PlusIcon from '@assets/plus.svg';
 import db from '@/services/firebase';
-import { setDeviceStatus } from '../../../../store/devices/devices.actions';
+import { setDeviceStatus } from '@/store/devices/devices.actions';
 
 const options = [{ id: 1, title: 'Add Enviroment', path: '/environments/add' }];
 
@@ -47,7 +47,7 @@ const EnvironmentPage = () => {
           */}
           {enviromentList.length === 0 && (
             <div className='message'>
-              <h5 className='message-text'>You don't have any Enviroment</h5>
+              <h5 className='message-text'>You don't have any Environment</h5>
               <ContextButton
                 text='Add a new Environment'
                 textColor='var(--lightest-neutral)'

@@ -6,6 +6,9 @@ import db from '@/services/firebase';
 import { setDeviceStatus } from '@/store/devices/devices.actions';
 import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
 
+//import OutletIcon from '@assets/outlet.svg';
+//import BulbIcon from '@assets/bulb.svg';
+
 const Item = ({
   Icon,
   id,
@@ -16,9 +19,9 @@ const Item = ({
   handleClick,
 }) => {
   const dispatch = useDispatch();
-  useEffect(async () => {
+  useEffect(() => {
     const deviceStatus = db.ref(`/systems/system_1/devices/${id}/status`);
-    await deviceStatus.on('value', (snapshot) => {
+    deviceStatus.on('value', (snapshot) => {
       if (snapshot.exists()) {
         dispatch(setDeviceStatus(id, snapshot.val()));
       }

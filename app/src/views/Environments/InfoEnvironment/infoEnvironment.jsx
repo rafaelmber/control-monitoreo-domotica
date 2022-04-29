@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { removeEnviroment } from '../../../../services/firebase';
+import { removeEnviroment } from '@/services/firebase';
 import StyledInfoEnvironment from './infoEnvironments.styles';
 
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';

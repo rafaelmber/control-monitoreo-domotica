@@ -17,7 +17,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //Contiene los estilos globales de la aplicación
 import GlobalStyle from './globalStyle';
 //Contiene la pantalla principal
-import MainApp from '@views/mainApp/MainApp';
+import MainApp from '@views/MainApp/MainApp';
 //Contiene la pantalla de Login
 import Login from '@views/login/Login';
 //Es donde se define el store de Redux

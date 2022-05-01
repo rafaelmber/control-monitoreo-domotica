@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StyledMainWrapper from './MainWrapper.styles';
 
-import Wrapper from '../Wrapper';
 import NavBar from '@components/layout/navigation/NavBar/Navbar';
 import MainHeader from '@components/layout/MainHeader/MainHeader';
 
-const MainWrapper = ({ title, children }) => {
+import OptionsModal from '@components/layout/modal/OptionsModal/OptionsModal';
+
+const MainWrapper = ({ title, children, optionsList }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleOptionsModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <StyledMainWrapper>
-      {/* <div className='content-app'>
-        <Wrapper>{children}</Wrapper>
-      </div> */}
-      <MainHeader title={title} className='header' />
+      <MainHeader
+        title={title}
+        className='header'
+        onOptionsClick={handleOptionsModal}
+      />
       <div className='content'>{children}</div>
       <NavBar className='nav' />
+      <OptionsModal
+        isOpen={isModalOpen}
+        closeModal={handleCloseModal}
+        options={optionsList}
+      />
     </StyledMainWrapper>
   );
 };

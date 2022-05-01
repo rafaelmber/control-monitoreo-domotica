@@ -11,7 +11,7 @@ const AddDeviceToEnv = ({ isOpen, closeModal, devices, handleClickDevice }) => {
     <StyledAddDeviceToEnv>
       <Modal isOpen={isOpen}>
         <div className='exit-button'>
-          <CloseIcon className='icon' onClick={closeModal} />
+          <CloseIcon className='exit-icon' onClick={closeModal} />
         </div>
         <div className='content-list'>
           {devices.map((device) => {

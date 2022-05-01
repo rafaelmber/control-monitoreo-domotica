@@ -10,7 +10,7 @@ const DeleteModal = ({ isOpen, closeModal, handleDelete, message }) => {
     <StyledDeleteModal>
       <Modal isOpen={isOpen}>
         <div className='exit-button' onClick={closeModal}>
-          <CloseIcon className='icon' />
+          <CloseIcon className='exit-icon' />
         </div>
         <p>{message}</p>
         <div className='buttons'>

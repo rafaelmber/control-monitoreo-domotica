@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const StyledMainHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
   background-color: var(--primary);
   color: var(--lightest-neutral);
-  display: flex;
   padding: 5px 10px;
 
-  justify-content: space-between;
   .button {
     border: none;
     padding: 0;

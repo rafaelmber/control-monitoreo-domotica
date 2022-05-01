@@ -1,6 +1,5 @@
 import React from 'react';
 import StyledModal from './Modal.styles';
-import Wrapper from '@components/layout/wrapper/Wrapper';
 import { createPortal } from 'react-dom';
 
 const Modal = ({ children, isOpen }) => {

@@ -16,6 +16,7 @@ const StyledModal = styled.div`
 
   .content {
     max-height: 90vh;
+    width: 70vw;
     background-color: var(--lightest-neutral);
     margin: 15px;
     border: 1px solid var(--light-neutral);
@@ -31,26 +32,19 @@ const StyledModal = styled.div`
     overflow-y: scroll;
   }
   .exit-button {
+    border: none;
     text-align: right;
-    color: var(--neutral);
+    background-color: transparent;
     cursor: pointer;
-    & .icon {
-      fill: var(--red);
-      transform: scale(1.2);
-    }
+  }
+  .exit-icon {
+    fill: var(--red);
+    transform: scale(1.2);
   }
   .buttons {
     display: flex;
     justify-content: space-around;
     gap: 20px;
-  }
-  .turn-on {
-    color: var(--lightest-neutral);
-    background-color: var(--green);
-  }
-  .turn-off {
-    color: var(--lightest-neutral);
-    background-color: var(--dark-red);
   }
 `;
 

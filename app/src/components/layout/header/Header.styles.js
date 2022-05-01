@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
   background-color: var(--primary);
   color: var(--lightest-neutral);
   padding: 5px 15px;

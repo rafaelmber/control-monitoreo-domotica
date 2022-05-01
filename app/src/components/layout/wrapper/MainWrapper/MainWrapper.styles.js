@@ -5,13 +5,20 @@ const StyledMainWrapper = styled.div`
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 4rem;
-  grid-template-areas: 'content-app' 'navbar';
+  grid-template-rows: 4rem 1fr 4rem;
+  grid-template-areas: 'header' 'content' 'navbar';
+  overflow: hidden;
 
-  .content-app {
-    grid-area: content-app;
+  .header {
+    grid-area: header;
+  }
+
+  .content {
+    box-sizing: border-box;
+    grid-area: content;
     height: 100%;
-    overflow: hidden;
+    overflow: scroll;
+    padding: 15px;
   }
   .nav {
     grid-area: navbar;

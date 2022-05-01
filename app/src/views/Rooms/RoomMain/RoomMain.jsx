@@ -24,24 +24,17 @@ const RoomMain = () => {
   });
 
   return (
-    <StyledRoomMain>
-      <MainWrapper>
-        <Header className='header' text='Home' options={options} />
-        {
-          <div className='content'>
-            {/*
-          Por cada habitación se genera una tarjeta en la que se van a mostrar
-          los dispotivos de dicha habitación
-          */}
-            {rooms.length === 0 && <p>No hay Habitaciones</p>}
-            {rooms.length > 0 &&
-              rooms.map((room) => {
-                return <DevicesCard key={room.id} {...room} />;
-              })}
-          </div>
-        }
-      </MainWrapper>
-    </StyledRoomMain>
+    <MainWrapper title='Room'>
+      {/*
+        Por cada habitación se genera una tarjeta en la que se van a mostrar
+        los dispotivos de dicha habitación
+      */}
+      {rooms.length === 0 && <p>No hay Habitaciones</p>}
+      {rooms.length > 0 &&
+        rooms.map((room) => {
+          return <DevicesCard key={room.id} {...room} />;
+        })}
+    </MainWrapper>
   );
 };
 

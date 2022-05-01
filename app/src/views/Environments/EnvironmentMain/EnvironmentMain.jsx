@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 //Recursos
-import StyledEnvironmentMain from './EnvironmentMain.styles';
 import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
-import Header from '@components/layout/header/Header';
 import Card from '@components/cards/Card';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import PlusIcon from '@assets/plus.svg';

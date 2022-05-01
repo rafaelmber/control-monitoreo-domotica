@@ -12,7 +12,9 @@ import PlusIcon from '@assets/plus.svg';
 import db from '@/services/firebase';
 import { setDeviceStatus } from '@/store/devices/devices.actions';
 
-const options = [{ id: 1, title: 'Add Enviroment', path: '/environments/add' }];
+const options = [
+  { id: 1, title: 'Add Enviroment', path: '/environments/add', Icon: PlusIcon },
+];
 
 const EnvironmentPage = () => {
   const navigate = useNavigate();
@@ -36,46 +38,41 @@ const EnvironmentPage = () => {
   };
 
   return (
-    <StyledEnvironmentMain>
-      <MainWrapper>
-        <Header className='header' text='Environments' options={options} />
-        <div className='content'>
-          {/*
+    <MainWrapper title='Environments' optionsList={options}>
+      {/*
           Cada una de las Simple Card representa un botón que realizará 
           acciones programadas por el usuario, encenderá y apagará dispositivos 
           dependiendo de las preferencias del usuario
           */}
-          {enviromentList.length === 0 && (
-            <div className='message'>
-              <h5 className='message-text'>You don't have any Environment</h5>
-              <ContextButton
-                text='Add a new Environment'
-                textColor='var(--lightest-neutral)'
-                bgColor='var(--dark-primary)'
-                Icon={PlusIcon}
-                onClick={handleAddButton}
-                className='message-button'
-              />
-            </div>
-          )}
-          {enviromentList.length !== 0 &&
-            enviromentList.map((enviroment) => {
-              return (
-                <Card
-                  key={enviroment.id}
-                  name={enviroment.name}
-                  id={enviroment.id}
-                  devices={enviroment.devices}
-                  devicesList={devicesList}
-                  handleClick={() => {
-                    handleClick(enviroment.id, enviroment.devices);
-                  }}
-                />
-              );
-            })}
+      {enviromentList.length === 0 && (
+        <div className='message'>
+          <h5 className='message-text'>You don't have any Environment</h5>
+          <ContextButton
+            text='Add a new Environment'
+            textColor='var(--lightest-neutral)'
+            bgColor='var(--dark-primary)'
+            Icon={PlusIcon}
+            onClick={handleAddButton}
+            className='message-button'
+          />
         </div>
-      </MainWrapper>
-    </StyledEnvironmentMain>
+      )}
+      {enviromentList.length !== 0 &&
+        enviromentList.map((enviroment) => {
+          return (
+            <Card
+              key={enviroment.id}
+              name={enviroment.name}
+              id={enviroment.id}
+              devices={enviroment.devices}
+              devicesList={devicesList}
+              handleClick={() => {
+                handleClick(enviroment.id, enviroment.devices);
+              }}
+            />
+          );
+        })}
+    </MainWrapper>
   );
 };
 export default EnvironmentPage;

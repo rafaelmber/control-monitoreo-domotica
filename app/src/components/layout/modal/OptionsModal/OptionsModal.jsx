@@ -28,7 +28,7 @@ const OptionsModal = ({ isOpen, closeModal, options }) => {
               text={option.title}
               bgColor='var(--lightest-primary)'
               textColor='var(--neutral)'
-              Icon={option.icon}
+              Icon={option.Icon}
               onClick={() => {
                 handleOptionPath(option.path);
               }}

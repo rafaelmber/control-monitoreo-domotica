@@ -9,7 +9,7 @@ import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
 import AddIcon from '@assets/plus.svg';
 
 const options = [
-  { id: 1, title: 'Add Room', path: '/rooms/add', icon: AddIcon },
+  { id: 1, title: 'Add Room', path: '/rooms/add', Icon: AddIcon },
 ];
 
 const RoomMain = () => {

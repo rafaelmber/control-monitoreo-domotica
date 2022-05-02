@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 
 const StyledGroup = styled.div`
-  & h5 {
-    margin: 0;
-  }
-  & h4 {
-    margin: 0;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   .group__title {
     display: grid;
     grid-template-columns: 24px 1fr auto;
-    margin-bottom: 14px;
-
     color: rgba(146, 139, 139, 0.7);
     font-size: 1.25rem;
     font-weight: bold;
@@ -20,6 +15,8 @@ const StyledGroup = styled.div`
   .group__items {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    justify-content: center;
     padding-left: 30px;
   }
 `;

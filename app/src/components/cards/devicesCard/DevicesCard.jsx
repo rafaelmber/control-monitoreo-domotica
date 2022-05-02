@@ -1,59 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 import StyledDevicesCard from './DevicesCard.styles';
 import Group from '../group/Group';
-import ActivateButton from '../../buttons/ActivateButton/ActivateButton';
-import ActivateAllModal from '../../layout/modal/ActiveAllModel/ActivateAllModal';
-import ContentWrapper from '../../layout/wrapper/ContentWrapper/ContentWrapper';
+import ContentWrapper from '@components/layout/wrapper/ContentWrapper/ContentWrapper';
+import GroupButton from '@components/buttons/GroupButton/GroupButton';
 
 const DevicesCard = ({ id, name, devices }) => {
-  const [groupStatus, setGroupStatus] = useState(0);
-  const [groupButton, setGroupButton] = useState(false);
   const groups = useSelector((state) => {
-    let groupsArray = [];
-    state.types.forEach((group) => {
+    let typesArray = [];
+    state.types.forEach((type) => {
       const devicesArray = devices.filter((device) => {
-        return device.type === group.id;
+        return device.type === type.id;
       });
-      groupsArray.push({ ...group, devices: devicesArray });
+      typesArray.push({ ...type, devices: devicesArray });
     });
-    return groupsArray;
+    return typesArray;
   });
-
-  useEffect(() => {
-    handleGroupStatus();
-  }, [devices]);
-
-  const handleGroupStatus = () => {
-    if (
-      devices.every((device) => {
-        return device.status === false;
-      })
-    ) {
-      setGroupStatus(0);
-    } else if (
-      devices.every((device) => {
-        return device.status === true;
-      })
-    ) {
-      setGroupStatus(2);
-    } else {
-      setGroupStatus(1);
-    }
-  };
-  const handleGroupClick = () => {
-    setGroupButton(true);
-  };
-  const handleCloseModal = () => {
-    setGroupButton(false);
-  };
 
   return (
     <StyledDevicesCard>
       <ContentWrapper>
         <div className='header'>
-          <h3>
+          <h3 className='header__title'>
             {id === undefined && name}
             {id !== undefined && (
               <Link to={`/rooms/info/${id}`} className='link'>
@@ -61,30 +31,14 @@ const DevicesCard = ({ id, name, devices }) => {
               </Link>
             )}
           </h3>
-
-          <ActivateButton
-            isActive
-            groupStatus={groupStatus}
-            onClick={handleGroupClick}
-          />
+          <GroupButton devices={devices} name={name} />
         </div>
-        <ActivateAllModal
-          isOpen={groupButton}
-          closeModal={handleCloseModal}
-          name={name}
-          devices={devices}
-          setGroupButton={setGroupButton}
-        />
-        {groups &&
-          groups.map((group) => {
-            return (
-              <Group
-                key={group.id}
-                {...group}
-                handleGroupClick={handleGroupClick}
-              />
-            );
-          })}
+        <div className='groups'>
+          {groups &&
+            groups.map((group) => {
+              return <Group key={group.id} {...group} />;
+            })}
+        </div>
       </ContentWrapper>
     </StyledDevicesCard>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import db from '@/services/firebase';
+import { toggleDeviceStatus } from '@/services/firebase';
 import StyledGroup from './Group.styles';
 import Item from '../Item/Item';
 import BulbIcon from '@assets/bulb.svg';
@@ -10,8 +10,7 @@ import GroupButton from '@components/buttons/GroupButton/GroupButton';
 
 const Group = ({ name, devices }) => {
   const handleItemClick = async (id, status) => {
-    const deviceStatus = db.ref(`/systems/system_1/devices/${id}/`);
-    await deviceStatus.update({ status: !status });
+    await toggleDeviceStatus(id, status);
   };
   let Icon;
   if (name === 'Luminarias') {

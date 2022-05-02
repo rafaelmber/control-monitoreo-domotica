@@ -9,15 +9,7 @@ import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
 //import OutletIcon from '@assets/outlet.svg';
 //import BulbIcon from '@assets/bulb.svg';
 
-const Item = ({
-  Icon,
-  id,
-  name,
-  isActive,
-  isGroup,
-  groupStatus,
-  handleClick,
-}) => {
+const Item = ({ Icon, id, name, isActive, groupStatus, handleClick }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     const deviceStatus = db.ref(`/systems/system_1/devices/${id}/status`);
@@ -28,7 +20,7 @@ const Item = ({
     });
   }, [dispatch]);
   return (
-    <StyledItem isGroup={isGroup}>
+    <StyledItem>
       <Icon className='icon' />
       <h4 className='name'>
         <Link to={`/devices/info/${id}`} className='link'>

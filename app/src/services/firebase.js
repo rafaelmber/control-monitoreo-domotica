@@ -52,6 +52,11 @@ export const onStatusListener = (deviceId) => {
   return result;
 };
 
+export const toggleDeviceStatus = async (deviceId, status) => {
+  const deviceStatus = db.ref(`/systems/system_1/devices/${deviceId}/`);
+  await deviceStatus.update({ status: !status });
+};
+
 export const removeEnviroment = async (envId) => {
   const environmentRef = db.ref('systems/system_1/environments/' + envId);
   await environmentRef.remove();

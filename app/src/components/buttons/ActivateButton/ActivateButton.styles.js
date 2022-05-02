@@ -2,14 +2,10 @@ import styled from 'styled-components';
 
 const StyledActivateButton = styled.div`
   cursor: pointer;
-  position: relative;
-  height: 24px;
-  width: 24px;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid var(--neutral);
   border-radius: 50%;
-  border: 1px solid
-    ${(isActive) => {
-      return isActive ? 'var(--dark-green)' : 'var(--dark-secundary)';
-    }};
   box-shadow: 0 4px var(--darkest-secundary);
 
   background-color: ${({ isActive, groupStatus }) => {

@@ -6,14 +6,19 @@ const StyledDevicesCard = styled.div`
     grid-template-columns: 1fr auto;
     border-bottom: 1px solid rgba(75, 79, 79, 0.5);
     margin-bottom: 10px;
-    & h3 {
-      margin: 0;
-      margin-right: 10px;
-    }
-    .link {
-      text-decoration: none;
-      color: inherit;
-    }
+  }
+  .header__title {
+    margin: 0;
+    margin-right: 10px;
+  }
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+  .groups {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 `;
 

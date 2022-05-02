@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
-import ActivateAllModal from '../../layout/modal/ActiveAllModel/ActivateAllModal';
+import ActivateAllModal from '@components/layout/modal/ActiveAllModel/ActivateAllModal';
+
 const GroupButton = ({ devices, name }) => {
   const [groupStatus, setGroupStatus] = useState(0);
   const [groupButton, setGroupButton] = useState(false);
@@ -35,11 +36,7 @@ const GroupButton = ({ devices, name }) => {
   };
   return (
     <>
-      <ActivateButton
-        isActive
-        groupStatus={groupStatus}
-        onClick={handleGroupClick}
-      />
+      <ActivateButton groupStatus={groupStatus} onClick={handleGroupClick} />
       <ActivateAllModal
         isOpen={groupButton}
         closeModal={handleCloseModal}

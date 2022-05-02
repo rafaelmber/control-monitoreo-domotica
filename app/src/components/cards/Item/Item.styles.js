@@ -8,6 +8,7 @@ const StyledItem = styled.div`
   .name {
     color: var(--neutral);
     font-size: 1.56rem;
+    margin-right: 10px;
   }
   .icon {
     width: 24px;

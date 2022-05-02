@@ -34,7 +34,7 @@ const Card = ({ id, name, handleClick, devicesList, devices }) => {
   return (
     <ContentWrapper>
       <StyledCard>
-        <h4>
+        <h4 className='title'>
           {/*
 
            */}

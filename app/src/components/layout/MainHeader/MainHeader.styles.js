@@ -6,7 +6,7 @@ const StyledMainHeader = styled.header`
   background-color: var(--primary);
   color: var(--lightest-neutral);
   padding: 5px 10px;
-
+  align-items: center;
   .button {
     border: none;
     padding: 0;
@@ -18,6 +18,13 @@ const StyledMainHeader = styled.header`
     fill: var(--lightest-neutral);
     width: 100%;
     height: 100%;
+  }
+
+  @media screen and (min-width: 1366px) {
+    .button {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 `;
 

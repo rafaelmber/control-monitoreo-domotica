@@ -8,6 +8,7 @@ const StyledDevicesCard = styled.div`
     margin-bottom: 10px;
     & h3 {
       margin: 0;
+      margin-right: 10px;
     }
     .link {
       text-decoration: none;

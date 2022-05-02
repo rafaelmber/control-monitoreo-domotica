@@ -16,17 +16,24 @@ const StyledMainWrapper = styled.div`
   .content {
     box-sizing: border-box;
     grid-area: content;
-    height: 100%;
     overflow: scroll;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   .nav {
     grid-area: navbar;
   }
   @media screen and (min-width: 1366px) {
     grid-template-columns: 3rem 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 'navbar content-app';
+    grid-template-rows: 3rem 1fr;
+    grid-template-areas: 'navbar header' 'navbar content';
+
+    .content {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 `;
 export default StyledMainWrapper;

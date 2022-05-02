@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const StyledNavBar = styled.nav`
+  grid-area: navbar;
+
   display: flex;
   flex-direction: row;
   background-color: var(--lightest-neutral);

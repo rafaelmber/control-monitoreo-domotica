@@ -44,7 +44,6 @@ const StyledContextButton = styled.button`
       }
     }
   }}
-
   &:hover {
     transform: scale(0.98);
   }

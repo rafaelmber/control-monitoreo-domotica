@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import StyledOptionsModal from './OptionsModal.styles';
 import Modal from '../Modal';
+import ContextButton from '@components/buttons/ContextButton/ContextButton';
 
 import CloseIcon from '@assets/close.svg';
-
-import ContextButton from '@components/buttons/ContextButton/ContextButton';
 
 const OptionsModal = ({ isOpen, closeModal, options }) => {
   const navigate = useNavigate();
@@ -26,8 +25,6 @@ const OptionsModal = ({ isOpen, closeModal, options }) => {
             <ContextButton
               key={option.id}
               text={option.title}
-              bgColor='var(--lightest-primary)'
-              textColor='var(--neutral)'
               Icon={option.Icon}
               onClick={() => {
                 handleOptionPath(option.path);

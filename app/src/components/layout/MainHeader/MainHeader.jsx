@@ -1,7 +1,6 @@
 import React from 'react';
 
 import StyledMainHeader from './MainHeader.styles';
-import OptionsModal from '@components/layout/modal/OptionsModal/OptionsModal';
 
 import MoreIcon from '@assets/more.svg';
 

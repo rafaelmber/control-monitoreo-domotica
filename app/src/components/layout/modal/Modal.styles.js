@@ -13,23 +13,20 @@ const StyledModal = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   .content {
     max-height: 90vh;
     width: 70vw;
-    background-color: var(--lightest-neutral);
     margin: 15px;
+    background-color: var(--lightest-neutral);
     border: 1px solid var(--light-neutral);
     border-radius: 10px;
     padding: 15px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr minmax(3fr, 50vh) 2fr;
-    overflow: hidden;
-  }
-  .content-list {
-    max-height: 60vh;
-    overflow-y: scroll;
+    grid-template-rows: 1fr minmax(3fr, 50vh);
+    overflow: scroll;
   }
   .exit-button {
     border: none;
@@ -40,11 +37,6 @@ const StyledModal = styled.div`
   .exit-icon {
     fill: var(--red);
     transform: scale(1.2);
-  }
-  .buttons {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
   }
 `;
 

@@ -1,14 +1,9 @@
 import React from 'react';
 import StyledContextButton from './ContextButton.styles';
 
-const ContextButton = ({ text, status, Icon, onClick, textColor, bgColor }) => {
+const ContextButton = ({ text, Icon, onClick, type }) => {
   return (
-    <StyledContextButton
-      status={status}
-      onClick={onClick}
-      bgColor={bgColor}
-      textColor={textColor}
-    >
+    <StyledContextButton onClick={onClick} type={type}>
       <p className='text'>{text}</p>
       {Icon && <Icon className='icon' />}
     </StyledContextButton>

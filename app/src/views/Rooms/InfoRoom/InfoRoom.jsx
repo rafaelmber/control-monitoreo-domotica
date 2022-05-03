@@ -95,22 +95,19 @@ const InfoRoom = () => {
             Icon={PlusIcon}
             onClick={handleAddButton}
             className='button'
-            bgColor='var(--dark-primary)'
-            textColor='var(--lightest-neutral)'
+            type='primary'
           />
           <div className='buttons-list'>
             <ContextButton
               text='Edit'
-              bgColor='var(--secundary)'
-              textColor='var(--lightest-neutral)'
+              type='secundary'
               Icon={EditIcon}
               onClick={handleEdit}
               className='button'
             />
             <ContextButton
               text='Delete'
-              bgColor='var(--red)'
-              textColor='var(--lightest-neutral)'
+              type='danger'
               Icon={DeleteIcon}
               onClick={handleModal}
               className='button'

@@ -22,18 +22,18 @@ const DevicesCard = ({ id, name, devices }) => {
   return (
     <StyledDevicesCard>
       <ContentWrapper>
-        <div className='header'>
-          <h3 className='header__title'>
+        <div className='card-header'>
+          <h3 className='card-header__title'>
             {id === undefined && name}
             {id !== undefined && (
-              <Link to={`/rooms/info/${id}`} className='link'>
+              <Link to={`/rooms/info/${id}`} className='card-header__link'>
                 {name}
               </Link>
             )}
           </h3>
           <GroupButton devices={devices} name={name} />
         </div>
-        <div className='groups'>
+        <div className='card__groups'>
           {groups &&
             groups.map((group) => {
               return <Group key={group.id} {...group} />;

@@ -22,8 +22,7 @@ const DeleteModal = ({ isOpen, closeModal, handleDelete, message }) => {
           />
           <ContextButton
             text='Delete'
-            bgColor='var(--red)'
-            textColor='var(--lightest-neutral)'
+            type='danger'
             Icon={DeleteIcon}
             onClick={handleDelete}
           />

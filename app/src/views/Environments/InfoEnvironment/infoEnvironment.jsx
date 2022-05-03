@@ -95,8 +95,7 @@ const InfoEnvironment = () => {
            */}
           <ContextButton
             text='Delete'
-            textColor='var(--lightest-neutral)'
-            bgColor='var(--red)'
+            type='danger'
             Icon={DeleteIcon}
             onClick={handleDeleteModal}
           />

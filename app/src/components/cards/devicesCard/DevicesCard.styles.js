@@ -7,6 +7,9 @@ const StyledDevicesCard = styled.div`
     border-bottom: 1px solid rgba(75, 79, 79, 0.5);
     margin-bottom: 10px;
     align-content: center;
+    & button {
+      align-self: center;
+    }
   }
   .card-header__title {
     margin: 0;
@@ -15,6 +18,11 @@ const StyledDevicesCard = styled.div`
   .card-header__link {
     text-decoration: none;
     color: inherit;
+  }
+  .card-header__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .card__groups {
     display: flex;

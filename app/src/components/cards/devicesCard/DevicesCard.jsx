@@ -31,7 +31,11 @@ const DevicesCard = ({ id, name, devices }) => {
               </Link>
             )}
           </h3>
-          <GroupButton devices={devices} name={name} />
+          <GroupButton
+            devices={devices}
+            name={name}
+            className='card-header__button'
+          />
         </div>
         <div className='card__groups'>
           {groups &&

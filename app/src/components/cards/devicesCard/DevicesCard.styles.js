@@ -6,6 +6,7 @@ const StyledDevicesCard = styled.div`
     grid-template-columns: 1fr auto;
     border-bottom: 1px solid rgba(75, 79, 79, 0.5);
     margin-bottom: 10px;
+    align-content: center;
   }
   .card-header__title {
     margin: 0;

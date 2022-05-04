@@ -1,13 +1,7 @@
 import React from 'react';
 import StyledActivateButton from './ActivateButton.styles';
 
-const ActivateButton = ({ isActive, onClick, groupStatus }) => {
-  return (
-    <StyledActivateButton
-      isActive={isActive}
-      groupStatus={groupStatus}
-      onClick={onClick}
-    ></StyledActivateButton>
-  );
+const ActivateButton = ({ isActive, onClick }) => {
+  return <StyledActivateButton isActive={isActive} onClick={onClick} />;
 };
 export default ActivateButton;

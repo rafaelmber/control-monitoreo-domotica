@@ -3,7 +3,7 @@ import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
 import ActivateAllModal from '@components/layout/modal/ActiveAllModel/ActivateAllModal';
 
 const GroupButton = ({ devices, name }) => {
-  const [groupStatus, setGroupStatus] = useState(0);
+  const [groupStatus, setGroupStatus] = useState(null);
   const [groupButton, setGroupButton] = useState(false);
 
   useEffect(() => {
@@ -16,15 +16,15 @@ const GroupButton = ({ devices, name }) => {
         return device.status === false;
       })
     ) {
-      setGroupStatus(0);
+      setGroupStatus(false);
     } else if (
       devices.every((device) => {
         return device.status === true;
       })
     ) {
-      setGroupStatus(2);
+      setGroupStatus(true);
     } else {
-      setGroupStatus(1);
+      setGroupStatus(null);
     }
   };
   const handleGroupClick = () => {
@@ -36,7 +36,7 @@ const GroupButton = ({ devices, name }) => {
   };
   return (
     <>
-      <ActivateButton groupStatus={groupStatus} onClick={handleGroupClick} />
+      <ActivateButton isActive={groupStatus} onClick={handleGroupClick} />
       <ActivateAllModal
         isOpen={groupButton}
         closeModal={handleCloseModal}

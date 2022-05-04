@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import StyledOptionsModal from './OptionsModal.styles';
 import Modal from '../Modal';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import CloseIcon from '@assets/close.svg';

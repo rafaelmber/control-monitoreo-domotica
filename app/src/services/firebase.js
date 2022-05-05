@@ -44,12 +44,9 @@ export const getAllDataOnce = async (system) => {
 };
 
 //No está funcionando
-export const onStatusListener = (deviceId) => {
+export const deviceStatusRef = (deviceId) => {
   const statusRef = db.ref(`/systems/system_1/devices/${deviceId}/status`);
-  const result = statusRef.on('value', (snapshot) => {
-    return snapshot;
-  });
-  return result;
+  return statusRef;
 };
 
 export const toggleDeviceStatus = async (deviceId, status) => {

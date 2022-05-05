@@ -49,7 +49,16 @@ export const deviceStatusRef = (deviceId) => {
 
 export const toggleDeviceStatus = async (deviceId, status) => {
   const deviceStatus = db.ref(`/systems/system_1/devices/${deviceId}/`);
-  await deviceStatus.update({ status: !status });
+  try {
+    await deviceStatus.update({ status: !status });
+  } catch (error) {
+    console.log('Error en el cambio de estado de un dispositivo:', error);
+  }
+};
+
+export const setDeviceStatusOnDB = async (deviceId, status) => {
+  const deviceStatus = db.ref(`/systems/system_1/devices/${deviceId}/`);
+  await deviceStatus.update({ status: status });
 };
 
 export const removeEnviroment = async (envId) => {

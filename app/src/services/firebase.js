@@ -14,9 +14,8 @@ var config = {
 
 import firebase from 'firebase/app';
 import 'firebase/database';
-import 'firebase/auth';
+// import 'firebase/auth';
 
-//databaseURL: `http://localhost:9000/?ns=control-domotica-test-default-rtdb`,
 firebase.initializeApp({
   apiKey: process.env.APIKEY,
   authDomain: process.env.AUTHDOMAIN,
@@ -32,10 +31,10 @@ if (process.env.NODE_ENV === 'development') {
   db.useEmulator('localhost', 9000);
 }
 
-export const auth = firebase.auth();
-if (process.env.NODE_ENV === 'development') {
-  auth.useEmulator('http://localhost:9099');
-}
+// export const auth = firebase.auth();
+// if (process.env.NODE_ENV === 'development') {
+//   auth.useEmulator('http://localhost:9099');
+// }
 
 export const getAllDataOnce = async (system) => {
   const systemRef = db.ref(`systems/${system}`);
@@ -43,7 +42,6 @@ export const getAllDataOnce = async (system) => {
   return snapshot.val();
 };
 
-//No está funcionando
 export const deviceStatusRef = (deviceId) => {
   const statusRef = db.ref(`/systems/system_1/devices/${deviceId}/status`);
   return statusRef;

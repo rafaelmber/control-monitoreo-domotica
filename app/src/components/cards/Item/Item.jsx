@@ -7,9 +7,6 @@ import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
 
 import { deviceStatusRef } from '@/services/firebase';
 
-//import OutletIcon from '@assets/outlet.svg';
-//import BulbIcon from '@assets/bulb.svg';
-
 const Item = ({ Icon, id, name, isActive, handleClick }) => {
   const dispatch = useDispatch();
   useEffect(() => {

@@ -39,12 +39,4 @@ const RoomMain = () => {
   );
 };
 
-// import React from 'react';
-
-// import MainWrapper from '@components/layout/wrapper/MainWrapper/MainWrapper';
-
-// const RoomMain = () => {
-//   return <MainWrapper title='Rooms' optionsList={options}></MainWrapper>;
-// };
-
 export default RoomMain;

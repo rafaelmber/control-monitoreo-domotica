@@ -72,7 +72,7 @@ const InfoRoom = () => {
   return (
     <StyledInfoRoom>
       {room !== undefined && (
-        <PageWrapper name='Rooms'>
+        <PageWrapper name='Information Room'>
           <h3>{room.name}</h3>
           <h5>Devices</h5>
           {room.devices.length !== 0 && (

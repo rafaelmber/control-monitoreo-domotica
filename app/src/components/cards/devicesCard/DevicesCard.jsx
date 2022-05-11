@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -8,13 +8,12 @@ import ContentWrapper from '@components/layout/wrapper/ContentWrapper/ContentWra
 import GroupButton from '@components/buttons/GroupButton/GroupButton';
 
 const DevicesCard = ({ id, name, devices }) => {
-  const groups = useSelector((state) => {
-    let typesArray = [];
-    state.types.forEach((type) => {
+  const types = useSelector((state) => {
+    const typesArray = state.types.map((type) => {
       const devicesArray = devices.filter((device) => {
         return device.type === type.id;
       });
-      typesArray.push({ ...type, devices: devicesArray });
+      return { ...type, devices: devicesArray };
     });
     return typesArray;
   });
@@ -24,23 +23,16 @@ const DevicesCard = ({ id, name, devices }) => {
       <ContentWrapper>
         <div className='card-header'>
           <h3 className='card-header__title'>
-            {id === undefined && name}
-            {id !== undefined && (
-              <Link to={`/rooms/info/${id}`} className='card-header__link'>
-                {name}
-              </Link>
-            )}
+            <Link to={`/rooms/info/${id}`} className='card-header__link'>
+              {name}
+            </Link>
           </h3>
-          <GroupButton
-            devices={devices}
-            name={name}
-            className='card-header__button'
-          />
+          <GroupButton devices={devices} name={name} />
         </div>
         <div className='card__groups'>
-          {groups &&
-            groups.map((group) => {
-              return <Group key={group.id} {...group} />;
+          {types.length !== 0 &&
+            types.map((type) => {
+              return <Group key={type.id} {...type} />;
             })}
         </div>
       </ContentWrapper>
@@ -49,3 +41,7 @@ const DevicesCard = ({ id, name, devices }) => {
 };
 
 export default DevicesCard;
+
+// {id === undefined && name}
+//             {id !== undefined && (
+//             )}

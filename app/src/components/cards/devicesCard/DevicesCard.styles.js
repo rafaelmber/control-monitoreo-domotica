@@ -19,11 +19,6 @@ const StyledDevicesCard = styled.div`
     text-decoration: none;
     color: inherit;
   }
-  .card-header__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
   .card__groups {
     display: flex;
     flex-direction: column;

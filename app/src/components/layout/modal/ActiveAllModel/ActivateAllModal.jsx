@@ -12,7 +12,7 @@ const ActivateAllModal = ({ isOpen, closeModal, name, devices }) => {
   const dispatch = useDispatch();
   const handleSetAll = (status) => {
     devices.forEach(async (device) => {
-      setDeviceStatusOnDB(device.id, status);
+      await setDeviceStatusOnDB(device.id, status);
       dispatch(setDeviceStatus(device.id, status));
       closeModal();
     });

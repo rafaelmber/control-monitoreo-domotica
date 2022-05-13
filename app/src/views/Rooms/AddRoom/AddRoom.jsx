@@ -62,8 +62,7 @@ const AddRoom = () => {
         <div className='one-button'>
           <ContextButton
             text='Save'
-            textColor='var(--lightest-neutral)'
-            bgColor='var(--green)'
+            type='success'
             Icon={SaveIcon}
             onClick={handleSubmit}
           />

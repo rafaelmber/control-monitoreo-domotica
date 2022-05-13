@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 const StyledDeleteModal = styled.div`
-  .buttons-list {
+  .buttons {
     display: flex;
     gap: 20px;
   }

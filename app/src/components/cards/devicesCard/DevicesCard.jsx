@@ -23,9 +23,12 @@ const DevicesCard = ({ id, name, devices }) => {
       <ContentWrapper>
         <div className='card-header'>
           <h3 className='card-header__title'>
-            <Link to={`/rooms/info/${id}`} className='card-header__link'>
-              {name}
-            </Link>
+            {id === undefined && name}
+            {id !== undefined && (
+              <Link to={`/rooms/info/${id}`} className='card-header__link'>
+                {name}
+              </Link>
+            )}
           </h3>
           <GroupButton devices={devices} name={name} />
         </div>
@@ -41,7 +44,3 @@ const DevicesCard = ({ id, name, devices }) => {
 };
 
 export default DevicesCard;
-
-// {id === undefined && name}
-//             {id !== undefined && (
-//             )}

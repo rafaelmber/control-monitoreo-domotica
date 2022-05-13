@@ -51,8 +51,7 @@ const DeviceForm = ({
       <div className='save-button'>
         <ContextButton
           text='Save'
-          textColor='var(--lightest-neutral)'
-          bgColor='var(--green)'
+          type='success'
           Icon={SaveIcon}
           onClick={handleSubmit}
         />

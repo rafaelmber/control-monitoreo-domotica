@@ -7,19 +7,14 @@ import ContextButton from '@components/buttons/ContextButton/ContextButton';
 
 const DeleteModal = ({ isOpen, closeModal, handleDelete, message }) => {
   return (
-    <StyledDeleteModal>
-      <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen}>
+      <StyledDeleteModal>
         <div className='exit-button' onClick={closeModal}>
           <CloseIcon className='exit-icon' />
         </div>
         <p>{message}</p>
         <div className='buttons'>
-          <ContextButton
-            text='Cancel'
-            bgColor='var(--lightest-primary)'
-            textColor='var(--neutral)'
-            onClick={closeModal}
-          />
+          <ContextButton text='Cancel' onClick={closeModal} />
           <ContextButton
             text='Delete'
             type='danger'
@@ -27,8 +22,8 @@ const DeleteModal = ({ isOpen, closeModal, handleDelete, message }) => {
             onClick={handleDelete}
           />
         </div>
-      </Modal>
-    </StyledDeleteModal>
+      </StyledDeleteModal>
+    </Modal>
   );
 };
 

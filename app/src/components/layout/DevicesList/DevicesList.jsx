@@ -5,7 +5,7 @@ import StyledDevicesList from './DevicesList.styles';
 import BulbIcon from '@assets/bulb.svg';
 import OutletIcon from '@assets/outlet.svg';
 
-const DevicesList = ({ name, id, type, children, room }) => {
+const DevicesList = ({ name, id, type, children, room, handleClick }) => {
   let Icon = null;
   if (type === 'type_1') {
     Icon = BulbIcon;
@@ -14,14 +14,14 @@ const DevicesList = ({ name, id, type, children, room }) => {
   }
   return (
     <StyledDevicesList>
-      <div className='device-info'>
+      <div className='device-info' onClick={handleClick}>
         <Icon className='device-info__icon' />
-        <Link to={`/devices/info/${id}`} className={'device-info__link'}>
+        <div className='device-info__details'>
           <b className='device-info__name'>{name}</b>
           {room !== undefined && (
             <small className='device-info__room'>{room}</small>
           )}
-        </Link>
+        </div>
       </div>
       <div className='children'>{children}</div>
     </StyledDevicesList>
@@ -29,3 +29,4 @@ const DevicesList = ({ name, id, type, children, room }) => {
 };
 
 export default DevicesList;
+//Se modificó

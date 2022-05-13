@@ -6,9 +6,11 @@ import db from '@/services/firebase';
 
 import StyledEnvironmentForm from './EnvironmentForm.styles';
 import TextField from '../TextField/TextField';
-import ListDevices from '@components/layout/listItems/ListDevices/ListDevices';
+import DevicesList from '../../layout/DevicesList/DevicesList';
+
 import AddDeviceToEnv from '@components/layout/modal/AddDeviceToEnv/AddDeviceToEnv';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
+import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
 
 import DeleteIcon from '@assets/delete.svg';
 import PlusIcon from '@assets/plus.svg';
@@ -117,32 +119,32 @@ const EnvironmentForm = ({
         {envDevices.length !== 0 &&
           envDevices.map((envDev) => {
             return (
-              <ListDevices
+              <DevicesList
                 key={envDev.id}
                 name={envDev.name}
                 type={envDev.type}
-                status={envDev.status}
-                handleStatusClick={() => {
-                  handleStatusClick(envDev.id);
-                }}
               >
+                <ActivateButton
+                  isActive={envDev.status}
+                  onClick={() => {
+                    handleStatusClick(envDev.id);
+                  }}
+                />
                 <ContextButton
-                  textColor='var(--lightest-neutral)'
-                  bgColor='var(--red)'
+                  type='danger'
                   Icon={DeleteIcon}
                   onClick={() => {
                     handleRemoveDevice(envDev.id);
                   }}
                 />
-              </ListDevices>
+              </DevicesList>
             );
           })}
         {totalDevices !== envDevices.length && (
           <div className='devices-buttons'>
             <ContextButton
               text='Add a Device to the Environment'
-              textColor='var(--lightest-neutral)'
-              bgColor='var(--dark-primary)'
+              type='primary'
               Icon={PlusIcon}
               onClick={handleAddDevice}
             />
@@ -152,8 +154,7 @@ const EnvironmentForm = ({
       <div className='save-button'>
         <ContextButton
           text='Save'
-          textColor='var(--lightest-neutral)'
-          bgColor='var(--green)'
+          type='success'
           Icon={SaveIcon}
           onClick={handleSubmit}
         />

@@ -20,5 +20,10 @@ const StyledDevicesList = styled.li`
     display: flex;
     flex-direction: column;
   }
+  .children {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 `;
 export default StyledDevicesList;

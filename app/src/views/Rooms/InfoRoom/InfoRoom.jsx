@@ -13,11 +13,15 @@ import DeleteIcon from '@assets/delete.svg';
 import EditIcon from '@assets/edit.svg';
 import PlusIcon from '@assets/plus.svg';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
-import { deleteDeviceInRoom } from '@/store/rooms/rooms.actions';
+
+import { deleteDeviceInEnvironments } from '@/store/environments/environments.actions';
+import { deleteDevice } from '@/store/devices/devices.actions';
+import { deleteRoom } from '@/store/rooms/rooms.actions';
 
 const InfoRoom = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const room = useSelector((state) => {
     const roomSelected = state.rooms.find((stateRoom) => {
       return stateRoom.id == id;
@@ -31,11 +35,31 @@ const InfoRoom = () => {
     return roomDevices;
   });
 
+  const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleAddDevice = () => {
     navigate('/devices/add');
   };
   const handleEditRoom = () => {
     navigate(`/rooms/edit/${id}`);
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleDeleteRoom = async () => {
+    await removeRoom(id);
+    devices.forEach((device) => {
+      dispatch(deleteDeviceInEnvironments(device.id));
+      dispatch(deleteDevice(id));
+    });
+    dispatch(deleteRoom(id));
+    navigate('/');
   };
 
   return (
@@ -70,9 +94,20 @@ const InfoRoom = () => {
             Icon={EditIcon}
             onClick={handleEditRoom}
           />
-          <ContextButton type='danger' text='Delete' Icon={DeleteIcon} />
+          <ContextButton
+            type='danger'
+            text='Delete'
+            Icon={DeleteIcon}
+            onClick={handleOpenModal}
+          />
         </div>
       </StyledInfoRoom>
+      <DeleteModal
+        isOpen={isModalOpen}
+        closeModal={handleCloseModal}
+        handleDelete={handleDeleteRoom}
+        message={`Al eliminar esta Habitación se eliminarán todos los dispositivos que pertenecen a esta. ¿Desea continuar?`}
+      />
     </PageWrapper>
   );
 };

@@ -25,3 +25,10 @@ export const deleteEnvironment = (environmentId) => {
     payload: environmentId,
   };
 };
+
+export const deleteDeviceInEnvironments = (deviceId) => {
+  return {
+    type: 'DELETE_DEVICE_IN_ENVIRONMENTS',
+    payload: deviceId,
+  };
+};

@@ -2,7 +2,7 @@ import React from 'react';
 
 import StyledAddDeviceToEnv from './AddDeviceToEnv.styles';
 import Modal from '../Modal';
-import ListDevices from '../../listItems/ListDevices/ListDevices';
+import DevicesList from '../../DevicesList/DevicesList';
 
 import CloseIcon from '@assets/close.svg';
 
@@ -16,8 +16,9 @@ const AddDeviceToEnv = ({ isOpen, closeModal, devices, handleClickDevice }) => {
         <div className='content-list'>
           {devices.map((device) => {
             return (
-              <ListDevices
+              <DevicesList
                 key={device.id}
+                id={device.id}
                 name={device.name}
                 type={device.type}
                 handleClick={() => {

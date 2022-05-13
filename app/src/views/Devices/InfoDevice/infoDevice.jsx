@@ -75,7 +75,7 @@ const InfoDevice = () => {
 
   return (
     <StyledInfoDevice>
-      <PageWrapper name='Devices' history={history}>
+      <PageWrapper name='Devices'>
         {device !== undefined && <h4>{device.name}</h4>}
         <div className='field'>
           <span className='field-property'>Room:</span>

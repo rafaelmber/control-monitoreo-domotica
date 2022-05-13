@@ -16,5 +16,5 @@ class Device():
         self.status = new_status
 
     def _send_message(self, status: int):
-        publish.single(f'devices/{self.id}',str(status),client_id=f'CPU-{self.id}')
+        publish.single(f'systems/system_1/devices/{self.id}',str(status),client_id=f'CPU-{self.id}')
         print(f'ID: {self.id}, Status: {self.status}')

@@ -18,4 +18,4 @@ if(__name__ == '__main__'):
     db = Database()
     db.connect_database()
     device_manager = DeviceManager()
-    db.setListener('devices/',changeDevicesStatus)
+    db.setListener('systems/system_1/devices/',changeDevicesStatus)

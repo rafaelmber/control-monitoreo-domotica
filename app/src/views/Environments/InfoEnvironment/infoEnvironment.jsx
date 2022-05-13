@@ -4,8 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { removeEnviroment } from '@/services/firebase';
 import StyledInfoEnvironment from './infoEnvironments.styles';
 
+import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
+
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
-import ListDevices from '@components/layout/listItems/ListDevices/ListDevices';
+import DevicesList from '@components/layout/DevicesList/DevicesList';
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import EditIcon from '@assets/edit.svg';
 import DeleteIcon from '@assets/delete.svg';
@@ -71,15 +73,14 @@ const InfoEnvironment = () => {
         {environment !== undefined &&
           environment.devices.map((device) => {
             return (
-              <ListDevices
+              <DevicesList
                 key={device.id}
+                id={device.id}
                 name={device.name}
                 type={device.type}
-                status={device.status}
-                handleClick={() => {
-                  handleDeviceClick(device.id);
-                }}
-              />
+              >
+                <ActivateButton isActive={device.status} />
+              </DevicesList>
             );
           })}
         <div className='buttons'>

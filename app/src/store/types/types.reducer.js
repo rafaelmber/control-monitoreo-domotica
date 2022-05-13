@@ -5,7 +5,6 @@ const types = (state = [], action) => {
     case 'SET_TYPES': {
       const types = action.payload;
       const typesArray = json2array(types);
-      console.log('Types in Redux', typesArray);
       return typesArray;
     }
     default: {

@@ -1,37 +1,47 @@
 import React from 'react';
 import StyledListDevices from './ListDevices.styles';
-import ArrowIcon from '@assets/arrow.svg';
-import ActiveButton from '@components/buttons/ActivateButton/ActivateButton';
+import BulbIcon from '@assets/bulb.svg';
+import OutletIcon from '@assets/outlet.svg';
 
-const ListItems = ({
-  name,
-  type,
-  status,
-  handleClick,
-  children,
-  handleStatusClick,
-}) => {
+import { Link } from 'react-router-dom';
+
+const ListDevices = ({ name, id, type, children }) => {
+  let Icon = null;
+  if (type === 'type_1') {
+    Icon = BulbIcon;
+  } else {
+    Icon = OutletIcon;
+  }
   return (
-    <StyledListDevices
-      onClick={() => {
-        handleClick ? handleClick() : '';
-      }}
-    >
-      <ArrowIcon className='arrow-icon' />
-      <div className='container'>
-        <p className='name-device'>{name}</p>
-        <small className='type-device'>{type.name}</small>
+    <StyledListDevices>
+      <Icon className='type-icon' />
+      <div className='device-info'>
+        <Link to={`/devices/info/${id}`} className={'device-info__link'}>
+          <b className='device-info__name'>{name}</b>
+        </Link>
       </div>
-      {status !== undefined && (
-        <ActiveButton
-          className='status'
-          isActive={status}
-          onClick={handleStatusClick}
-        />
-      )}
-      {children !== undefined && <div className='children'>{children}</div>}
+      <div className='children'>{children}</div>
     </StyledListDevices>
   );
 };
 
-export default ListItems;
+export default ListDevices;
+
+// {
+//   showRoomName && (
+//     <small className='device-info__room'>Habitación</small>
+//   );
+// }
+//
+// {
+//   status !== undefined && (
+// <ActivateButton
+//   className='device__status'
+//   isActive={status}
+//   onClick={handleStatusClick}
+// />;
+//   );
+// }
+// {
+//   children !== undefined && <div className='children'>{children}</div>;
+// }

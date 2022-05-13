@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StyledPageWrapper from './PageWrapper.styles';
-import Wrapper from '@components/layout/wrapper/Wrapper';
 import ContentWrapper from '../ContentWrapper/ContentWrapper';
-import HeaderBackButton from '@components/layout/HeaderBackButton/HeaderBackButton';
+import BackIcon from '@assets/arrow_back.svg';
+
 const PageWrapper = ({ name, children }) => {
   const navigate = useNavigate();
   const handleBack = () => {
@@ -11,17 +11,15 @@ const PageWrapper = ({ name, children }) => {
   };
   return (
     <StyledPageWrapper>
-      <Wrapper>
-        <HeaderBackButton
-          text={name}
-          className='header'
-          handleClick={handleBack}
-          options={[]}
-        />
-        <div className='content'>
-          <ContentWrapper>{children}</ContentWrapper>
-        </div>
-      </Wrapper>
+      <header className='header'>
+        <button className='header__button' onClick={handleBack}>
+          <BackIcon className='header__icon' />
+        </button>
+        <h3 className='header__title'>{name}</h3>
+      </header>
+      <div className='content'>
+        <ContentWrapper>{children}</ContentWrapper>
+      </div>
     </StyledPageWrapper>
   );
 };

@@ -55,9 +55,8 @@ const EditRoom = () => {
         <div className='one-button'>
           <ContextButton
             onClick={handleSave}
-            bgColor='var(--green)'
+            type='success'
             text='Save'
-            textColor='var(--lightest-neutral)'
             Icon={SaveIcon}
           />
         </div>

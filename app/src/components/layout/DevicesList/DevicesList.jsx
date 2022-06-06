@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import StyledDevicesList from './DevicesList.styles';
 import BulbIcon from '@assets/bulb.svg';
 import OutletIcon from '@assets/outlet.svg';
 
-const DevicesList = ({ name, id, type, children, room, handleClick }) => {
+const DevicesList = ({ name, type, children, room, handleClick }) => {
   let Icon = null;
   if (type === 'type_1') {
     Icon = BulbIcon;

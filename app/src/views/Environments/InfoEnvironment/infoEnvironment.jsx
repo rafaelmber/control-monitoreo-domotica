@@ -29,7 +29,14 @@ const InfoEnvironment = () => {
         const device = state.devices.find((deviceState) => {
           return deviceState.id === envDevice.id;
         });
-        const newDevice = { ...device, status: envDevice.status };
+        const room = state.rooms.find((roomState) => {
+          return device.room === roomState.id;
+        });
+        const newDevice = {
+          ...device,
+          status: envDevice.status,
+          room: room.name,
+        };
         devices.push(newDevice);
       });
       const newEnvSelected = { ...envSelected, devices: devices };
@@ -67,7 +74,7 @@ const InfoEnvironment = () => {
       <PageWrapper name='Environments'>
         {environment !== undefined && <h3>{environment.name}</h3>}
         <div className='columns'>
-          <span>Device</span>
+          <span>Devices</span>
           <span>Status</span>
         </div>
         {environment !== undefined &&
@@ -78,22 +85,19 @@ const InfoEnvironment = () => {
                 id={device.id}
                 name={device.name}
                 type={device.type}
+                room={device.room}
               >
                 <ActivateButton isActive={device.status} />
               </DevicesList>
             );
           })}
         <div className='buttons'>
-          {/**
-          
           <ContextButton
+            type='secundary'
             text='Edit'
-            textColor='var(--lightest-neutral)'
-            bgColor='var(--secundary)'
             Icon={EditIcon}
             onClick={handleEditButton}
           />
-           */}
           <ContextButton
             text='Delete'
             type='danger'

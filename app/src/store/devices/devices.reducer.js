@@ -35,7 +35,7 @@ const devices = (state = initialState, action) => {
     case 'EDIT_DEVICE': {
       const editedDevice = action.payload;
       const newState = state.map((device) => {
-        if (device.id === editedDevice) {
+        if (device.id === editedDevice.id) {
           device = editedDevice;
         }
         return device;

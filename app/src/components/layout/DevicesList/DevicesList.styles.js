@@ -25,5 +25,9 @@ const StyledDevicesList = styled.li`
     align-items: center;
     gap: 10px;
   }
+  .device-info__details {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 export default StyledDevicesList;

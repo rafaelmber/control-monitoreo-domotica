@@ -6,6 +6,7 @@ const StyledSelectField = styled.div`
     border-radius: 10px;
     box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
     padding: 10px 5px;
+    background-color: var(--secundary);
   }
   .list-items {
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};

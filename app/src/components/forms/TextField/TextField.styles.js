@@ -11,7 +11,7 @@ const StyledTextField = styled.div`
   }
   .field-input {
     flex: 2;
-    font-size: 1.56rem;
+    font-size: 1.25rem;
     border: none;
     border-bottom: 1px solid var(--light-neutral);
     border-radius: 1px;

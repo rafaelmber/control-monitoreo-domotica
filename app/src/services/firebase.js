@@ -74,6 +74,26 @@ export const updateRoom = async (roomId, name) => {
   await ref.update({ name: name });
 };
 
+export const setDevice = async (device) => {
+  try {
+    const deviceRef = db.ref('systems/system_1/devices/' + device.id);
+    await deviceRef.set({
+      name: device.name,
+      type: device.type,
+      room: device.room,
+      status: false,
+    });
+    const deviceRefAtRoom = db.ref(
+      'systems/system_1/rooms/' + device.room + '/devices/'
+    );
+    await deviceRefAtRoom.update({
+      [device.id]: true,
+    });
+  } catch (error) {
+    console.log('Error', error);
+  }
+};
+
 export const removeEnviroment = async (envId) => {
   const environmentRef = db.ref('systems/system_1/environments/' + envId);
   await environmentRef.remove();

@@ -61,6 +61,14 @@ export const setDeviceStatusOnDB = async (deviceId, status) => {
   await deviceStatus.update({ status: status });
 };
 
+export const setRoom = async (room) => {
+  const ref = db.ref('/systems/system_1/rooms/' + room.id);
+  await ref.set({
+    name: room.name,
+    devices: room.devices,
+  });
+};
+
 export const removeEnviroment = async (envId) => {
   const environmentRef = db.ref('systems/system_1/environments/' + envId);
   await environmentRef.remove();

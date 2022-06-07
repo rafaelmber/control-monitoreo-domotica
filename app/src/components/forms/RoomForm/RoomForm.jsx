@@ -8,7 +8,6 @@ import SaveIcon from '@assets/save.svg';
 
 const RoomForm = ({ name, sendData }) => {
   const [roomName, setRoomName] = useState(name || '');
-  console.log('Room name', roomName);
 
   const handleChange = (event) => {
     setRoomName(event.target.value);

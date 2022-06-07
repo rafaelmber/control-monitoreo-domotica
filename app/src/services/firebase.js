@@ -69,6 +69,11 @@ export const setRoom = async (room) => {
   });
 };
 
+export const updateRoom = async (roomId, name) => {
+  const ref = db.ref('systems/system_1/rooms/' + roomId);
+  await ref.update({ name: name });
+};
+
 export const removeEnviroment = async (envId) => {
   const environmentRef = db.ref('systems/system_1/environments/' + envId);
   await environmentRef.remove();

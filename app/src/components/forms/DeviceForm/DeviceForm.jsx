@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import StyledDeviceForm from './DeviceForm.styles';
@@ -17,6 +17,11 @@ const DeviceForm = ({ deviceData, sendData }) => {
       status: false,
     }
   );
+  useEffect(() => {
+    if (deviceData !== undefined) {
+      setDevice(deviceData);
+    }
+  }, [deviceData]);
 
   const rooms = useSelector((state) => {
     return state.rooms;
@@ -28,23 +33,17 @@ const DeviceForm = ({ deviceData, sendData }) => {
     event.preventDefault();
     if (device.name === '') {
       console.log('El dispositivo debe tener un nombre');
-    } else if (device.type === '') {
-      console.log('El dispositivo debe tener un tipo');
     } else if (device.room === '') {
       console.log('El dispositivo debe pertenecer a una habitación');
+    } else if (device.type === '') {
+      console.log('El dispositivo debe tener un tipo');
     } else {
       sendData(device);
     }
   };
 
-  const handleNameChange = (event) => {
-    setDevice({ ...device, name: event.target.value });
-  };
-  const handleSelectRoom = (roomId) => {
-    setDevice({ ...device, room: roomId });
-  };
-  const handleSelectType = (typeId) => {
-    setDevice({ ...device, type: typeId });
+  const handleChange = (event) => {
+    setDevice({ ...device, [event.target.name]: event.target.value });
   };
 
   return (
@@ -53,23 +52,27 @@ const DeviceForm = ({ deviceData, sendData }) => {
         name='name'
         label='Name'
         value={device.name}
-        onChange={handleNameChange}
+        onChange={handleChange}
         placeholder='Enter Device Name'
       />
       <div className='select-field'>
-        <h5 className='select-label'>Room</h5>
         <SelectField
-          list={rooms}
-          handleIdSelectItem={handleSelectRoom}
+          options={rooms}
+          onChange={handleChange}
+          name='room'
+          label='Room'
           placeholder='Select a Room'
+          value={device.room}
           className='select-box'
         />
       </div>
       <div className='select-field'>
-        <h5 className='select-label'>Type</h5>
         <SelectField
-          list={types}
-          handleIdSelectItem={handleSelectType}
+          options={types}
+          onChange={handleChange}
+          name='type'
+          label='Type'
+          value={device.type}
           className='select-field'
           placeholder='Select a Type'
         />

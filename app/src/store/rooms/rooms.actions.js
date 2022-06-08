@@ -25,23 +25,3 @@ export const deleteRoom = (roomId) => {
     payload: roomId,
   };
 };
-
-export const addDeviceInRoom = (roomId, device) => {
-  return {
-    type: 'ADD_DEVICE_IN_ROOM',
-    payload: {
-      roomId,
-      device,
-    },
-  };
-};
-
-export const deleteDeviceInRoom = (roomId, deviceId) => {
-  return {
-    type: 'DELETE_DEVICE_IN_ROOM',
-    payload: {
-      roomId,
-      deviceId,
-    },
-  };
-};

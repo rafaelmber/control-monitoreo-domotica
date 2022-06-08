@@ -28,37 +28,6 @@ const rooms = (state = [], action) => {
       return newState;
     }
 
-    case 'ADD_DEVICE_IN_ROOM': {
-      const roomId = action.payload.roomId;
-      const newDevice = action.payload.device;
-
-      const newState = [...state];
-
-      for (const room of newState) {
-        if (room.id === roomId) {
-          room.devices.push({
-            id: newDevice,
-          });
-        }
-      }
-      return newState;
-    }
-    case 'DELETE_DEVICE_IN_ROOM': {
-      const roomId = action.payload.roomId;
-      const deviceId = action.payload.deviceId;
-      const newState = [...state];
-
-      for (const room of newState) {
-        if (room.id === roomId) {
-          const newDevices = room.devices.filter((device) => {
-            return device.id !== deviceId;
-          });
-          room.devices = newDevices;
-        }
-      }
-      return newState;
-    }
-
     default: {
       return state;
     }

@@ -65,7 +65,6 @@ export const setRoom = async (room) => {
   const ref = db.ref('/systems/system_1/rooms/' + room.id);
   await ref.set({
     name: room.name,
-    devices: room.devices,
   });
 };
 
@@ -101,7 +100,6 @@ export const removeEnviroment = async (envId) => {
 
 export const removeDevice = async (deviceId) => {
   await removeDeviceFromEnvs(deviceId);
-  await removeDeviceFromRooms(deviceId);
   const deviceRef = db.ref('systems/system_1/devices/' + deviceId);
   try {
     await deviceRef.remove();
@@ -126,27 +124,14 @@ const removeDeviceFromEnvs = async (deviceId) => {
   });
 };
 
-const removeDeviceFromRooms = async (deviceId) => {
-  //Delete device from Rooms
-  const roomsRef = db.ref('systems/system_1/rooms/');
-  const snapshotRoom = await roomsRef.once('value');
-  snapshotRoom.forEach((roomChild) => {
-    if (roomChild.exists()) {
-      const device = roomChild.child('devices').child(deviceId);
-      if (device.exists()) {
-        device.ref.remove().catch((error) => {
-          console.log(error);
-        });
-      }
-    }
-  });
-};
-
 export const removeRoom = async (id) => {
-  const deviceRef = db.ref('systems/system_1/rooms/' + id + '/devices/');
-  const deviceSnap = await deviceRef.once('value');
-  for (const device in deviceSnap.val()) {
-    await removeDevice(device);
+  const devideRef = db.ref('systems/system_1/devices/');
+  const deviceSnap = await devideRef.once('value');
+  for (const deviceId in deviceSnap.val()) {
+    const device = deviceSnap.val()[deviceId];
+    if (device.room === id) {
+      await removeDevice(deviceId);
+    }
   }
   const roomRef = db.ref('systems/system_1/rooms/' + id);
   try {

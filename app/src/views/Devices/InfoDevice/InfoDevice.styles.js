@@ -19,6 +19,8 @@ const StyledInfoDevice = styled.div`
   }
   .buttons {
     margin-top: 20px;
+    display: flex;
+    gap: 15px;
   }
 `;
 

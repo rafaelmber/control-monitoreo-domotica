@@ -10,6 +10,8 @@ import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 
 import DeleteIcon from '@assets/delete.svg';
+import EditIcon from '@assets/edit.svg';
+
 import { deleteDeviceInRoom } from '@/store/rooms/rooms.actions';
 
 const InfoDevice = () => {
@@ -62,7 +64,6 @@ const InfoDevice = () => {
       type: 'DELETE_DEVICE_IN_ENVIRONMENTS',
       payload: id,
     });
-    dispatch(deleteDeviceInRoom(room.id, id));
     // Eliminar Referencias a dispositivo en las habitaciones
     dispatch({
       type: 'DELETE_DEVICE',
@@ -71,6 +72,9 @@ const InfoDevice = () => {
     setIsModalOpen(false);
     navigate('/devices');
     console.log('Device Deleted');
+  };
+  const handleEditButton = () => {
+    navigate(`/devices/edit/${id}`);
   };
 
   return (
@@ -101,6 +105,12 @@ const InfoDevice = () => {
           </span>
         </div>
         <div className='buttons'>
+          <ContextButton
+            text='Edit'
+            type='secundary'
+            Icon={EditIcon}
+            onClick={handleEditButton}
+          />
           <ContextButton
             text='Delete'
             type='danger'

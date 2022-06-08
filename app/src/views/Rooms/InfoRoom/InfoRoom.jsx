@@ -55,7 +55,6 @@ const InfoRoom = () => {
   const handleDeleteRoom = async () => {
     await removeRoom(id);
     devices.forEach((device) => {
-      dispatch(deleteDeviceInEnvironments(device.id));
       dispatch(deleteDevice(id));
     });
     dispatch(deleteRoom(id));

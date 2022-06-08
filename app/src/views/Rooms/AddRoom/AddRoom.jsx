@@ -22,7 +22,6 @@ const AddRoom = () => {
       const newRoom = {
         id: id,
         name: name,
-        devices: [],
       };
       await setRoom(newRoom);
 

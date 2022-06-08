@@ -1,28 +1,21 @@
 import styled from 'styled-components';
 
 const StyledSelectField = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   position: relative;
-  .list-title {
-    border-radius: 10px;
-    box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-    padding: 10px 5px;
-    background-color: var(--secundary);
+
+  .select-label {
+    font-size: 1.25rem;
+    font-weight: bold;
   }
-  .list-items {
-    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
-    position: absolute;
-    background-color: var(--lightest-neutral);
-    padding: 10px 5px;
+  .select-box {
+    background-color: var(--light-secundary);
     border-radius: 10px;
-    border-top: none;
-    box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-    width: 90%;
-  }
-  .item {
-    margin-top: 10px;
-    padding: 10px 5px;
-    box-shadow: 0 1px rgba(0, 0, 0, 0.05);
+    border: none;
+    padding: 5px 10px;
+    font-size: 1rem;
+    width: 100%;
   }
 `;
 

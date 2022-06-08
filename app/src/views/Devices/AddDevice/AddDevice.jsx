@@ -6,7 +6,6 @@ import { setDevice } from '@/services/firebase';
 
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import DeviceForm from '@components/forms/DeviceForm/DeviceForm';
-import { addDeviceInRoom } from '@/store/rooms/rooms.actions';
 import { addDevice } from '@/store/devices/devices.actions';
 
 const AddDevice = () => {
@@ -25,7 +24,6 @@ const AddDevice = () => {
       status: false,
     };
     await setDevice(newDevice);
-    dispatch(addDeviceInRoom(newDevice.room, newDevice.id));
     dispatch(addDevice(newDevice));
     console.log('New Device saved');
     navigate('/devices');

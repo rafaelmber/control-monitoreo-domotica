@@ -80,13 +80,7 @@ export const setDevice = async (device) => {
       name: device.name,
       type: device.type,
       room: device.room,
-      status: false,
-    });
-    const deviceRefAtRoom = db.ref(
-      'systems/system_1/rooms/' + device.room + '/devices/'
-    );
-    await deviceRefAtRoom.update({
-      [device.id]: true,
+      status: device.status || false,
     });
   } catch (error) {
     console.log('Error', error);

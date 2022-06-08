@@ -12,16 +12,15 @@ const options = [
 ];
 
 const RoomMain = () => {
-  //Se leen los dispositivos por habitación del Store central
   const rooms = useSelector((state) => {
-    let roomsArray = state.rooms.map((room) => {
-      const devicesByRoom = state.devices.filter((device) => {
-        return room.id === device.room;
+    const roomsList = state.rooms.map((room) => {
+      const devices = state.devices.filter((device) => {
+        return device.room === room.id;
       });
-      const newRoom = { ...room, devices: devicesByRoom };
+      const newRoom = { ...room, devices: devices };
       return newRoom;
     });
-    return roomsArray;
+    return roomsList;
   });
 
   return (

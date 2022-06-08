@@ -4,10 +4,6 @@ const rooms = (state = [], action) => {
   switch (action.type) {
     case 'SET_ROOMS': {
       const roomsJSON = action.payload;
-      for (const room in roomsJSON) {
-        const devices = json2array(roomsJSON[room].devices);
-        roomsJSON[room].devices = devices;
-      }
       const roomsArray = json2array(roomsJSON);
       return roomsArray;
     }

@@ -71,6 +71,11 @@ const InfoEnvironment = () => {
     <StyledInfoEnvironment>
       <PageWrapper name='Environments'>
         {environment !== undefined && <h3>{environment.name}</h3>}
+        {environment !== undefined && (
+          <small>
+            <i>Id: {environment.id}</i>
+          </small>
+        )}
         <div className='columns'>
           <span>Devices</span>
           <span>Status</span>

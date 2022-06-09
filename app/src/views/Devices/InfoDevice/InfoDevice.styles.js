@@ -4,7 +4,7 @@ const StyledInfoDevice = styled.div`
     display: grid;
     grid-template-columns: 1fr 2fr;
     justify-content: space-between;
-    margin-top: 10px;
+    margin: 10px 0;
     & span {
       font-size: 1.25rem;
     }
@@ -16,11 +16,6 @@ const StyledInfoDevice = styled.div`
     text-align: center;
     display: flex;
     justify-content: center;
-  }
-  .buttons {
-    margin-top: 20px;
-    display: flex;
-    gap: 15px;
   }
 `;
 

@@ -58,16 +58,9 @@
       },
       "rooms": {
         "room_1": {
-          "devices": { "device_1": true, "device_2": true },
           "name": "Habitación"
         },
         "room_2": {
-          "devices": {
-            "device_3": true,
-            "device_4": true,
-            "device_5": true,
-            "device_6": true
-          },
           "name": "Sala de estar"
         }
       },

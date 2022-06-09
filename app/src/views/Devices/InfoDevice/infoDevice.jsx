@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import db, { removeDevice } from '@/services/firebase';
+import {
+  removeDevice,
+  toggleDeviceStatus as toggleDeviceStatusOnDb,
+} from '@/services/firebase';
+
+import {
+  deleteDevice,
+  toggleDeviceStatus,
+} from '@/store/devices/devices.actions';
+import { deleteDeviceInEnvironments } from '@/store/environments/environments.actions';
 
 import StyledInfoDevice from './InfoDevice.styles';
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
-import ContextButton from '@components/buttons/ContextButton/ContextButton';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
-
-import DeleteIcon from '@assets/delete.svg';
-import EditIcon from '@assets/edit.svg';
-
-import { deleteDeviceInRoom } from '@/store/rooms/rooms.actions';
+import EditAndDeleteButtons from '@components/forms/EditAndDeleteButtons/EditAndDeleteButtons';
 
 const InfoDevice = () => {
   const navigate = useNavigate();
@@ -41,12 +45,8 @@ const InfoDevice = () => {
   const [, setButtonStatus] = useState(device?.status);
 
   const handleStatusClick = async () => {
-    const deviceRef = db.ref('devices/' + id);
-    await deviceRef.update({ status: !device.status });
-    dispatch({
-      type: 'TO_DEVICE_STATUS',
-      payload: id,
-    });
+    await toggleDeviceStatusOnDb(id, device.status);
+    dispatch(toggleDeviceStatus(id));
     setButtonStatus(!device.status);
   };
 
@@ -60,15 +60,9 @@ const InfoDevice = () => {
 
   const handleDeleteDevice = async () => {
     await removeDevice(id);
-    dispatch({
-      type: 'DELETE_DEVICE_IN_ENVIRONMENTS',
-      payload: id,
-    });
+    dispatch(deleteDeviceInEnvironments(id));
     // Eliminar Referencias a dispositivo en las habitaciones
-    dispatch({
-      type: 'DELETE_DEVICE',
-      payload: id,
-    });
+    dispatch(deleteDevice(id));
     setIsModalOpen(false);
     navigate('/devices');
     console.log('Device Deleted');
@@ -81,6 +75,7 @@ const InfoDevice = () => {
     <StyledInfoDevice>
       <PageWrapper name='Devices'>
         {device !== undefined && <h4>{device.name}</h4>}
+        {device !== undefined && <small>{device.id}</small>}
         <div className='field'>
           <span className='field-property'>Room:</span>
           {room !== undefined && (
@@ -104,20 +99,10 @@ const InfoDevice = () => {
             )}
           </span>
         </div>
-        <div className='buttons'>
-          <ContextButton
-            text='Edit'
-            type='secundary'
-            Icon={EditIcon}
-            onClick={handleEditButton}
-          />
-          <ContextButton
-            text='Delete'
-            type='danger'
-            Icon={DeleteIcon}
-            onClick={handleDeleteButton}
-          />
-        </div>
+        <EditAndDeleteButtons
+          handleEdit={handleEditButton}
+          handleDelete={handleDeleteButton}
+        />
         <DeleteModal
           isOpen={isModalOpen}
           closeModal={handleCloseModal}

@@ -8,9 +8,7 @@ import ActivateButton from '@components/buttons/ActivateButton/ActivateButton';
 
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import DevicesList from '@components/layout/DevicesList/DevicesList';
-import ContextButton from '@components/buttons/ContextButton/ContextButton';
-import EditIcon from '@assets/edit.svg';
-import DeleteIcon from '@assets/delete.svg';
+import EditAndDeleteButtons from '@components/forms/EditAndDeleteButtons/EditAndDeleteButtons';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
 
 const InfoEnvironment = () => {
@@ -91,20 +89,10 @@ const InfoEnvironment = () => {
               </DevicesList>
             );
           })}
-        <div className='buttons'>
-          <ContextButton
-            type='secundary'
-            text='Edit'
-            Icon={EditIcon}
-            onClick={handleEditButton}
-          />
-          <ContextButton
-            text='Delete'
-            type='danger'
-            Icon={DeleteIcon}
-            onClick={handleDeleteModal}
-          />
-        </div>
+        <EditAndDeleteButtons
+          handleEdit={handleEditButton}
+          handleDelete={handleDeleteModal}
+        />
         <DeleteModal
           isOpen={isModalOpen}
           closeModal={handleCloseModal}

@@ -17,13 +17,6 @@ const StyledInfoRoom = styled.div`
     flex-direction: column;
     gap: 10px;
   }
-  .group-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    align-items: center;
-    justify-content: space-around;
-  }
 `;
 
 export default StyledInfoRoom;

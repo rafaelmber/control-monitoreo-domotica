@@ -4,7 +4,7 @@ const StyledInfoDevice = styled.div`
     display: grid;
     grid-template-columns: 1fr 2fr;
     justify-content: space-between;
-    margin: 10px 0;
+    margin-top: 15px;
     & span {
       font-size: 1.25rem;
     }

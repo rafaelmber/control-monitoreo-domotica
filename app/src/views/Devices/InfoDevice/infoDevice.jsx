@@ -107,7 +107,7 @@ const InfoDevice = () => {
           isOpen={isModalOpen}
           closeModal={handleCloseModal}
           handleDelete={handleDeleteDevice}
-          message={`Se eliminará el Dispisitivo y todas las referencias a este. ¿Desea continuar?`}
+          message={`Se eliminará el Dispositivo y todas las referencias a este. ¿Desea continuar?`}
         />
       </PageWrapper>
     </StyledInfoDevice>

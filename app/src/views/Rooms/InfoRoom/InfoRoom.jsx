@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate, Navigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { removeRoom } from '@/services/firebase';
+import { deleteDeviceInEnvironments } from '@/store/environments/environments.actions';
+import { deleteDevice } from '@/store/devices/devices.actions';
+import { deleteRoom } from '@/store/rooms/rooms.actions';
 
 import StyledInfoRoom from './InfoRoom.styles';
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import DevicesList from '@components/layout/DevicesList/DevicesList';
+import EditAndDeleteButtons from '@components/forms/EditAndDeleteButtons/EditAndDeleteButtons';
 
 import ContextButton from '@components/buttons/ContextButton/ContextButton';
-import DeleteIcon from '@assets/delete.svg';
-import EditIcon from '@assets/edit.svg';
-import PlusIcon from '@assets/plus.svg';
 import DeleteModal from '@components/layout/modal/DeleteModal/DeleteModal';
-
-import { deleteDeviceInEnvironments } from '@/store/environments/environments.actions';
-import { deleteDevice } from '@/store/devices/devices.actions';
-import { deleteRoom } from '@/store/rooms/rooms.actions';
+import PlusIcon from '@assets/plus.svg';
 
 const InfoRoom = () => {
   const { id } = useParams();
@@ -55,6 +53,7 @@ const InfoRoom = () => {
   const handleDeleteRoom = async () => {
     await removeRoom(id);
     devices.forEach((device) => {
+      dispatch(deleteDeviceInEnvironments(device.id));
       dispatch(deleteDevice(id));
     });
     dispatch(deleteRoom(id));
@@ -86,20 +85,10 @@ const InfoRoom = () => {
           Icon={PlusIcon}
           onClick={handleAddDevice}
         />
-        <div className='group-buttons'>
-          <ContextButton
-            type='secundary'
-            text='Edit'
-            Icon={EditIcon}
-            onClick={handleEditRoom}
-          />
-          <ContextButton
-            type='danger'
-            text='Delete'
-            Icon={DeleteIcon}
-            onClick={handleOpenModal}
-          />
-        </div>
+        <EditAndDeleteButtons
+          handleEdit={handleEditRoom}
+          handleDelete={handleOpenModal}
+        />
       </StyledInfoRoom>
       <DeleteModal
         isOpen={isModalOpen}

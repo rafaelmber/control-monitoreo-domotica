@@ -75,7 +75,11 @@ const InfoDevice = () => {
     <StyledInfoDevice>
       <PageWrapper name='Devices'>
         {device !== undefined && <h4>{device.name}</h4>}
-        {device !== undefined && <small>{device.id}</small>}
+        {device !== undefined && (
+          <small>
+            <i>Id: {device.id}</i>
+          </small>
+        )}
         <div className='field'>
           <span className='field-property'>Room:</span>
           {room !== undefined && (

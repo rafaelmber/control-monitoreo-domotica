@@ -64,6 +64,7 @@ const InfoRoom = () => {
     <PageWrapper name='Rooms'>
       <StyledInfoRoom>
         <h4 className='room__header'>{room?.name}</h4>
+        <small className='room__id'>Id: {room?.id}</small>
         <h5>Devices</h5>
         {devices?.length !== 0 && (
           <ul className='devices-list'>

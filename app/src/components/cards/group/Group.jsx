@@ -24,7 +24,7 @@ const Group = ({ name, devices }) => {
         <div className='group__title'>
           <Icon />
           {name}
-          <GroupButton devices={devices} />
+          <GroupButton devices={devices} name={name} />
         </div>
       )}
       <div className='group__items'>

@@ -21,6 +21,7 @@ const AddDeviceToEnv = ({ isOpen, closeModal, devices, handleClickDevice }) => {
                 id={device.id}
                 name={device.name}
                 type={device.type}
+                room={device.room}
                 handleClick={() => {
                   handleClickDevice(device.id);
                 }}

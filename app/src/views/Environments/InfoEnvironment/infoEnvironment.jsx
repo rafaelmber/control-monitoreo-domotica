@@ -44,9 +44,6 @@ const InfoEnvironment = () => {
     }
   });
 
-  const handleDeviceClick = (id) => {
-    navigate(`/devices/info/${id}`);
-  };
   const handleEditButton = () => {
     navigate(`/environments/edit/${id}`);
   };

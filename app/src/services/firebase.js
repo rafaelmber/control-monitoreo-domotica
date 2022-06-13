@@ -123,7 +123,6 @@ const removeDeviceFromEnvs = async (deviceId) => {
   const envsRef = db.ref('systems/system_1/environments/');
   const snapshotEnv = await envsRef.once('value');
   snapshotEnv.forEach((envChild) => {
-    console.log(envChild.key);
     if (envChild.exists()) {
       const device = envChild.child('devices').child(deviceId);
       if (device.exists()) {
@@ -132,10 +131,15 @@ const removeDeviceFromEnvs = async (deviceId) => {
         });
       }
     }
-    if (envChild.child('devices').exists() === false) {
-      envChild.ref.remove().catch((error) => {
-        console.log(error);
-      });
+  });
+  const newSnapshot = await envsRef.once('value');
+  newSnapshot.forEach((envChild) => {
+    if (envChild.exists()) {
+      if (envChild.child('devices').exists() === false) {
+        envChild.ref.remove().catch((error) => {
+          console.log(error);
+        });
+      }
     }
   });
 };

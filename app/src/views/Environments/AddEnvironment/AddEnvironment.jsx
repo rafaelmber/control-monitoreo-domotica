@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setEnvironment } from '@/services/firebase';
+import { addEnvironment } from '@/store/environments/environments.actions';
 import hashCreator from '@/utils/hashCreator';
 
 import StyledAddEnvironment from './AddEnvironment.styles';
@@ -7,48 +10,32 @@ import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import EnvironmentForm from '@components/forms/EnvironmentForm/EnvironmentForm';
 
 const AddEnvironment = () => {
-  const devicesList = useSelector((state) => {
-    const devices = [...state.devices];
-    devices.forEach((device) => {
-      device.status = false;
-    });
-    return devices;
-  });
-  const environmentList = useSelector((state) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const environments = useSelector((state) => {
     return state.environments;
   });
-  const [id, setId] = useState(hashCreator('env', environmentList));
-  const [envDevices, setEnvDevices] = useState([]);
-  const [availableDevices, setAvailableDevices] = useState([...devicesList]);
 
-  const handleRemoveDevice = (deviceId) => {
-    const newAvailableDevice = envDevices.find((device) => {
-      return device.id === deviceId;
+  const sendData = async (environmentData) => {
+    const id = hashCreator('env', environments);
+    const newListDevices = environmentData.devices.map((device) => {
+      return { id: device.id, status: device.status };
     });
-    newAvailableDevice.status = false;
-    const newEnvDevices = envDevices.filter((device) => {
-      return device.id !== deviceId;
-    });
-
-    let newAvailableDevicesList = [...availableDevices, newAvailableDevice];
-
-    setAvailableDevices(newAvailableDevicesList);
-    setEnvDevices(newEnvDevices);
+    const newEnvironment = {
+      ...environmentData,
+      id: id,
+      devices: newListDevices,
+    };
+    await setEnvironment(newEnvironment);
+    dispatch(addEnvironment(newEnvironment));
+    navigate('/environments');
   };
 
   return (
     <StyledAddEnvironment>
       <PageWrapper name='Environments'>
-        <EnvironmentForm
-          initialName=''
-          envId={id}
-          envDevices={envDevices}
-          setEnvDevices={setEnvDevices}
-          availableDevices={availableDevices}
-          setAvailableDevices={setAvailableDevices}
-          handleRemoveDevice={handleRemoveDevice}
-          totalDevices={devicesList.length}
-        />
+        <EnvironmentForm sendData={sendData} />
       </PageWrapper>
     </StyledAddEnvironment>
   );

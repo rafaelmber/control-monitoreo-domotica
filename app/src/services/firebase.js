@@ -87,6 +87,22 @@ export const setDevice = async (device) => {
   }
 };
 
+export const setEnvironment = async (environment) => {
+  const newDevicesList = {};
+  environment.devices.forEach((device) => {
+    newDevicesList[device.id] = device.status;
+  });
+  try {
+    const envRef = db.ref('systems/system_1/environments/' + environment.id);
+    await envRef.set({
+      name: environment.name,
+      devices: newDevicesList,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const removeEnviroment = async (envId) => {
   const environmentRef = db.ref('systems/system_1/environments/' + envId);
   await environmentRef.remove();

@@ -80,14 +80,14 @@ const EnvironmentForm = ({ environmentData, sendData }) => {
     setEnvironment({ ...environment, devices: newDevicesList });
   };
 
-  const handleSave = (event) => {
+  const handleSave = async (event) => {
     event.preventDefault();
     if (environment.name.length === 0) {
       console.log('The environment must have a name');
     } else if (environment.devices.length === 0) {
       console.log('The environment must have at least one device');
     } else {
-      sendData(environment);
+      await sendData(environment);
     }
   };
   return (

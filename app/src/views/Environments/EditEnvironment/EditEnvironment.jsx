@@ -1,43 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { setEnvironment } from '@/services/firebase';
+import { editEnvironment } from '@/store/environments/environments.actions';
 
 import PageWrapper from '@components/layout/wrapper/PageWrapper/PageWrapper';
 import EnvironmentForm from '@components/forms/EnvironmentForm/EnvironmentForm';
 
 const EditEnvironment = () => {
-  const [envDevice, setEnvDevice] = useState({});
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
+
   const environment = useSelector((state) => {
-    return state.environments.find((env) => {
-      return env.id === id;
+    const selectedEnvironment = state.environments.find((envState) => {
+      return envState.id === id;
     });
-  });
-  const devicesList = useSelector((state) => {
-    return state.devices;
-  });
-
-  useEffect(() => {
-    const newEnv = { ...environment };
-    console.log(newEnv);
-    if (newEnv !== undefined) {
-      const tempDevices = [];
-      newEnv.devices.forEach((envDev) => {
-        const stateDevice = devicesList.find((curDevice) => {
-          return envDev.id === curDevice.id;
-        });
-        tempDevices.push(stateDevice);
+    const newDevicesList = selectedEnvironment?.devices.map((envDevice) => {
+      const device = state.devices.find((device) => {
+        return device.id === envDevice.id;
       });
-      newEnv.devices = tempDevices;
-      console.log(newEnv);
-      setEnvDevice(newEnv);
-    }
-  }, [environment, devicesList]);
+      const room = state.rooms.find((roomState) => {
+        return roomState.id === device.room;
+      });
+      const newDevice = {
+        ...device,
+        room: room.name,
+        status: envDevice.status,
+      };
+      return newDevice;
+    });
+    const newEnv = { ...selectedEnvironment, devices: newDevicesList };
+    return newEnv;
+  });
 
-  console.log(environment);
+  const sendData = async (environmentData) => {
+    console.log(environmentData);
+    const newListDevices = environmentData.devices.map((device) => {
+      return { id: device.id, status: device.status };
+    });
+    const newEnvironment = {
+      ...environmentData,
+      id: id,
+      devices: newListDevices,
+    };
+    await setEnvironment(newEnvironment);
+    dispatch(editEnvironment(newEnvironment));
+    navigate('/environments');
+  };
 
-  return <PageWrapper name='Enviroments'></PageWrapper>;
+  return (
+    <PageWrapper name='Enviroments'>
+      {environment !== undefined && (
+        <EnvironmentForm environmentData={environment} sendData={sendData} />
+      )}
+    </PageWrapper>
+  );
 };
 
 export default EditEnvironment;

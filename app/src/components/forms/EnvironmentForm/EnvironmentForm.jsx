@@ -43,12 +43,14 @@ const EnvironmentForm = ({ environmentData, sendData }) => {
   }, [environment]);
 
   const compareDevicesLists = () => {
-    let devicesList = currentDevices.filter((device) => {
-      return !environment.devices.some((deviceEnv) => {
-        return deviceEnv.id === device.id;
+    if (environment.devices !== undefined) {
+      let devicesList = currentDevices.filter((device) => {
+        return !environment.devices.some((deviceEnv) => {
+          return deviceEnv.id === device.id;
+        });
       });
-    });
-    setAvailableDevices(devicesList);
+      setAvailableDevices(devicesList);
+    }
   };
   const handleChangeName = (event) => {
     setEnvironment({ ...environment, name: event.target.value });
@@ -92,19 +94,21 @@ const EnvironmentForm = ({ environmentData, sendData }) => {
   };
   return (
     <StyledEnvironmentForm>
-      <TextField
-        type='text'
-        value={environment.name}
-        name='name'
-        label='Name'
-        placeholder='Enter the Environment name'
-        onChange={handleChangeName}
-      />
-      {environment.devices.length === 0 && (
+      {environment.name !== undefined && (
+        <TextField
+          type='text'
+          value={environment.name}
+          name='name'
+          label='Name'
+          placeholder='Enter the Environment name'
+          onChange={handleChangeName}
+        />
+      )}
+      {environment?.devices?.length === 0 && (
         <p>You do not have Devices in this environment</p>
       )}
-      {environment.devices.length !== 0 &&
-        environment.devices.map((device) => {
+      {environment?.devices?.length !== 0 &&
+        environment?.devices?.map((device) => {
           return (
             <DevicesList
               key={device.id}

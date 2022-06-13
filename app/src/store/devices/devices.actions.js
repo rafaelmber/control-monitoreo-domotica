@@ -35,7 +35,7 @@ export const editDevice = (device) => {
 
 export const deleteDevice = (deviceId) => {
   return {
-    type: 'DELET_DEVICE',
+    type: 'DELETE_DEVICE',
     payload: deviceId,
   };
 };

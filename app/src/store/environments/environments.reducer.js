@@ -47,9 +47,11 @@ const environments = (state = initialState, action) => {
     }
 
     case 'DELETE_DEVICE_IN_ENVIRONMENTS': {
-      const newState = [...state];
-      newState.forEach((environment) => {
-        delete environment.devices[action.payload];
+      const newState = state.map((environment) => {
+        const newListDevices = environment.devices.filter((device) => {
+          return device.id !== action.payload;
+        });
+        return { ...environment, devices: newListDevices };
       });
       return newState;
     }

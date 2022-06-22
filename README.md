@@ -1,16 +1,15 @@
 # control-monitoreo-iot
 
-Este proyecto consiste en el diseño de una plataforma de IoT para el control de algunas cargas eléctricas y el monitoreo de variables en un hogar
+Este proyecto consiste en el diseño de una plataforma de IoT para el encendido y apagado de algunas cargas eléctricas dentro de un hogar.
 
-## Estructura
-
-Vamos a usar una aplicación PWA con React, el serividor va a ser gestionado con Firebase
-La conexión MQTT se va a implementar usando Python y las liberías correspondientes
-Lo que vamos a intentar es hacer una aplicación completa que notifique al usuario las diferentes medidas de los sensores que tiene el sistema, además de poder encender y apagar las luminarias y los tomacorrientes de la casa que se encuentren conectados con el sistema
+El proyecto se encuentra dividido en tres secciones:
+- La interfaz de usuario remota que consiste en una aplicación Web desarrollada con React, conectada a un servicio de Firebase Realtime Database y servida por Firebase Hosting.
+- Una Raspberry Pi Zero W que se encarga de conectar la información de la Firebase Realtime Database con distintos dispositivos de activación de cargas a través de un programa escrito en Python y un servidor MQTT de Mosquitto.
+- Los dispositivos de activación de cargas que cuentan con un módulo WIFI ESP-01 y una etapa de potencia para controlar las diferentes cargas eléctricas como Tomacorrientes o Luminarias. 
 
 ## Ingresar a la aplicación
 Para ingresar a la aplicación de prueba se puede acceder por el siguiente link
-https://control-domotica-test.web.app/
+https://proyecto-domotica-select.web.app/
 
 ## Comandos
 
